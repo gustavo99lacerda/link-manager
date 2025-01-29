@@ -22,7 +22,6 @@ export const DivItensConteudoDois = styled.div<{mediaquery?: string}>`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: ${props => props.mediaquery === "true" ? "55px 113px 66px 113px" : "37px 24px"};
 `
 export const DivItensConteudoTres = styled.div<{mediaquery?: string}>`
   display: flex;
