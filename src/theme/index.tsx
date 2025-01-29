@@ -1,5 +1,6 @@
-import { ThemeProvider, createTheme } from '@mui/material';
 import React from 'react';
+import tokens from './tokens.json';
+import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 
 
 const style = createTheme({
@@ -11,7 +12,32 @@ const style = createTheme({
       lg: 1200,
       xl: 1920,
     },
-  }
+  },
+  overrides: {
+    MuiButton: {
+      root: {
+        borderRadius: '8px'
+      },
+      containedSecondary: {
+        color: tokens['token-verde-padrao'],
+        borderRadius: 12,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '20px 64px',
+        '& .MuiButton-fullWidth': {
+          padding: '20px 0',
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      root: {
+        "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+          borderColor: "black"
+        }
+      }
+    },
+  },
 });
 
 interface Props {
@@ -21,9 +47,9 @@ interface Props {
 const Theme = (props: Props) => {
   const { children } = props
   return (
-    <ThemeProvider theme={style}>
+    <MuiThemeProvider theme={style}>
       {children}
-    </ThemeProvider>
+    </MuiThemeProvider>
   );
 };
 

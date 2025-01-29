@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
+import { CircularProgress } from '@material-ui/core'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+)
+
+root.render(
+  <Suspense fallback={(
+    <div className="Index-Suspense" >
+      <CircularProgress
+        size={50}
+        variant="indeterminate"
+        className="Progresso-Circular" />
+    </div>
+  )}>
     <App />
-  </React.StrictMode>,
+  </Suspense>
 )
