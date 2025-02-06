@@ -1,6 +1,6 @@
 import { ImagemCelularPequeno, ImagemCelularGrande, ImagemCelularMedio1, ImagemCelularMedio2, RedesSociais } from '../../assets/imgComponents'
 import { useHooks } from '../../hooks/useHooks'
-import * as S from './styles.module'
+import * as S from './styles'
 
 export function ConteudoDois() {
 

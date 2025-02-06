@@ -1,6 +1,6 @@
 import { useHooks } from '../../hooks/useHooks'
 import { IconePasso1, IconePasso2, IconePasso3 } from '../../assets/imgComponents'
-import * as S from './styles.module'
+import * as S from './styles'
 
 export function ConteudoTres() {
 

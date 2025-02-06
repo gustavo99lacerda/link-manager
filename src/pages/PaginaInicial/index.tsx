@@ -1,5 +1,5 @@
 import{ useEffect } from 'react';
-import * as S from '../PaginaInicial/styles.module'
+import * as S from './styles'
 import { ConteudoUm } from './conteudoUm';
 import { ConteudoDois } from './conteudoDois';
 import { ConteudoTres } from './conteudoTres';

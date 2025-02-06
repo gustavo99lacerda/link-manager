@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Route, Switch } from 'react-router-dom';
 import '../i18n'
 import PaginaInicial from '../pages/PaginaInicial';
+import { MinhasPaginas } from '../pages/MinhasPaginas';
 
 const Routes = () => {
 
@@ -22,6 +23,7 @@ const Routes = () => {
   return (
     <Switch>
       <Route exact path="/" component={PaginaInicial} />
+      <Route exact path="/minhas-paginas" component={MinhasPaginas} />
     </Switch>
   )
 };

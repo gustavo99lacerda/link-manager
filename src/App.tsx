@@ -8,6 +8,9 @@ import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
 import DateFnsUtils from "@date-io/date-fns"
 import { MuiPickersUtilsProvider } from "@material-ui/pickers"
+import { Provider } from 'react-redux';
+import { persistor, store } from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 function App() {
 
@@ -31,9 +34,13 @@ function App() {
     <ErrorBoundary>
       <Theme>
         <MuiPickersUtilsProvider utils={DateFnsUtils} locale={returnLocale()}>
-          <BrowserRouter>
-            <Routes />
-          </BrowserRouter>
+          <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+              <BrowserRouter>
+                <Routes />
+              </BrowserRouter>
+            </PersistGate>
+          </Provider>
         </MuiPickersUtilsProvider>
       </Theme>
     </ErrorBoundary>
