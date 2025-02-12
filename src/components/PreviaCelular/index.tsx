@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react'
 import * as S from './styles'
+import { PreviaCelularSvg } from '../../assets/imgComponents/PreviaCelularSvg'
+import { useRedux } from '../../hooks/useRedux'
 
 interface IDadosPreviaCelular {
   idPagina: string
@@ -38,65 +41,49 @@ const estadoInicial: IDadosPreviaCelular = {
 
 export function PreviaCelular() {
 
-  // const { useAppSelect, dispatch } = useRedux()
+  const { useAppSelect } = useRedux()
 
-  // const { paginaCompleta, identificadores, paginas } = useAppSelect
+  const { paginas, paginaCompleta } = useAppSelect
 
-  // const [dadosPrevia, setDadosPrevia] = useState<IDadosPreviaCelular>(estadoInicial)
+  const [dadosPrevia, setDadosPrevia] = useState<IDadosPreviaCelular>(estadoInicial)
 
-  // useEffect(() => {
-  //   if (paginas.length === 0) {
-  //     setDadosPrevia(estadoInicial)
-  //     dispatch(resetIndentificadores())
-  //     dispatch(resetPaginaCompleta())
-  //   } else {
-  //     setDadosPrevia(paginaCompleta)
-  //   }
-  // }, [paginaCompleta, paginas.length, identificadores.linkAdicionadoOuRemovido])
+  useEffect(() => {
+    setDadosPrevia(paginaCompleta)
 
-  // const retornaRadius = () => {
-  //   switch (paginaCompleta.aparencia.bordaBotao) {
-  //     case "RETA": return "0px"
-  //     case "REDONDA": return "20px"
-  //     case "SEMIREDONDA": return "14px"
-  //     default: return "0px"
-  //   }
-  // }
+  }, [paginas.length, paginaCompleta])
 
   return (
     <S.ContentMolde>
 
-      {/* {paginas.length > 0 ? <><S.DivUrlbutton>
-        <span className="url-page">Casalinks: {process.env.REACT_APP_PRE_URL}/{identificadores.linkPaginaSelecionada}</span>
-      </S.DivUrlbutton>
-
-        <div className="cell">
-          <PreviaCelularSvg />
-          {dadosPrevia.titulo !== ''
-            ? <>
-              {dadosPrevia.aparencia !== null && dadosPrevia.aparencia.foto !== ""
-                ? <img src={dadosPrevia.aparencia.foto} alt="foto da pagina" className="imagem-previa" />
-                : <S.SemFoto width='111px' height='111px' margin='66px 0px 0px 0px'>{paginaCompleta.titulo.slice(0, 1)}</S.SemFoto>}
-              <S.Titulo color={dadosPrevia.aparencia !== null ? dadosPrevia.aparencia.cor.texto : "#000000"}>
-                {dadosPrevia.titulo}
-              </S.Titulo>
-              {dadosPrevia.links.length > 0 ?
-                dadosPrevia.links.filter(itens => itens.ativo === true).map(item => (
-                  <S.Links
-                    radius={retornaRadius()}
-                    backgroundcolor={dadosPrevia.aparencia.cor.botao === null ? "#000000" : dadosPrevia.aparencia.cor.botao}
-                    key={item.idLink}
-                    color={dadosPrevia.aparencia.cor.texto} >
-                    {item.descricao}
-                  </S.Links>
-                ))
-                : null
-              }
-            </>
-            : null}
-        </div>
-      </>
-        : null} */}
+      {paginas.length > 0 && paginaCompleta.idPagina !== ''
+        ? <>
+          <div className="cell">
+            <PreviaCelularSvg />
+            {dadosPrevia.titulo !== ''
+              ? <>
+                {dadosPrevia.aparencia !== null && dadosPrevia.aparencia.foto !== ""
+                  ? <img src={dadosPrevia.aparencia.foto} alt="foto da pagina" className="imagem-previa" />
+                  : <S.SemFoto width='111px' height='111px' margin='66px 0px 0px 0px'>Sem foto</S.SemFoto>}
+                <S.Titulo color={dadosPrevia.aparencia.cor.texto}>
+                  {dadosPrevia.titulo}
+                </S.Titulo>
+                {dadosPrevia.links.length > 0 ?
+                  dadosPrevia.links.filter(itens => itens.ativo === true).map(item => (
+                    <S.Links
+                      radius={dadosPrevia.aparencia.bordaBotao}
+                      backgroundcolor={dadosPrevia.aparencia.cor.botao === null ? "#000000" : dadosPrevia.aparencia.cor.botao}
+                      key={item.idLink}
+                      color={dadosPrevia.aparencia.cor.texto} >
+                      {item.descricao}
+                    </S.Links>
+                  ))
+                  : null
+                }
+              </>
+              : null}
+          </div>
+        </>
+        : null}
     </S.ContentMolde>
   )
 }

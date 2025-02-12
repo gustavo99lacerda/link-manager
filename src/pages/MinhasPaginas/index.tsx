@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react'
 import { ButtonAdicionarPagina } from '../../components/ButtonAdicionarPagina'
 import { CardPagina } from '../../components/CardPagina'
 import { MenuLateral } from '../../components/MenuLateral'
@@ -6,19 +7,29 @@ import { PreviaCelular } from '../../components/PreviaCelular'
 import { useHooks } from '../../hooks/useHooks'
 import { useRedux } from '../../hooks/useRedux'
 import * as S from './styles'
+import { setPaginaCompleta } from '../../redux/modules/paginaCompleta'
+import { Header } from '../../components/Header'
 
 export function MinhasPaginas() {
 
   const { mediaQuery, translation } = useHooks()
-  const { useAppSelect } = useRedux()
+  const { useAppSelect, dispatch } = useRedux()
 
-  const { paginas } = useAppSelect
+  const { paginas, paginaCompleta } = useAppSelect
+
+  useEffect(() => {
+    if (paginas.length > 0) {
+      const paginaEncontrada = paginas.find(pagina => pagina.idPagina === paginas[0].idPagina)!
+      dispatch(setPaginaCompleta(paginaEncontrada)
+      )
+    }
+  }, [])
 
   return (
     <S.Content mediaquery={mediaQuery} >
-      {mediaQuery === "true" ? <MenuLateral /> : <></>}
+      {mediaQuery === "true" ? <MenuLateral /> :  <Header />}
       <S.DivMinhasPaginas mediaquery={mediaQuery} >
-        {mediaQuery
+        {mediaQuery === "true"
           ? <S.TitlePage mediaquery={mediaQuery}>
             {translation("minhas_paginas")}
           </S.TitlePage>
@@ -35,7 +46,7 @@ export function MinhasPaginas() {
           <S.ListaPaginaCards>
             {paginas.map(item => (
               <CardPagina
-                selecionado={false}
+                selecionado={paginaCompleta.idPagina === item.idPagina}
                 key={item.idPagina}
                 titulo={item.titulo}
                 url={item.url}

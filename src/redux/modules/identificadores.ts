@@ -25,6 +25,7 @@ const identificadoresSlice = createSlice({
 
       return state
     },
+
     setPaginaSendoEditada: (state, action: PayloadAction<{ idPaginaSendoEditada: string }>) => {
       state.idPaginaSendoEditada = action.payload.idPaginaSendoEditada
 

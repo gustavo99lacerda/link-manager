@@ -6,6 +6,7 @@ import { removePagina } from "../../redux/modules/paginas"
 import { MenuItem } from "@material-ui/core"
 import { GlobalDialog } from "../GlobalDialog"
 import * as S from './styles'
+import { resetPaginaCompleta } from "../../redux/modules/paginaCompleta"
 
 
 interface Props {
@@ -16,7 +17,8 @@ interface Props {
 export function ButtonExcluirPagina({ idPagina, onClose }: Props) {
 
   const { mediaQuery, translation } = useHooks()
-  const { dispatch } = useRedux()
+  const { dispatch, useAppSelect } = useRedux()
+  const { paginaCompleta } = useAppSelect
 
   const [openDialog, setOpenDialog] = useState(false)
 
@@ -26,6 +28,9 @@ export function ButtonExcluirPagina({ idPagina, onClose }: Props) {
   }
 
   const excluirPagina = () => {
+    if(paginaCompleta.idPagina === idPagina) {
+      dispatch(resetPaginaCompleta())
+    }
     dispatch(removePagina({ idPagina }))
   }
 

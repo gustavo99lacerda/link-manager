@@ -17,7 +17,6 @@ export function ButtonAdicionarPagina() {
   const { useAppSelect, dispatch } = useRedux()
 
   const { idConta } = useAppSelect.user
-  const { paginas } = useAppSelect
 
   const [openModal, setOpenModal] = useState(false)
   const [dadosPagina, setDadosPagina] = React.useState<Partial<DadosPagina>>({ url: '', titulo: '' })
@@ -34,17 +33,17 @@ export function ButtonAdicionarPagina() {
   const criarNovaPagina = () => {
     const url = dadosPagina.url!.replace(/ /g, "")
     dispatch(addPagina({
-      idPagina: paginas.length.toString(),
+      idPagina: (Math.random() + 1).toString(36).substring(2),
       idConta: idConta,
       titulo: dadosPagina.titulo!,
       ativo: true,
       aparencia: {
         foto: "",
-        bordaBotao: "REDONDO",
+        bordaBotao: "20px",
         cor: {
-          botao: "#FFFFFF",
-          texto: "#FFFFFF",
-          fundo: "#000000"
+          botao: "#000000",
+          texto: "#000000",
+          fundo: "#FFFFFF"
         }
       },
       links: [],
@@ -87,7 +86,6 @@ export function ButtonAdicionarPagina() {
           placeholder={translation("url")}
           defaultValue={dadosPagina.url}
           onChange={(event) => setDadosPagina({ url: event?.target.value, titulo: dadosPagina.titulo })} />
-        <div style={{ height: `${mediaQuery ? "32px" : "36px"}` }} />
       </GlobalDialog>
     </>
   )

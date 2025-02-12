@@ -34,3 +34,35 @@ export const ContentMolde = styled.div<{ backgroundprevia?: string }>`
     }
   }
 `
+
+export const Links = styled.div<{ radius: string, backgroundcolor: string, color: string }>`
+  justify-content: center;
+  align-items: center;
+  color: ${(props) => props.color};
+  background-color: ${(props) => props.backgroundcolor};
+  display: flex;
+  width: 209px;
+  height: 45px;
+  border-radius: ${(props) => props.radius};
+  position: relative;
+  margin-bottom: 16px;
+`
+export const Titulo = styled.p<{ color: string }>`
+  margin: 10px 0px 40px 0px;
+  font-size: 16px;
+  font-weight: 400;
+  color: ${props => props.color};
+`
+export const SemFoto = styled.div<{ width: string, height: string, margin: string }>`
+  width: ${props => props.width};
+  height: ${props => props.height};
+  margin: ${props => props.margin};
+  border-radius: 50%;
+  background-color: gray;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 40px;
+  text-transform: uppercase;
+`

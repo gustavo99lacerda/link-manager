@@ -1,12 +1,13 @@
-import{ useEffect } from 'react';
+import { useEffect } from 'react';
 import * as S from './styles'
 import { ConteudoUm } from './conteudoUm';
 import { ConteudoDois } from './conteudoDois';
 import { ConteudoTres } from './conteudoTres';
 import { ConteudoQuatro } from './conteudoQuatro';
+import { Header } from '../../components/Header';
 
 export function PaginaInicial() {
-  
+
   const irParaComoUsar = localStorage.getItem("como-funciona")
 
   useEffect(() => {
@@ -19,10 +20,11 @@ export function PaginaInicial() {
 
   return (
     <S.Body>
-      <ConteudoUm/>
-      <ConteudoDois/>
-      <ConteudoTres/>
-      <ConteudoQuatro/>
+      <Header />
+      <ConteudoUm />
+      <ConteudoDois />
+      <ConteudoTres />
+      <ConteudoQuatro />
     </S.Body>
   )
 }

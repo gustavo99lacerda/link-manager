@@ -15,11 +15,13 @@ import storage from 'redux-persist/lib/storage'
 import user from './modules/user'
 import paginas from './modules/paginas'
 import identificadores from './modules/identificadores'
+import paginaCompleta from './modules/paginaCompleta'
 
 const reducers = combineReducers({
   user,
   paginas,
-  identificadores
+  identificadores,
+  paginaCompleta
 })
 
 const persistConfig = {

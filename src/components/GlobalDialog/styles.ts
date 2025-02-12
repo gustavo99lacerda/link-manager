@@ -34,6 +34,7 @@ export const StyledDialog = styled(Dialog) <CSSProperties>`
     gap: 10px;
     width: 100%;
     justify-content: center;
+    margin-top: 34px;
   }
 
   .MuiButton-colorInherit {
