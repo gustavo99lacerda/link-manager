@@ -7,7 +7,7 @@ export const HeaderComponent = styled.header<{mediaquery: string, pathname: stri
   width: 100%;
   min-height: ${props => props.mediaquery === "true" ? "92px" : props.pathname === "/edicao-pagina" ? "68px" : "56px"};
   justify-content: space-between;
-  padding: ${props => props.mediaquery === "true" ? "0px 86px 0px 86px" : "0rem 24px"};
+  padding: ${props => props.mediaquery === "true" ? "0px 86px 0px 86px" : "0px 24px"};
   background: #FFFFFF;
   border-bottom: 1px solid ${props => props.pathname === "/" ? "transparent" : "#C6D9E3"};
 `
@@ -62,6 +62,7 @@ export const BackButton = styled(Button)`
   &.MuiButton-root {
     justify-content: flex-start;
     padding: 6px 0;
+    width: fit-content;
   }
   .MuiSvgIcon-root {
     color: #1F2933;

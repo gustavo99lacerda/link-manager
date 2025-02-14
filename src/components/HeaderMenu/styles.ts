@@ -2,16 +2,16 @@ import styled from "styled-components";
 import { Button, Drawer, IconButton } from "@material-ui/core";
 
 
-export const StyledButton = styled(Button)<{ width: string }>`
+export const StyledButton = styled(Button)`
   &.MuiButton-root {
-    min-width: ${props => props.width};
+    min-width: 30px;
     background: transparent;
     padding: 0;
   }
 `
 export const DrawerStyled = styled(Drawer)`
   .MuiPaper-root{
-    background-color: #AEC3D2;
+    background-color: #FFFFFF;
     width: 100%;
     flex-direction: column;
     display: flex;
@@ -23,7 +23,7 @@ export const BotaoFechar = styled(IconButton)`
     height: 25px;
     width: 25px;
     padding: 20px;
-    margin: 0px 16px 3.5rem auto;
+    margin: 0px 16px 56px auto;
     color: #000000;
     font-style: normal;
     font-weight: 700;

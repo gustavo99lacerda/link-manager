@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import '../i18n'
 import PaginaInicial from '../pages/PaginaInicial';
 import { MinhasPaginas } from '../pages/MinhasPaginas';
+import { EdicaoPagina } from '../pages/EdicaoPagina';
 
 const Routes = () => {
 
@@ -24,6 +25,7 @@ const Routes = () => {
     <Switch>
       <Route exact path="/" component={PaginaInicial} />
       <Route exact path="/minhas-paginas" component={MinhasPaginas} />
+      <Route exact path="/edicao-pagina" component={EdicaoPagina} />
     </Switch>
   )
 };

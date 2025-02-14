@@ -39,6 +39,13 @@ const paginasSlice = createSlice({
       state = state.filter(item => item.idPagina !== action.payload.idPagina)
       return state
     },
+    updatePaginaNasPaginas: (state, action: PayloadAction<IPaginas>) => {
+      const index = state.findIndex(pagina => pagina.idPagina === action.payload.idPagina)
+      if (index !== -1) {
+        state[index] = action.payload
+      }
+      return state
+    },
     resetPaginas: () => initialState
   }
 })
@@ -47,7 +54,8 @@ export const {
   setPaginas,
   addPagina,
   removePagina,
-  resetPaginas
+  resetPaginas,
+  updatePaginaNasPaginas
 } = paginasSlice.actions
 
 export default paginasSlice.reducer

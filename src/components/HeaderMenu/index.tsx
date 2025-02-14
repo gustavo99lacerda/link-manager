@@ -48,7 +48,7 @@ export function HeaderMenu() {
   ]
   return (
     <>
-      <S.StyledButton width='1.875rem' onClick={() => setAbrirMenu(true)}>
+      <S.StyledButton onClick={() => setAbrirMenu(true)}>
         <MenuIcon />
       </S.StyledButton>
       <S.DrawerStyled

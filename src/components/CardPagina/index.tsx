@@ -9,6 +9,7 @@ import iconeEditar from '../../assets/iconeEditar.svg'
 import { ButtonDownloadQrCode } from '../ButtonDownloadQrCode'
 import { useRedux } from '../../hooks/useRedux'
 import { setPaginaCompleta } from '../../redux/modules/paginaCompleta'
+import { useRouter } from '../../hooks/useRouter'
 
 interface Props {
   titulo: string
@@ -20,6 +21,7 @@ interface Props {
 export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
 
   const { translation } = useHooks()
+  const { history } = useRouter()
   const { dispatch, useAppSelect } = useRedux()
 
   const { paginas } = useAppSelect
@@ -68,7 +70,7 @@ export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
             {String(translation("tela_minhas_paginas.copiar"))}
           </MenuItem>
           <MenuItem
-            onClick={copiarLink}>
+            onClick={() => history.push(`/edicao-pagina`)}>
             <img src={iconeEditar} alt="botao editar" style={{ margin: "0px 8px 0px 0px" }} />
             {String(translation("tela_minhas_paginas.editar"))}
           </MenuItem>

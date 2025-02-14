@@ -42,7 +42,7 @@ export function ButtonAdicionarPagina() {
         bordaBotao: "20px",
         cor: {
           botao: "#000000",
-          texto: "#000000",
+          texto: "#FFFFFF",
           fundo: "#FFFFFF"
         }
       },
