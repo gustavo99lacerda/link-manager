@@ -1,3 +1,4 @@
+import { ButtonExcluirLink } from '../ButtonExcluirLink'
 import * as S from './styles'
 
 
@@ -5,12 +6,12 @@ interface Props {
   titulo: string
   url: string
   ativo: boolean
+  idLink: string
 }
 
-export function CardLinks({ url, ativo, titulo }: Props) {
+export function CardLinks({ url, ativo, titulo, idLink }: Props) {
 
   const ativaOuDesativaLink = () => {
-    console.log('ativando ou desativando link')
   }
 
   return (
@@ -23,6 +24,7 @@ export function CardLinks({ url, ativo, titulo }: Props) {
           <S.IOSSwitch checked={ativo} onChange={ativaOuDesativaLink} />
         </S.DivPrimeiraLinha>
         <S.UrlCard>{url}</S.UrlCard>
+      <ButtonExcluirLink idLink={idLink}/>
       </S.CardContent>
     </S.CardContainer>
   )

@@ -27,6 +27,7 @@ export function ListaLinks({ value, index }: Props) {
           </S.TextoAviso> :
           paginaCompleta.links.map((item) => (
             <CardLinks
+              idLink={item.idLink}
               ativo={item.ativo}
               titulo={item.descricao}
               url={item.url}

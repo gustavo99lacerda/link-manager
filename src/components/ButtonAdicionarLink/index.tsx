@@ -11,7 +11,7 @@ export function ButtonAdicionarLink() {
   const { mediaQuery, translation } = useHooks()
   const { useAppSelect, dispatch } = useRedux()
 
-  const { paginaCompleta, paginas } = useAppSelect
+  const { paginaCompleta } = useAppSelect
 
   const [openModal, setOpenModal] = useState(false)
   const [dadosLink, setDadosLink] = React.useState<{ titulo: string, url: string }>({ url: '', titulo: '' })
@@ -28,8 +28,8 @@ export function ButtonAdicionarLink() {
       url: dadosLink.url,
       ordem: paginaCompleta.links.length
     }))
+    onClose()
   }
-  console.log(paginaCompleta, paginas)
 
   const onOpen = () => {
     setDadosLink({ titulo: "", url: "" })
@@ -76,7 +76,7 @@ export function ButtonAdicionarLink() {
           variant="outlined"
           defaultValue={dadosLink.titulo}
           onChange={(event) => setDadosLink({ titulo: dadosLink.titulo, url: event?.target.value })} />
-        <div style={{ height: `${mediaQuery ? "32px" : "36px"}` }} />
+        <div style={{ height: `${mediaQuery === "true" ?  "32px" : "36px"}` }} />
       </GlobalDialog>
     </>
   )
