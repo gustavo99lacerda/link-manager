@@ -4,7 +4,7 @@ import { GlobalDialog } from '../GlobalDialog'
 import { useHooks } from '../../hooks/useHooks'
 import { useRedux } from '../../hooks/useRedux'
 import { adicionarLinks } from '../../redux/modules/paginaCompleta'
-import { updatePaginaNasPaginas } from '../../redux/modules/paginas'
+import { updateLinksPagina } from '../../redux/modules/paginas'
 
 export function ButtonAdicionarLink() {
 
@@ -17,8 +17,8 @@ export function ButtonAdicionarLink() {
   const [dadosLink, setDadosLink] = React.useState<{ titulo: string, url: string }>({ url: '', titulo: '' })
 
   useEffect(() => {
-    dispatch(updatePaginaNasPaginas(paginaCompleta))
-  }, [paginaCompleta])
+    dispatch(updateLinksPagina({ idPagina: paginaCompleta.idPagina, links: paginaCompleta.links }))
+  }, [paginaCompleta.links])
 
   const criarLink = () => {
     dispatch(adicionarLinks({

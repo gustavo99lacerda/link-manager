@@ -46,6 +46,13 @@ const paginasSlice = createSlice({
       }
       return state
     },
+    updateLinksPagina: (state, action: PayloadAction<{ idPagina: string, links: Array<{ idLink: string, ordem: number, descricao: string, url: string, ativo: boolean }> }>) => {
+      const index = state.findIndex(pagina => pagina.idPagina === action.payload.idPagina)
+      if (index !== -1) {
+        state[index].links = action.payload.links
+      }
+      return state
+    },
     resetPaginas: () => initialState
   }
 })
@@ -55,7 +62,8 @@ export const {
   addPagina,
   removePagina,
   resetPaginas,
-  updatePaginaNasPaginas
+  updatePaginaNasPaginas,
+  updateLinksPagina
 } = paginasSlice.actions
 
 export default paginasSlice.reducer

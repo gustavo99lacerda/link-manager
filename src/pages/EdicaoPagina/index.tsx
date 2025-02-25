@@ -30,7 +30,7 @@ export function EdicaoPagina() {
     <S.Body mediaquery={mediaQuery} >
       {mediaQuery === "true" ? <MenuLateral /> : <Header />}
       <S.Content >
-        {mediaQuery == "true"
+        {mediaQuery === "true"
           ? <S.DivVoltar>
             <S.BackButton
               onClick={() => history.push("/minhas-paginas")}>

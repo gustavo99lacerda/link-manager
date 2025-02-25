@@ -1,7 +1,7 @@
 import { Button, Menu, Tab, Tabs } from '@material-ui/core'
 import styled from 'styled-components'
 import { Form } from '@unform/web'
-import Input from '../../components/UnformComponents/Input'
+import { ChromePicker } from 'react-color'
 
 interface Props {
   desktopoumobile: "true" | "false" | string
@@ -116,12 +116,12 @@ export const ContentLinkslist = styled.div<{ display: string }>`
   overflow: auto;
   padding: 0px 24px;
   `
-export const ContentForm = styled.div<{ overflow: string }>`
+export const ContentForm = styled.div `
   display: flex;
   flex-direction: column;
   width: 100%;
   max-height: min-content;
-  overflow: ${props => props.overflow};
+  overflow: auto;
 `
 export const TextoAviso = styled.span`
   color: #35424F;
@@ -138,18 +138,14 @@ export const StyledForm = styled(Form) <{ display: string }>`
   height: 100%;
   padding: 24px 24px 0px 24px;
 `
-export const Topicos = styled.span<{ margin?: string }>`
+export const Topicos = styled.span<{ margin: string }>`
   color: #35424F;
   font-size: 16px;
   font-weight: 500;
   line-height: 120%;
   margin: ${props => props.margin};
 `
-export const StyledInput = styled(Input) <{ width?: string, radius?: string }>`
-  .MuiOutlinedInput-root {
-    border-radius: ${props => props.radius || "0.25rem"};
-  }
-`
+
 export const DivInputs = styled.div<{ gap?: string, margin?: string }>`
   display: flex;
   width: 100%;
@@ -179,4 +175,9 @@ export const DivButtons = styled.div`
   min-height: auto;
   gap: 8px;
   margin: 24px 0px 24px 0px;
+`
+export const StyledPicker = styled(ChromePicker)`
+  .flexbox-fix{
+    display: none;
+  }
 `

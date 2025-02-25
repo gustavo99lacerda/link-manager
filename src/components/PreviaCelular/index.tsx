@@ -53,8 +53,7 @@ export function PreviaCelular() {
   }, [paginas.length, paginaCompleta])
 
   return (
-    <S.ContentMolde>
-
+    <S.ContentMolde backgroundprevia={dadosPrevia.aparencia.cor.fundo}>
       {paginas.length > 0 && paginaCompleta.idPagina !== ''
         ? <>
           <div className="cell">
@@ -63,7 +62,7 @@ export function PreviaCelular() {
               ? <>
                 {dadosPrevia.aparencia !== null && dadosPrevia.aparencia.foto !== ""
                   ? <img src={dadosPrevia.aparencia.foto} alt="foto da pagina" className="imagem-previa" />
-                  : <S.SemFoto width='111px' height='111px' margin='66px 0px 0px 0px'>Sem foto</S.SemFoto>}
+                  : <S.SemFoto width='111px' height='111px' margin='66px 0px 0px 0px'>{paginaCompleta.titulo.slice(0, 1)}</S.SemFoto>}
                 <S.Titulo color={dadosPrevia.aparencia.cor.texto}>
                   {dadosPrevia.titulo}
                 </S.Titulo>

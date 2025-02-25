@@ -33,6 +33,12 @@ export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
     setAnchorEl(null)
   }
 
+  const irParaEdicao = () => {
+    const paginaEncontrada = paginas.find(pagina => pagina.idPagina === idPagina)!
+    dispatch(setPaginaCompleta(paginaEncontrada))
+    history.push(`/edicao-pagina`)
+  }
+
   const selecionarPagina = () => {
     const paginaEncontrada = paginas.find(pagina => pagina.idPagina === idPagina)!
     dispatch(setPaginaCompleta(paginaEncontrada))
@@ -70,7 +76,7 @@ export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
             {String(translation("tela_minhas_paginas.copiar"))}
           </MenuItem>
           <MenuItem
-            onClick={() => history.push(`/edicao-pagina`)}>
+            onClick={() => irParaEdicao()}>
             <img src={iconeEditar} alt="botao editar" style={{ margin: "0px 8px 0px 0px" }} />
             {String(translation("tela_minhas_paginas.editar"))}
           </MenuItem>

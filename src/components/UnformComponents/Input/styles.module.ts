@@ -17,7 +17,6 @@ export const Container = styled(Box) <Props>`
 export const ContainerErros = styled(Box)`
   display: flex;
   align-items: center;
-  padding: 0.0313rem;
 `
 
 export const TextoErro = styled(Typography)`
@@ -25,9 +24,10 @@ export const TextoErro = styled(Typography)`
     color: #BB0A30;
     margin: 0px 0px 0px 2px;
     text-align: left;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 120%;
+    font-family: Poppins;
   }
 `
 export const IconeErro = styled(ErrorOutlineIcon)`
