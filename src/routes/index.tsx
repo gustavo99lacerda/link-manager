@@ -5,6 +5,7 @@ import '../i18n'
 import PaginaInicial from '../pages/PaginaInicial';
 import { MinhasPaginas } from '../pages/MinhasPaginas';
 import { EdicaoPagina } from '../pages/EdicaoPagina';
+import { MinhaConta } from '../pages/MinhaConta';
 
 const Routes = () => {
 
@@ -26,6 +27,7 @@ const Routes = () => {
       <Route exact path="/" component={PaginaInicial} />
       <Route exact path="/minhas-paginas" component={MinhasPaginas} />
       <Route exact path="/edicao-pagina" component={EdicaoPagina} />
+      <Route exact path="/minha-conta" component={MinhaConta} />
     </Switch>
   )
 };

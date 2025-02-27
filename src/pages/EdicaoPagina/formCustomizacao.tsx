@@ -11,6 +11,7 @@ import Input from '../../components/UnformComponents/Input'
 import { ButtonAlterarFotoPagina } from '../../components/ButtonAlterarFotoPagina'
 import { Button } from '@material-ui/core'
 import { updatePaginaNasPaginas } from '../../redux/modules/paginas'
+import { customSnackbar } from '../../components/CustomSnackbar/customSnackbar'
 
 interface Props {
   index: number;
@@ -29,13 +30,9 @@ export function FormCustomizacao({ index, value }: Props) {
   })
 
   const salvarAparencia = async (dadosForm: { titulo: string, url: string, fundo: string, texto: string, botao: string }) => {
-    console.log("entrou")
     formRef.current?.setErrors({})
     try {
-      console.log("entrou2")
-      console.log(dadosForm)
       await validacaoFormulario.validate(dadosForm, { abortEarly: false })
-      console.log("entrou3")
       dispatch(updatePaginaNasPaginas({
         ...paginaCompleta,
         titulo: dadosForm.titulo,
@@ -49,12 +46,10 @@ export function FormCustomizacao({ index, value }: Props) {
           }
         }
       }))
-      console.log("Salvo com sucesso")
+      customSnackbar(translation("snackbar.sucesso_alteracoes"))
     } catch (error) {
-      console.log("errou1")
 
       if (error instanceof Yup.ValidationError) {
-        console.log("errou2")
         const message: Record<string, string> = {}
         error.inner.forEach((err) => {
           message[err.path!] = err.message

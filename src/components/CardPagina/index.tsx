@@ -47,7 +47,7 @@ export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
 
   return (
     <S.CardContainer
-      bordercolor={selecionado ? "#16825D" : "#4D5C6C"}>
+      bordercolor={selecionado ? "#16825D" : "#FFFFFF"}>
       <S.CardBody >
         <S.ClickArea onClick={() => selecionarPagina()}>
           <S.PrimeiraLinha >{titulo}</S.PrimeiraLinha>

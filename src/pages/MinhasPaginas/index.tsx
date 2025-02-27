@@ -15,10 +15,9 @@ export function MinhasPaginas() {
 
   const { paginas, paginaCompleta } = useAppSelect
 
-
   return (
     <S.Content mediaquery={mediaQuery} >
-      {mediaQuery === "true" ? <MenuLateral /> :  <Header />}
+      {mediaQuery === "true" ? <MenuLateral /> : <Header />}
       <S.DivMinhasPaginas mediaquery={mediaQuery} >
         {mediaQuery === "true"
           ? <S.TitlePage mediaquery={mediaQuery}>

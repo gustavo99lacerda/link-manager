@@ -8,14 +8,9 @@ import { Header } from '../../components/Header';
 
 export function PaginaInicial() {
 
-  const irParaComoUsar = localStorage.getItem("como-funciona")
 
   useEffect(() => {
-    if (irParaComoUsar === "true") {
-      const element = document.getElementById('como-funciona')
-      element?.scrollIntoView()
-    }
-    localStorage.removeItem('como-funciona')
+    localStorage.clear()
   }, [])
 
   return (

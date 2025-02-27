@@ -28,7 +28,7 @@ export function MenuLateral() {
         {translation("minhas_paginas")}
       </S.ButtonsMenu>
       <S.ButtonsMenu
-        onClick={() => {}}
+        onClick={() => history.push("/minha-conta")}
         colortext={path.pathname === "/minha-conta"
           ? "#16825d"
           : "#000000"}>
