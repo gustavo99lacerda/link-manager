@@ -133,13 +133,13 @@
       "acessar_conta": "Acessar conta"
     },
     "snackbar": {
-      "remover_foto_sucesso": "A foto foi removida com sucesso.",
-      "alteracao_foto_sucesso": "A foto foi alterada com sucesso.",
-      "sucesso_criar_pagina": "A página foi criada com sucesso.",
-      "sucesso_excluir_pagina": "Página excluída com sucesso.",
-      "sucesso_alteracoes": "Alterações salvas com sucesso.",
-      "sucesso_criar_link": "O link foi criado com sucesso.",
-      "sucesso_copiar": "Link copiado com sucesso.",
+      "remover_foto_sucesso": "A foto foi removida com sucesso",
+      "alteracao_foto_sucesso": "A foto foi alterada com sucesso",
+      "sucesso_criar_pagina": "A página foi criada com sucesso",
+      "sucesso_excluir_pagina": "Página excluída com sucesso",
+      "sucesso_alteracoes": "Alterações salvas com sucesso",
+      "sucesso_criar_link": "O link foi criado com sucesso",
+      "sucesso_copiar": "Link copiado com sucesso",
       "sucesso_excluir_link": "Link excluido com sucesso",
       "sucesso_alterar_ordem": "A ordem do link foi alterada com sucesso"
     }

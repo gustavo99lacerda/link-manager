@@ -10,6 +10,7 @@ import { ButtonDownloadQrCode } from '../ButtonDownloadQrCode'
 import { useRedux } from '../../hooks/useRedux'
 import { setPaginaCompleta } from '../../redux/modules/paginaCompleta'
 import { useRouter } from '../../hooks/useRouter'
+import { customSnackbar } from '../CustomSnackbar/customSnackbar'
 
 interface Props {
   titulo: string
@@ -29,7 +30,7 @@ export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
 
   const copiarLink = () => {
     navigator.clipboard.writeText(url)
-    // snackbar(translation("snackbar.sucesso_copiar"))
+    customSnackbar(translation("snackbar.sucesso_copiar"))
     setAnchorEl(null)
   }
 
