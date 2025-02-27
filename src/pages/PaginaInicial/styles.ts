@@ -69,15 +69,11 @@ export const DivTextosConteudoUm = styled.div<{mediaquery?: string}>`
 `
 export const ButtonEntrar = styled(Button)<{mediaquery?: string}>`
   &.MuiButton-root {
-    background: #043D94;
-    color: #FFFFFF;
-    border-radius: 6px;
-    height: 38px;
     min-width: 93px;
     align-self: ${props => props.mediaquery === "true" ? "flex-start" : "center"};
     width: ${props => props.mediaquery === "true" ? "280px" : "183px"};
     text-transform: none;
-    margin:0px 0px 42px 0px;
+    margin: 0px 0px 42px 0px;
   }
 `
 export const DivCelulares = styled.div<{mediaquery?: string}>`
@@ -166,10 +162,6 @@ export const TextoConteudoQuatro = styled.h1<{mediaquery?: string}>`
 `
 export const ButtonEntrarConteudoQuatro = styled(Button)<{mediaquery?: string}>`
   &.MuiButton-root {
-    background: #043D94;
-    color: #FFFFFF;
-    border-radius: 6px;
-    height: 38px;
     min-width: 93px;
     align-self: center;
     width: ${props => props.mediaquery === "true" ? "280px" : "183px"};

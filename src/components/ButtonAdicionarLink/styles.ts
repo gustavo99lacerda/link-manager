@@ -5,7 +5,7 @@ import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline'
 export const ButtonAdicionar = styled(Button)`
   &.MuiButtonBase-root {
     color: #FFFFFF;
-    background-color: #043D94;
+    background-color: #16825D;
     text-transform: none;
     height: 38px;
     width: 100%;
@@ -27,7 +27,7 @@ export const Topicos = styled.p`
 `
 
 export const DialogTitle = styled.span<{ mediaquery: string }>`
-  color: #043D94;
+  color: #16825D;
   text-align: center;
   font-size: ${props => props.mediaquery === "true" ? "24px" : "16px"};
   font-weight: 500;
@@ -68,7 +68,7 @@ export const StyledInput = styled(TextField)`
       border-color: #4D5C6C;
     }
     &:focus-within fieldset {
-      border-color: #043D94;
+      border-color: #16825D;
     }
   }
   .MuiInputBase-input{

@@ -28,7 +28,6 @@
       "junte_todos": "Junte todos os seus links em um só lugar e deixe tudo do seu jeito!"
     },
     "footer": {
-      "direitos_reservados": "Casalinks. Todos os direitos reservados."
     },
     "tela_login": {
       "nao_possui_conta": "Ainda não possui uma conta?",
@@ -53,7 +52,8 @@
       "adicionar": "+ Adicionar página",
       "nao_possui_pagina": "Você ainda não possui nenhuma página. Clique no botão abaixo para adicionar",
       "clique_para_adicionar": "Clique no botão abaixo para adicionar uma página",
-      "copiar": "Copiar"
+      "copiar": "Copiar",
+      "customizar": "Customizar"
     },
     "dialog_criar_link": {
       "criar_link": "Criar novo link",
@@ -106,8 +106,7 @@
     "tela_erro": {
       "titulo": "Ops! Estou com problemas para exibir este conteúdo...",
       "informacao": "Ocorreu algum erro ao carregar a página. Sugerimos que você clique no botão inicial para voltar para a página inicial.",
-      "voltar": "Ir para a página inicial",
-      "footer": "© Todos os direitos reservados Casa do Construtor."
+      "voltar": "Ir para a página inicial"
     },
     "dialog_foto_conta": {
       "alterar_foto_perfil": "Alterar foto do perfil",
@@ -134,13 +133,13 @@
       "acessar_conta": "Acessar conta"
     },
     "snackbar": {
-      "remover_foto_sucesso": "A foto foi removida com sucesso.",
-      "alteracao_foto_sucesso": "A foto foi alterada com sucesso.",
-      "sucesso_criar_pagina": "A página foi criada com sucesso.",
-      "sucesso_excluir_pagina": "Página excluída com sucesso.",
-      "sucesso_alteracoes": "Alterações salvas com sucesso.",
-      "sucesso_criar_link": "O link foi criado com sucesso.",
-      "sucesso_copiar": "Link copiado com sucesso.",
+      "remover_foto_sucesso": "A foto foi removida com sucesso",
+      "alteracao_foto_sucesso": "A foto foi alterada com sucesso",
+      "sucesso_criar_pagina": "A página foi criada com sucesso",
+      "sucesso_excluir_pagina": "Página excluída com sucesso",
+      "sucesso_alteracoes": "Alterações salvas com sucesso",
+      "sucesso_criar_link": "O link foi criado com sucesso",
+      "sucesso_copiar": "Link copiado com sucesso",
       "sucesso_excluir_link": "Link excluido com sucesso",
       "sucesso_alterar_ordem": "A ordem do link foi alterada com sucesso"
     }

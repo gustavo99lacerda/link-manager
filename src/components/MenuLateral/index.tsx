@@ -21,7 +21,7 @@ export function MenuLateral() {
       </S.StyledButton>
       <S.ButtonsMenu
         colortext={(path.pathname === "/minhas-paginas" || path.pathname === "/edicao-pagina")
-          ? "#043D94"
+          ? "#16825d"
           : "#000000"}
         onClick={() => history.push("/minhas-paginas")}  >
         <IconeMinhasPaginas />
@@ -30,7 +30,7 @@ export function MenuLateral() {
       <S.ButtonsMenu
         onClick={() => {}}
         colortext={path.pathname === "/minha-conta"
-          ? "#043D94"
+          ? "#16825d"
           : "#000000"}>
         <IconeMinhaConta />
         {translation("minha_conta")}

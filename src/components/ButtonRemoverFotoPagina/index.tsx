@@ -4,6 +4,7 @@ import { GlobalDialog } from '../GlobalDialog';
 import { useHooks } from '../../hooks/useHooks';
 import { useRedux } from '../../hooks/useRedux';
 import { removerFotoPagina } from '../../redux/modules/paginaCompleta';
+import { Button } from '@material-ui/core';
 
 export function ButtonRemoverFotoPagina() {
 
@@ -19,8 +20,9 @@ export function ButtonRemoverFotoPagina() {
 
   return (
     <>
-      <S.ButtonRemoverFoto className="botao-excluir" onClick={() => setOpenDialog(true)}>
-      </S.ButtonRemoverFoto>
+      <Button variant='outlined' fullWidth color='primary' onClick={() => setOpenDialog(true)}>
+      {translation("remover_foto")}
+      </Button>
       <GlobalDialog
         open={openDialog}
         onClose={() => setOpenDialog(false)}

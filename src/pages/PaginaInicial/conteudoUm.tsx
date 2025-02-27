@@ -14,9 +14,9 @@ export function ConteudoUm() {
       <S.DivTextosConteudoUm mediaquery={mediaQuery}>
         <h1>{translation("tela_inicial.todos_os_links")}</h1>
         <h2>{translation("tela_inicial.crie_sua_pagina")}</h2>
-        <S.ButtonEntrar mediaquery={mediaQuery}
+        <S.ButtonEntrar color='primary' variant='contained' mediaquery={mediaQuery}
           onClick={() => history.push("/minhas-paginas")}>
-          {translation("tela_inicial.acessar_conta")}
+          {translation("entrar")}
         </S.ButtonEntrar>
       </S.DivTextosConteudoUm>
       <img src={mediaQuery ? imagemInicioDK : imagemInicioMB} alt="imagem personagens" />

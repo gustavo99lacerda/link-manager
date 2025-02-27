@@ -34,11 +34,12 @@ export function ButtonAlterarFotoPagina() {
       {paginaCompleta.aparencia.foto
         ? <S.ComFoto src={paginaCompleta.aparencia.foto} width='115px' height='115px' />
         : <S.SemFoto width='115px' height='115px'>{paginaCompleta.titulo.slice(0, 1)}</S.SemFoto>}
-      <Button onClick={() => setOpenDialog(true)}>
+      <Button variant='contained' color='primary'  onClick={() => setOpenDialog(true)}>
         {translation("alterar_foto")}
       </Button>
       <GlobalDialog
         open={openDialog}
+        actions={false}
         onClose={fecharDialog}>
         <S.DialogTitle mediaquery={mediaQuery} >
           {translation("dialog_foto_pagina.alterar_foto_pagina")}
@@ -58,9 +59,9 @@ export function ButtonAlterarFotoPagina() {
             type="file"
             onChange={(event) => uploadFoto(event)}
           />
-          <label style={{ width: "50%" }} htmlFor="contained-button-file">
+          <label style={{ width: "100%" }} htmlFor="contained-button-file">
             <Button
-              style={{ padding: "5px 15px" }}
+              fullWidth
               color="primary"
               variant="contained"
               component="span" >

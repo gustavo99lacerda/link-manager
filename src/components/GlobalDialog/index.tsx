@@ -1,6 +1,6 @@
 import React from 'react'
 import { HighlightOff } from '@material-ui/icons'
-import { IconButton, Button, CircularProgress } from '@material-ui/core'
+import { IconButton, Button } from '@material-ui/core'
 import * as S from './styles'
 
 interface IProps {
@@ -12,21 +12,21 @@ interface IProps {
   textoConfirmar?: string
   children?: React.ReactNode
   disabled?: boolean
-  inLoading?: boolean
   disabledConfirmation?: boolean
+  actions?: boolean
 }
 
 export function GlobalDialog({
   open,
   onClose,
-  funcaoCancelar: cancelAction,
-  funcaoConfirmar: confirmationAction,
-  textoCancelar: textCancelBtn,
-  textoConfirmar: textConfirmationBtn,
+  funcaoCancelar,
+  funcaoConfirmar,
+  textoCancelar,
+  textoConfirmar,
   children,
-  inLoading,
   disabled,
   disabledConfirmation,
+  actions
 }: IProps) {
 
   return (
@@ -39,22 +39,20 @@ export function GlobalDialog({
       <div className="content">
         {children}
       </div>
-      <div className="space-actions-dialog">
-        {inLoading ? <CircularProgress color="primary" className="margin-auto" /> : (
-          <>
-            {cancelAction ? (
-              <Button color="primary" fullWidth variant="outlined" onClick={!disabled ? cancelAction : undefined}>
-                {textCancelBtn}
-              </Button>
-            ) : null}
-            {confirmationAction ? (
-              <Button disabled={disabledConfirmation} fullWidth color="primary" variant="contained" onClick={!disabled ? confirmationAction : undefined}>
-                {textConfirmationBtn}
-              </Button>
-            ) : null}
-          </>
-        )}
-      </div>
+      {actions === undefined || actions === true ? (
+        <div className="space-actions-dialog">
+          {funcaoCancelar ? (
+            <Button color="primary" fullWidth variant="outlined" onClick={!disabled ? funcaoCancelar : undefined}>
+              {textoCancelar}
+            </Button>
+          ) : null}
+          {funcaoConfirmar ? (
+            <Button disabled={disabledConfirmation} fullWidth color="primary" variant="contained" onClick={!disabled ? funcaoConfirmar : undefined}>
+              {textoConfirmar}
+            </Button>
+          ) : null}
+        </div>
+      ) : null}
     </S.StyledDialog>
   )
 }

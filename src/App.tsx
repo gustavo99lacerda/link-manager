@@ -11,6 +11,7 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers"
 import { Provider } from 'react-redux';
 import { persistor, store } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
+import { CustomSnackbar } from './components/CustomSnackbar/customSnackbar';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
           <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
               <BrowserRouter>
+                <CustomSnackbar />
                 <Routes />
               </BrowserRouter>
             </PersistGate>

@@ -7,6 +7,7 @@ import { MenuItem } from "@material-ui/core"
 import { GlobalDialog } from "../GlobalDialog"
 import * as S from './styles'
 import { resetPaginaCompleta } from "../../redux/modules/paginaCompleta"
+import { customSnackbar } from "../CustomSnackbar/customSnackbar"
 
 
 interface Props {
@@ -32,6 +33,7 @@ export function ButtonExcluirPagina({ idPagina, onClose }: Props) {
       dispatch(resetPaginaCompleta())
     }
     dispatch(removePagina({ idPagina }))
+    customSnackbar(translation("snackbar.sucesso_excluir_pagina"))
   }
 
   return (

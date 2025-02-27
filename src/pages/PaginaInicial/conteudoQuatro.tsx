@@ -12,9 +12,9 @@ export function ConteudoQuatro() {
       <S.TextoConteudoQuatro mediaquery={mediaQuery}>
         {translation("tela_inicial.junte_todos")}
       </S.TextoConteudoQuatro>
-      <S.ButtonEntrarConteudoQuatro  mediaquery={mediaQuery}
+      <S.ButtonEntrarConteudoQuatro color='primary' variant='contained' mediaquery={mediaQuery}
         onClick={() => history.push("/minhas-paginas")} >
-        {translation("tela_inicial.acessar_conta")}
+        {translation("entrar")}
       </S.ButtonEntrarConteudoQuatro>
     </S.DivItensConteudoQuatro>
   )

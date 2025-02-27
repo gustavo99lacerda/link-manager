@@ -46,7 +46,7 @@ export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
 
   return (
     <S.CardContainer
-      bordercolor={selecionado ? "#32a6ff" : "#4D5C6C"}>
+      bordercolor={selecionado ? "#16825D" : "#4D5C6C"}>
       <S.CardBody >
         <S.ClickArea onClick={() => selecionarPagina()}>
           <S.PrimeiraLinha >{titulo}</S.PrimeiraLinha>
@@ -56,7 +56,7 @@ export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
           aria-controls={'basic-menu'}
           aria-haspopup="true"
           onClick={(event) => setAnchorEl(event.currentTarget)}>
-          <MoreVert style={{ color: "#043d94" }} />
+          <MoreVert style={{ color: "#16825D" }} />
         </S.StyledIconButton>
       </S.CardBody>
       <Menu
@@ -78,7 +78,7 @@ export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
           <MenuItem
             onClick={() => irParaEdicao()}>
             <img src={iconeEditar} alt="botao editar" style={{ margin: "0px 8px 0px 0px" }} />
-            {String(translation("tela_minhas_paginas.editar"))}
+            {String(translation("tela_minhas_paginas.customizar"))}
           </MenuItem>
           <ButtonDownloadQrCode url={url} onClose={() => setAnchorEl(null)} />
           <ButtonExcluirPagina idPagina={idPagina} onClose={() => setAnchorEl(null)} />

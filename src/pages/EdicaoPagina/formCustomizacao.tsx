@@ -118,7 +118,10 @@ export function FormCustomizacao({ index, value }: Props) {
           </S.DivInputs>
         </S.ContentForm>
         <S.DivButtons>
-          <Button type="submit" fullWidth >
+          <Button onClick={() => {}} variant='outlined' color='primary' fullWidth >
+            {translation("formulario_customizacao.visualizar")}
+          </Button>
+          <Button type="submit" variant='contained' color='primary' fullWidth >
             {translation("formulario_customizacao.salvar")}
           </Button>
         </S.DivButtons>

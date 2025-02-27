@@ -29,10 +29,10 @@ export const StyledInput = styled(TextField) <{mediaquery?: string}>`
       border-color: #4D5C6C;
     }
     &:focus-within fieldset {
-      border-color: #043D94;
+      border-color: #16825D;
     }
     &:hover fieldset {
-      border-color: #043D94;
+      border-color: #16825D;
     }
   }
   .MuiInputBase-input{
@@ -61,7 +61,7 @@ export const StyledButton = styled(Button)<{mediaquery?: string}> `
   }
 `
 export const DialogTitle = styled.span<{mediaquery?: string}>`
-  color: #043D94;
+  color: #16825D;
   text-align: center;
   font-size: ${props => props.mediaquery === "true" ? "24px" : "16px"};
   font-weight: 500;

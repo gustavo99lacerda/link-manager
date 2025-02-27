@@ -7,7 +7,6 @@ export const ContentMolde = styled.div<{ backgroundprevia?: string }>`
   height: 100%;
   min-width: 464px;
   border-left: 1px solid #C4C4C4;
-  border: 1px solid red;
   background-color: #FFFFFF;
   
   .cell {

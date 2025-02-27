@@ -5,6 +5,7 @@ import { useHooks } from '../../hooks/useHooks'
 import { useRedux } from '../../hooks/useRedux'
 import { adicionarLinks } from '../../redux/modules/paginaCompleta'
 import { updateLinksPagina } from '../../redux/modules/paginas'
+import { customSnackbar } from '../CustomSnackbar/customSnackbar'
 
 export function ButtonAdicionarLink() {
 
@@ -28,6 +29,7 @@ export function ButtonAdicionarLink() {
       url: dadosLink.url,
       ordem: paginaCompleta.links.length
     }))
+    customSnackbar(translation("snackbar.sucesso_criar_link"))
     onClose()
   }
 

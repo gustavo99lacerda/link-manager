@@ -29,7 +29,7 @@ export const StyledButtonLogo = styled(Button) <{ mediaquery: string }>`
 `
 export const ButtonEntrar = styled(Button)`
   &.MuiButton-root {
-    background: #043D94;
+    background: #16825D;
     border-radius: 4px;
     min-height: 38px;
     min-width: 78px;

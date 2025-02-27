@@ -4,7 +4,7 @@ import { Button, IconButton } from '@material-ui/core'
 export const ButtonRemoverFoto = styled(Button)`
   &.MuiButtonBase-root {
     color: #FFFFFF;
-    background-color: #043D94;
+    background-color: #16825D;
     text-transform: none;
     height: 38px;
     width: 100%;
@@ -18,7 +18,7 @@ export const ButtonRemoverFoto = styled(Button)`
 `
 
 export const DialogTitle = styled.span < { mediaquery: string } > `
-  color: #043D94;
+  color: #16825D;
   text-align: center;
   font-size: ${props => props.mediaquery === "true" ? "24px" : "16px"};
   font-weight: 500;

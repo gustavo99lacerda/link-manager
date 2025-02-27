@@ -77,7 +77,7 @@ export const StyledTab = styled(Tab)`
     opacity: 1;
   }
   &.MuiTab-root[aria-selected="true"] {
-    color: #043D94;
+    color: #16825D;
   }
   &.MuiTab-root{
     min-width: 50%;
@@ -91,10 +91,10 @@ export const StyledTabs = styled(Tabs)`
     padding: 0px 24px;
   }
   .MuiTabs-indicator {
-    background-color: #043d94;
+    background-color: #16825D;
   }
   &.MuiTab-root[aria-selected="true"] {
-    color: #043D94;
+    color: #16825D;
   }
   &.MuiTab-root[aria-selected="false"] {
     color: #8794A5;

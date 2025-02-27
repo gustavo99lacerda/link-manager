@@ -5,6 +5,7 @@ import React, { useState } from "react"
 import * as S from './styles'
 import { useRedux } from "../../hooks/useRedux"
 import { addPagina } from "../../redux/modules/paginas"
+import { customSnackbar } from "../CustomSnackbar/customSnackbar"
 
 interface DadosPagina {
   url: string;
@@ -49,12 +50,13 @@ export function ButtonAdicionarPagina() {
       links: [],
       url: url
     }))
+    customSnackbar(translation("snackbar.sucesso_criar_pagina"))
     onClose()
   }
 
   return (
     <>
-      <Button onClick={onOpen}>
+      <Button color="primary" variant="contained" onClick={onOpen}>
         {translation("tela_minhas_paginas.adicionar")}
       </Button>
       <GlobalDialog

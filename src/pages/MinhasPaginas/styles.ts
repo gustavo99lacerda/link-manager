@@ -6,6 +6,7 @@ export const Content = styled.div<{mediaquery?: string}>`
   align-items: center;
   width: 100%;
   height: 100%;
+  background: #FFFFFF;
 `
 export const DivMinhasPaginas = styled.div<{mediaquery?: string}>`
   display: flex;

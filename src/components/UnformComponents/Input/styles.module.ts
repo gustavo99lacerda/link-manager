@@ -46,7 +46,7 @@ export const StyledTextField = styled(TextField)`
       border-color: #4D5C6C;
     }
     &:focus-within fieldset {
-      border-color: #043D94;
+      border-color: #16825D;
     }
     .MuiInputBase-input{
       color: #4D5C6C;

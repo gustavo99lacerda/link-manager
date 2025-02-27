@@ -40,9 +40,9 @@ export const ButtonsMenu = styled(Button)<{ colortext: string }>`
     }
     :hover{
       background-color: transparent;
-      color: #043D94;
+      color: #16825D;
       svg path{
-         stroke: #043D94;
+         stroke: #16825D;
       }
     }
   }

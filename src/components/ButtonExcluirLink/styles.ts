@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { IconButton } from '@material-ui/core'
 
 export const DialogTitle = styled.span < { mediaquery: string } > `
-  color: #043D94;
+  color: #16825D;
   text-align: center;
   font-size: ${props => props.mediaquery === "true" ? "24px" : "16px"};
   font-weight: 500;

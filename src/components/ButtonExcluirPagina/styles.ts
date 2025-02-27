@@ -21,7 +21,7 @@ export const StyledModal = styled(Modal)`
 `
 
 export const QrRemoveTitle = styled.span<{ mediaquery: string }>`
-  color: #043D94;
+  color: #16825D;
   text-align: center;
   font-size: ${props => props.mediaquery === "true" ? "24px" : "16px"};
   font-weight: 500;

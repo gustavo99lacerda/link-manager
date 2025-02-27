@@ -28,7 +28,6 @@
       "junte_todos": "Reúne todos tus enlaces en un solo lugar y personalízalo todo a tu manera."
     },
     "footer": {
-      "direitos_reservados": "Casalinks. Todos los derechos reservados."
     },
     "tela_login": {
       "nao_possui_conta": "¿Aún no tienes una cuenta?",
@@ -53,7 +52,8 @@
       "adicionar": "+ Añadir página",
       "nao_possui_pagina": "Todavía no tienes ninguna página. Haz clic en el botón de abajo para agregar",
       "clique_para_adicionar": "Haz clic en el botón de abajo para agregar una página",
-      "copiar": "Copiar"
+      "copiar": "Copiar",
+      "customizar": "Personalizar"
     },
     "dialog_criar_link": {
       "criar_link": "Crear nuevo enlace",
@@ -106,8 +106,7 @@
     "tela_erro": {
       "titulo": "¡Vaya! Tengo problemas para mostrar este contenido...",
       "informacao": "Ocurrió un error al cargar la página. Te sugerimos que hagas clic en el botón inicial para volver a la página de inicio.",
-      "voltar": "Ir a la página de inicio",
-      "footer": "© Todos los derechos reservados Casa do Construtor."
+      "voltar": "Ir a la página de inicio"
     },
     "dialog_foto_conta": {
       "alterar_foto_perfil": "Cambiar foto de perfil",

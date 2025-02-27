@@ -7,7 +7,7 @@ export const CardContainer = styled.div`
   padding: 0px 16px 0px 16px;
   align-items: center;
   border-radius: 8px;
-  border: 1px solid #043D94;
+  border: 1px solid #16825D;
   margin-top: 16px;
 
 `
@@ -37,7 +37,7 @@ export const CardContent = styled.div`
 `
 export const IOSSwitch = styled(Switch)`
   .MuiSwitch-colorSecondary.Mui-checked {
-    color: #043D94;
+    color: #16825D;
   }
   .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track {
     background-color: #00BCF266;

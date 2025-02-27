@@ -1,5 +1,4 @@
 import React from 'react';
-import tokens from './tokens.json';
 import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 
 
@@ -13,22 +12,57 @@ const style = createTheme({
       xl: 1920,
     },
   },
+  typography: {
+    fontFamily: 'Poppins',
+  },
+  palette: {
+    primary: {
+      light: '#16825d',
+      main: '#16825d',
+      dark: '#16825d'
+    }
+  },
   overrides: {
     MuiButton: {
-      root: {
-        borderRadius: '8px'
-      },
-      containedSecondary: {
-        color: tokens['token-verde-padrao'],
-        borderRadius: 12,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '20px 64px',
-        '& .MuiButton-fullWidth': {
-          padding: '20px 0',
+      containedPrimary: {
+        borderRadius: '4px',
+        color: "#FFFFFF",
+        background: "#16825d",
+        backgroundColor: "#16825d",
+        minHeight: "38px",
+        fontFamily: "Poppins",
+        fontWeight: 500,
+        fontSize: "14px",
+        lineHeight: "100%",
+        textTransform: "none",
+        "&$focusVisible": {
+          background: "#16825d",
+          accentColor: "#16825d"
         },
+        "&:hover": {
+          backgroundColor: "#16825d",
+        },
+        "&:disabled": {
+          backgroundColor: "#AEC3D2",
+          color: "#4D5C6C"
+        }
       },
+      outlinedPrimary: {
+        borderRadius: '4px',
+        color: "#16825d",
+        background: "#FFFFFF",
+        width: "100%",
+        minHeight: "38px",
+        fontFamily: "Poppins",
+        fontWeight: 500,
+        fontSize: "14px",
+        lineHeight: "100%",
+        textTransform: "none",
+        border: `1px solid #16825d`
+      },
+      colorInherit: {
+        color: "#FFFFFF"
+      }
     },
     MuiOutlinedInput: {
       root: {
