@@ -40,10 +40,9 @@ export function ButtonAdicionarPagina() {
       ativo: true,
       aparencia: {
         foto: "",
-        bordaBotao: "20px",
         cor: {
-          botao: "#000000",
-          texto: "#FFFFFF",
+          botao: "#FFFFFF",
+          texto: "#000000",
           fundo: "#FFFFFF"
         }
       },

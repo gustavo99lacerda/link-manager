@@ -4,17 +4,7 @@ import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline'
 
 export const ButtonAdicionar = styled(Button)`
   &.MuiButtonBase-root {
-    color: #FFFFFF;
-    background-color: #16825D;
-    text-transform: none;
-    height: 38px;
-    width: 100%;
     margin: 32px 0px 0px 0px;
-    border-radius: 4px;
-  }
-  &.Mui-disabled {
-    background-color: #00BCF2;
-    border: none;
   }
 `
 

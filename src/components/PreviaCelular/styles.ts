@@ -34,7 +34,7 @@ export const ContentMolde = styled.div<{ backgroundprevia?: string }>`
   }
 `
 
-export const Links = styled.div<{ radius: string, backgroundcolor: string, color: string }>`
+export const Links = styled.div<{ backgroundcolor: string, color: string }>`
   justify-content: center;
   align-items: center;
   color: ${(props) => props.color};
@@ -42,9 +42,10 @@ export const Links = styled.div<{ radius: string, backgroundcolor: string, color
   display: flex;
   width: 209px;
   height: 45px;
-  border-radius: ${(props) => props.radius};
+  border-radius: 16px;
   position: relative;
   margin-bottom: 16px;
+  border: 1px solid #000000;
 `
 export const Titulo = styled.p<{ color: string }>`
   margin: 10px 0px 40px 0px;

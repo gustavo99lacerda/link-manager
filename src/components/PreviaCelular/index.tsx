@@ -8,7 +8,6 @@ interface IDadosPreviaCelular {
   titulo: string
   aparencia: {
     foto: string
-    bordaBotao: string,
     cor: {
       botao: string
       texto: string
@@ -29,7 +28,6 @@ const estadoInicial: IDadosPreviaCelular = {
   idPagina: '',
   links: [],
   aparencia: {
-    bordaBotao: "",
     cor: {
       botao: '',
       fundo: '',
@@ -69,7 +67,6 @@ export function PreviaCelular() {
                 {dadosPrevia.links.length > 0 ?
                   dadosPrevia.links.filter(itens => itens.ativo === true).map(item => (
                     <S.Links
-                      radius={dadosPrevia.aparencia.bordaBotao}
                       backgroundcolor={dadosPrevia.aparencia.cor.botao === null ? "#000000" : dadosPrevia.aparencia.cor.botao}
                       key={item.idLink}
                       color={dadosPrevia.aparencia.cor.texto} >

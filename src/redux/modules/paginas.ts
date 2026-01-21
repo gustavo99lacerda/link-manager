@@ -7,7 +7,6 @@ interface IPaginas {
   ativo: boolean
   aparencia: {
     foto: string
-    bordaBotao: string,
     cor: {
       botao: string
       texto: string

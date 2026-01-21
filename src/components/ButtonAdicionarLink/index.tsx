@@ -45,7 +45,7 @@ export function ButtonAdicionarLink() {
 
   return (
     <>
-      <S.ButtonAdicionar onClick={onOpen}>
+      <S.ButtonAdicionar color='primary' variant='contained' onClick={onOpen}>
         {translation("tela_editar.adicionar_link")}
       </S.ButtonAdicionar>
       <GlobalDialog
@@ -66,6 +66,7 @@ export function ButtonAdicionarLink() {
           {translation("dialog_criar_link.titulo")}
         </S.Topicos>
         <S.StyledInput
+        fullWidth
           placeholder={translation("dialog_criar_link.insira_titulo")}
           name="titulo"
           variant="outlined"
@@ -73,10 +74,11 @@ export function ButtonAdicionarLink() {
           onChange={(event) => setDadosLink({ titulo: event?.target.value, url: dadosLink.url })} />
         <S.Topicos >{translation("url")}</S.Topicos>
         <S.StyledInput
+          fullWidth
           placeholder={translation("dialog_criar_link.insira_url")}
-          name="titulo"
+          name="url"
           variant="outlined"
-          defaultValue={dadosLink.titulo}
+          defaultValue={dadosLink.url}
           onChange={(event) => setDadosLink({ titulo: dadosLink.titulo, url: event?.target.value })} />
         <div style={{ height: `${mediaQuery === "true" ?  "32px" : "36px"}` }} />
       </GlobalDialog>

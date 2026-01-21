@@ -2,16 +2,13 @@ import * as Yup from 'yup'
 import { useHooks } from '../../hooks/useHooks'
 import { useRedux } from '../../hooks/useRedux'
 import * as S from './styles'
-import botaoRedondo from '../../assets/botaoRedonda.svg'
-import botaoReto from '../../assets/botaoReta.svg'
-import botaoSemiredondo from '../../assets/botaoSemirendonda.svg'
-import { trocarEstiloBotao } from '../../redux/modules/paginaCompleta'
 import { ButtonPicker } from './colorPicker'
 import Input from '../../components/UnformComponents/Input'
 import { ButtonAlterarFotoPagina } from '../../components/ButtonAlterarFotoPagina'
 import { Button } from '@material-ui/core'
 import { updatePaginaNasPaginas } from '../../redux/modules/paginas'
 import { customSnackbar } from '../../components/CustomSnackbar/customSnackbar'
+import { useRouter } from '../../hooks/useRouter'
 
 interface Props {
   index: number;
@@ -20,6 +17,7 @@ interface Props {
 export function FormCustomizacao({ index, value }: Props) {
 
   const { formRef, translation } = useHooks()
+  const { history } = useRouter()
   const { useAppSelect, dispatch, } = useRedux()
 
   const { paginaCompleta } = useAppSelect
@@ -105,15 +103,9 @@ export function FormCustomizacao({ index, value }: Props) {
               variant="outlined" />
             <ButtonPicker parte='cor-botao' backgroundcolor={paginaCompleta.aparencia.cor.botao} />
           </S.DivInputs>
-          <S.Topicos margin="24px auto 8px 0">  {translation("formulario_customizacao.estilo_botoes")}</S.Topicos>
-          <S.DivInputs>
-            <S.ButtonEstilo onClick={() => dispatch(trocarEstiloBotao("0px"))}><img src={botaoReto} alt='estilo-botao-reto' /></S.ButtonEstilo>
-            <S.ButtonEstilo onClick={() => dispatch(trocarEstiloBotao("14px"))}><img src={botaoSemiredondo} alt='estilo-botao-semirendondo' /></S.ButtonEstilo>
-            <S.ButtonEstilo onClick={() => dispatch(trocarEstiloBotao("20px"))}><img src={botaoRedondo} alt='estilo-botao-redondo' /></S.ButtonEstilo>
-          </S.DivInputs>
         </S.ContentForm>
         <S.DivButtons>
-          <Button onClick={() => {}} variant='outlined' color='primary' fullWidth >
+          <Button onClick={() => history.push("/visualizacao")} variant='outlined' color='primary' fullWidth >
             {translation("formulario_customizacao.visualizar")}
           </Button>
           <Button type="submit" variant='contained' color='primary' fullWidth >
