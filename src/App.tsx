@@ -12,6 +12,7 @@ import { Provider } from 'react-redux';
 import { persistor, store } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { CustomSnackbar } from './components/CustomSnackbar/customSnackbar';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function App() {
 
@@ -30,20 +31,21 @@ function App() {
         return pt
     }
   }
-
   return (
     <ErrorBoundary>
       <Theme>
-        <MuiPickersUtilsProvider utils={DateFnsUtils} locale={returnLocale()}>
-          <Provider store={store}>
-            <PersistGate loading={null} persistor={persistor}>
-              <BrowserRouter>
-                <CustomSnackbar />
-                <Routes />
-              </BrowserRouter>
-            </PersistGate>
-          </Provider>
-        </MuiPickersUtilsProvider>
+        <GoogleOAuthProvider clientId={import.meta.env.VITE_CHAVE_GOOGLE_AUTH!}>
+          <MuiPickersUtilsProvider utils={DateFnsUtils} locale={returnLocale()}>
+            <Provider store={store}>
+              <PersistGate loading={null} persistor={persistor}>
+                <BrowserRouter>
+                  <CustomSnackbar />
+                  <Routes />
+                </BrowserRouter>
+              </PersistGate>
+            </Provider>
+          </MuiPickersUtilsProvider>
+        </GoogleOAuthProvider>
       </Theme>
     </ErrorBoundary>
   );

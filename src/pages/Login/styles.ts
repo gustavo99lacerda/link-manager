@@ -48,7 +48,6 @@ export const SubTitle = styled.span`
   line-height: 125%;
   color: #1F2933;
   margin: 16px 0 auto 0;
-
   a {
     color: #043D94;
     font-weight: 500;
@@ -57,7 +56,22 @@ export const SubTitle = styled.span`
 `
 export const Img = styled.img`
   height: 100%;
-
   width: 100%;
+`
+export const BoxGoogleLogin = styled.div<{mediaQuery: string}> `
+  display: flex;
+  justify-content: center;
+  width: ${props => props.mediaQuery === "true" ? "70%" : "100%"};
 
+  .styledButton{
+    display: flex;
+    justify-content: center;
+    max-height: ${props => props.mediaQuery === "true" ? "55px" : "37px"};
+    font-family: Poppins;
+
+    .styledButton:nth-last-child(1){
+    width: 100%;
+    height: 100%;
+  }
+  }
 `
