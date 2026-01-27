@@ -17,6 +17,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@material-ui/pickers": "^3.3.10",
+    "@react-oauth/google": "^0.7.0",
     "@mui/material": "^5.10.4",
     "@mui/x-date-pickers": "^5.0.1",
     "@reduxjs/toolkit": "^1.8.4",

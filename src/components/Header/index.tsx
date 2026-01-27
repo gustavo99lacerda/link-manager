@@ -28,7 +28,7 @@ export function Header() {
   }
 
   const renderizaBotaoLogo = () => {
-    return <S.StyledButtonLogo mediaquery={mediaQuery}>
+    return <S.StyledButtonLogo mediaquery={mediaQuery} onClick={() => history.push("/login")}>
       <img src={mediaQuery === "true" ? react : react} alt="Logo" />
     </S.StyledButtonLogo>
   }
