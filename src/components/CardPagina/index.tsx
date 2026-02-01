@@ -41,32 +41,35 @@ export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
     history.push(`/edicao-pagina`)
   }
 
-  const selecionarPagina = () => {
-    dispatch(updateCarregandoPrevia(true))
-    const paginaEncontrada = paginas.find(pagina => pagina.idPagina === idPagina)!
+const selecionarPagina = () => {
+  dispatch(updateCarregandoPrevia(true))
+  const paginaEncontrada = paginas.find(pagina => pagina.idPagina === idPagina)!
 
-    apiGetPagina(user.idConta, paginaEncontrada.idPagina)
-      .then((responsePagina: any) => {
-        dispatch(setPaginaCompleta(responsePagina.data))
+  apiGetPagina(user.idConta, paginaEncontrada.idPagina)
+    .then((responsePagina: any) => {
+      dispatch(setPaginaCompleta(responsePagina.data))
 
-        apiGetLinks(user.idConta, paginaEncontrada.idPagina)
-          .then((responseLinks: any) => {
-            dispatch(setLinks(responseLinks.data))
-
-          })
-          .finally(() => {
-            dispatch(updateCarregandoPrevia(false))
-          })
-          .catch((error) => {
+      apiGetLinks(user.idConta, paginaEncontrada.idPagina)
+        .then((responseLinks: any) => {
+          dispatch(setLinks(responseLinks.data))
+        })
+        .catch((error) => {
+          if (error.response?.status === 404) {
+            dispatch(setLinks([]))
+          } else {
             console.log(error)
-            dispatch(updateCarregandoPrevia(false))
-          })
-      })
-      .catch((error) => {
-        console.log(error)
-        dispatch(updateCarregandoPrevia(false))
-      })
-  }
+          }
+        })
+        .finally(() => {
+          dispatch(updateCarregandoPrevia(false))
+        })
+    })
+    .catch((error) => {
+      console.log(error)
+      dispatch(updateCarregandoPrevia(false))
+    })
+}
+
   return (
     <S.CardContainer
       bordercolor={selecionado ? "#16825D" : "#e5e7eb"}>
