@@ -10,6 +10,7 @@ i18n
   .init({
     // Linguagem padrão utilizada
     fallbackLng: 'pt',
+    supportedLngs: ['en', 'es', 'pt'],
     debug: false,
     // Detecta e guarda um cookie em cache da linguagem fornecida
     detection: {

@@ -22,16 +22,16 @@ export const Body = styled.div<{ mediaQuery: string }>`
 
 export const BotaoVoltar = styled(IconButton) `
   &.MuiIconButton-root {
-    margin: 2.0625rem auto auto 5.25rem;
+    margin: 33px auto auto 84px;
   }
 `
-export const DivItens = styled.div<{mediaQuery: string}>`
+export const DivItens = styled.div<{mediaQuery: string, padding?: string}>`
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: ${props => props.mediaQuery === "true" ? "" : "0px"};
+  padding: ${props => props.padding};
   `
 export const Title = styled.h1<{mediaQuery: string}>`
   color: #043D94;
@@ -44,14 +44,14 @@ export const Title = styled.h1<{mediaQuery: string}>`
 export const SubTitle = styled.span`
   font-style: normal;
   font-weight: 400;
-  font-size: 0.875rem;
+  font-size: 14px;
   line-height: 125%;
   color: #1F2933;
   margin: 16px 0 auto 0;
   a {
     color: #043D94;
     font-weight: 500;
-    margin-left: 0.25rem;
+    margin-left: 4px;
   }
 `
 export const Img = styled.img`

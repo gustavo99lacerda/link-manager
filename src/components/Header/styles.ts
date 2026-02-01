@@ -1,7 +1,7 @@
 import { Button } from '@material-ui/core'
 import styled from 'styled-components'
 
-export const HeaderComponent = styled.header<{mediaquery: string, pathname: string}>`
+export const HeaderComponent = styled.header<{ mediaquery: string, pathname: string }>`
   display: flex;
   align-items: center;
   width: 100%;
@@ -9,7 +9,7 @@ export const HeaderComponent = styled.header<{mediaquery: string, pathname: stri
   justify-content: space-between;
   padding: ${props => props.mediaquery === "true" ? "0px 86px 0px 86px" : "0px 24px"};
   background: #FFFFFF;
-  border-bottom: 1px solid ${props => props.pathname === "/" ? "transparent" : "#C6D9E3"};
+  border-bottom: 1px solid #C6D9E3;
 `
 export const StyledButton = styled(Button)`
   &.MuiButton-root {
@@ -19,7 +19,11 @@ export const StyledButton = styled(Button)`
     min-height: 38px;
   }
 `
+export const LogoText = styled.span `
+  color: black;
+  font-size: 24px;
 
+`
 export const StyledButtonLogo = styled(Button) <{ mediaquery: string }>`
   &.MuiButton-root {
     background: transparent;
@@ -61,8 +65,9 @@ export const Title = styled.span`
 export const BackButton = styled(Button)`
   &.MuiButton-root {
     justify-content: flex-start;
-    padding: 6px 0;
+    padding: 6px 0 6px 6px;
     width: fit-content;
+    min-width: 32px;
   }
   .MuiSvgIcon-root {
     color: #1F2933;

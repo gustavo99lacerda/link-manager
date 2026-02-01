@@ -30,7 +30,7 @@
     "footer": {
     },
     "tela_login": {
-      "nao_possui_conta": "Ainda não possui uma conta?",
+      "nao_possui_conta": "Ainda não possui uma conta? Clique no botão acima para criar uma!",
       "acesse_conta": "Acesse sua conta",
       "entrar_google": "Entrar com o Google"
     },
@@ -41,12 +41,6 @@
       "botao_google": "Altere seu e-mail com o Google",
       "nome_vazio": "O nome não pode estar vázio",
       "informacao": "Para alterar seu e-mail de cadastro, clique no botão abaixo para fazer login com o novo e-mail desejado"
-    },
-    "tela_cadastro": {
-      "ja_tem_conta": "Já tem uma conta?",
-      "iniciar_sessao": "Iniciar Sessão",
-      "entrar_google": "Cadastrar com o Google",
-      "crie_conta": "Crie uma nova conta!"
     },
     "tela_minhas_paginas": {
       "adicionar": "+ Adicionar página",

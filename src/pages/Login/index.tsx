@@ -9,29 +9,69 @@ import { useGoogleLogin } from '../../hooks/useGoogleLogin';
 import { CircularProgress } from '@material-ui/core';
 import { ButtonGoogle } from '../../components/ButtonGoogle';
 import { useEffect, useState } from 'react';
+import { postUser } from '../../../api/user/postUser';
+import { getUsers } from '../../../api/user/getUsers';
+import { useRedux } from '../../hooks/useRedux';
+import { setUser } from '../../redux/modules/user';
+import { customSnackbar } from '../../components/CustomSnackbar/customSnackbar';
 
 export function Login() {
 
   const { mediaQuery, translation } = useHooks()
+  const { dispatch } = useRedux()
   const { useLogin, login } = useGoogleLogin()
   const { history } = useRouter()
   const [loading, setLoading] = useState(false)
 
-    useEffect(() => {
+  useEffect(() => {
 
     if (useLogin.email) {
-      setLoading(false)
-      console.log("Login bem sucedido:", useLogin)
+      setLoading(true)
+      getUsers()
+        .then((response) => {
+          const users = response.data;
+          const userFound = users.filter((user: any) => user.email === useLogin.email);
+          if (userFound.length > 0) {
+            dispatch(setUser({
+              email: useLogin.email!,
+              idConta: userFound[0].id!,
+              nome: useLogin.nome!,
+              foto: useLogin.picture!
+            }))
+            history.push('/minhas-paginas')
+          } else {
+            postUser(useLogin.email, useLogin.nome!, useLogin.picture!)
+              .then((response) => {
+                dispatch(setUser({
+                  email: response.data.email,
+                  idConta: response.data.id!,
+                  nome: response.data.nome,
+                  foto: response.data.picture
+                }))
+                history.push('/minhas-paginas')
+              })
+              .catch(() => {
+                customSnackbar(translation("snackbar.erro_cadastrar_usuario"))
+              })
+              .finally(() => {
+                setLoading(false)
+              })
+          }
+        })
+        .catch(() => {
+          customSnackbar(translation("snackbar.erro_recuperar_usuarios"))
+        }).finally(() => {
+          setLoading(false)
+        })
+
     }
-
   }, [useLogin])
-
 
   return (
     <S.Content>
-      {mediaQuery ? null : <Header />}
+      {mediaQuery === "true" ? null : <Header />}
       <S.Body mediaQuery={mediaQuery}  >
-        <S.DivItens mediaQuery={mediaQuery}>
+        <S.DivItens mediaQuery={mediaQuery} padding={mediaQuery === "true" ? "" : "12px 24px"}>
           {mediaQuery === "true" ?
             <S.BotaoVoltar onClick={() => history.push("/")}>
               <ArrowBackIos fontSize="small" style={{ color: "#1F2933" }} />
@@ -41,8 +81,10 @@ export function Login() {
           <S.BoxGoogleLogin mediaQuery={mediaQuery} >
             {useLogin.loading || loading
               ? <CircularProgress />
-              : <ButtonGoogle texto={translation("tela_cadastro.entrar_google")} onClick={login} />}
+              : <ButtonGoogle texto={translation("tela_login.entrar_google")} onClick={login} />}
           </S.BoxGoogleLogin>
+          <S.SubTitle>{translation("tela_login.nao_possui_conta")}
+          </S.SubTitle>
         </S.DivItens>
         <S.DivItens mediaQuery={mediaQuery}>
           <S.Img src={mediaQuery === "true" ? imagemLogin : imagemLoginMobile} alt="Imagem ilustrativa login" />

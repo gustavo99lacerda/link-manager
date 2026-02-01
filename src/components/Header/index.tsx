@@ -1,6 +1,5 @@
 import { useHooks } from '../../hooks/useHooks'
 import * as S from './styles'
-import react from '../../assets/react.svg'
 import { useRouter } from '../../hooks/useRouter';
 import { useLocation } from 'react-router-dom';
 import { ArrowBackIos } from '@material-ui/icons';
@@ -27,25 +26,20 @@ export function Header() {
     </S.DivBotaoVoltar >
   }
 
-  const renderizaBotaoLogo = () => {
-    return <S.StyledButtonLogo mediaquery={mediaQuery} onClick={() => history.push("/login")}>
-      <img src={mediaQuery === "true" ? react : react} alt="Logo" />
-    </S.StyledButtonLogo>
-  }
-
   const renderizaComponenteEsquerdo: Record<string, any> = {
-    "/": mediaQuery === "true" ? renderizaBotaoLogo() : null,
+    "/": <HeaderMenu />,
+    "/login": mediaQuery === "true" ? null : renderizaBotaoVoltar("/"),
     "/minhas-paginas": <S.Title>{translation("minhas_paginas")}</S.Title>,
     "/edicao-pagina": renderizaBotaoVoltar("/minhas-paginas", paginaCompleta.titulo),
     "/minha-conta": renderizaBotaoVoltar("/minhas-paginas", "Minha conta")
   }
 
   const renderizaComponenteCentral: Record<string, any> = {
-    "/": mediaQuery === "true" ? null : renderizaBotaoLogo(),
-
+    "/": mediaQuery === "true" ? null : <S.LogoText>Links Manager</S.LogoText>,
+    "/login": mediaQuery === "true" ? null : <S.LogoText>Links Manager</S.LogoText>
   }
   const renderizaComponenteDireito: Record<string, any> = {
-    "/": mediaQuery === "true" ? null : <HeaderMenu />,
+    "/login": <HeaderMenu />,
     "/minhas-paginas": <HeaderMenu />,
   }
 
