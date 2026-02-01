@@ -7,9 +7,10 @@ import { useHooks } from '../../hooks/useHooks'
 import { useRedux } from '../../hooks/useRedux'
 import * as S from './styles'
 import { Header } from '../../components/Header'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { apiGetPaginas } from '../../../api/user/getPaginas'
 import { setPaginas } from '../../redux/modules/paginas'
+import { CircularProgress } from '@material-ui/core'
 
 export function MinhasPaginas() {
 
@@ -18,16 +19,25 @@ export function MinhasPaginas() {
 
   const { paginas, paginaCompleta, user } = useAppSelect
 
+  const [carregandoPaginas, setCarregandoPaginas] = useState<boolean>(false)
+
   useEffect(() => {
+    setCarregandoPaginas(true)
     apiGetPaginas(user.idConta)
       .then((response: any) => {
         dispatch(setPaginas(response.data))
+        setCarregandoPaginas(false)
       })
       .catch((error) => {
-        console.log(error)
+        if (error.response?.status === 404) {
+          dispatch(setPaginas([]))
+        } else {
+          setCarregandoPaginas(false)
+          console.log(error)
+        }
       })
   }, [])
-  
+
   return (
     <S.Content mediaquery={mediaQuery} >
       {mediaQuery === "true" ? <MenuLateral /> : <Header />}
@@ -46,16 +56,18 @@ export function MinhasPaginas() {
               {translation("tela_minhas_paginas.clique_para_adicionar")}
             </S.TextoInformativo>}
           <ButtonAdicionarPagina />
-          <S.ListaPaginaCards>
-            {paginas.map(item => (
-              <CardPagina
-                selecionado={paginaCompleta.idPagina === item.idPagina}
-                key={item.idPagina}
-                titulo={item.titulo}
-                url={item.url}
-                idPagina={item.idPagina} />
-            ))}
-          </S.ListaPaginaCards>
+          {carregandoPaginas
+            ? <CircularProgress color="primary" style={{ margin: "100px auto" }} />
+            : <S.ListaPaginaCards>
+              {paginas.map(item => (
+                <CardPagina
+                  selecionado={paginaCompleta.idPagina === item.idPagina}
+                  key={item.idPagina}
+                  titulo={item.titulo}
+                  url={item.url}
+                  idPagina={item.idPagina} />
+              ))}
+            </S.ListaPaginaCards>}
         </S.DivListaPaginas>
       </S.DivMinhasPaginas>
       {mediaQuery === "true" ? <PreviaCelular /> : null}

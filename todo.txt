@@ -1,0 +1,1 @@
+Checar por api se a pagina já existe considerando o link do github pages
