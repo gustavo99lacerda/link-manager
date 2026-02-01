@@ -6,7 +6,7 @@ import * as S from './styles'
 import { useRedux } from "../../hooks/useRedux"
 import { addPagina } from "../../redux/modules/paginas"
 import { customSnackbar } from "../CustomSnackbar/customSnackbar"
-import { apiAdicionarPagina } from "../../../api/user/postPagina"
+import { apiAdicionarPagina } from "../../../api/postPagina"
 
 interface DadosPagina {
   url: string;

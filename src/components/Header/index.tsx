@@ -21,8 +21,8 @@ export function Header() {
       <S.BackButton onClick={() => history.push(url)}>
         <ArrowBackIos fontSize="small" />
         {texto}
-      </S.BackButton>
-      {pathname === "/edicao-pagina" ? <StyledBreadcrumbs /> : null}
+      </S.BackButton> 
+      {pathname === "/edicao-pagina" && mediaQuery === "true" ?  <StyledBreadcrumbs /> : null}
     </S.DivBotaoVoltar >
   }
 

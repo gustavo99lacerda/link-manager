@@ -8,7 +8,7 @@ import { useRedux } from '../../hooks/useRedux'
 import * as S from './styles'
 import { Header } from '../../components/Header'
 import { useEffect, useState } from 'react'
-import { apiGetPaginas } from '../../../api/user/getPaginas'
+import { apiGetPaginas } from '../../../api/getPaginas'
 import { setPaginas } from '../../redux/modules/paginas'
 import { CircularProgress } from '@material-ui/core'
 

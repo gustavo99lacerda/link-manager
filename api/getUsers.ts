@@ -1,5 +1,5 @@
 import { AxiosRequestConfig } from 'axios';
-import api from '../apiConfig';
+import api from './apiConfig';
 
 export const getUsers = () => {
   const url = `/users`;

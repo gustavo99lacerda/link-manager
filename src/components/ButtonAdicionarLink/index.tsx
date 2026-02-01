@@ -1,34 +1,41 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import * as S from './styles'
 import { GlobalDialog } from '../GlobalDialog'
 import { useHooks } from '../../hooks/useHooks'
 import { useRedux } from '../../hooks/useRedux'
 import { adicionarLinks } from '../../redux/modules/paginaCompleta'
 import { customSnackbar } from '../CustomSnackbar/customSnackbar'
+import { apiAdicionarLink } from '../../../api/postLink'
 
 export function ButtonAdicionarLink() {
 
   const { mediaQuery, translation } = useHooks()
   const { useAppSelect, dispatch } = useRedux()
 
-  const { paginaCompleta } = useAppSelect
+  const { paginaCompleta, user, identificadores } = useAppSelect
 
   const [openModal, setOpenModal] = useState(false)
   const [dadosLink, setDadosLink] = React.useState<{ titulo: string, url: string }>({ url: '', titulo: '' })
-
-  useEffect(() => {
-    //dispatch(updateLinksPagina({ idPagina: paginaCompleta.idPagina, links: paginaCompleta.links }))
-  }, [paginaCompleta.links])
+  const [adicionandoLink, setAdicionandoLink] = useState(false)
 
   const criarLink = () => {
-    dispatch(adicionarLinks({
-      idLink: (Math.random() + 1).toString(36).substring(2),
-      ativo: true,
-      descricao: dadosLink.titulo,
-      url: dadosLink.url,
-      ordem: paginaCompleta.links.length
-    }))
-    customSnackbar(translation("snackbar.sucesso_criar_link"))
+    setAdicionandoLink(true)
+    apiAdicionarLink(user.idConta, identificadores.idPaginaSendoEditada, paginaCompleta.links.length, dadosLink.titulo, dadosLink.url, true)
+      .then((response: any) => {
+        dispatch(adicionarLinks({
+          idLink: response.data.idLink,
+          ativo: true,
+          descricao: dadosLink.titulo,
+          url: dadosLink.url,
+          ordem: response.data.ordem
+        }))
+        customSnackbar(translation("snackbar.sucesso_criar_link"))
+        setAdicionandoLink(false)
+        setOpenModal(false)
+      })
+      .catch(() => {
+        setAdicionandoLink(false)
+      })
     onClose()
   }
 
@@ -51,6 +58,7 @@ export function ButtonAdicionarLink() {
         onClose={onClose}
         open={openModal}
         funcaoConfirmar={criarLink}
+        inLoading={adicionandoLink}
         funcaoCancelar={onClose}
         textoCancelar={translation("cancelar")}
         textoConfirmar={translation("dialog_criar_link.criar_link")}
@@ -65,7 +73,7 @@ export function ButtonAdicionarLink() {
           {translation("dialog_criar_link.titulo")}
         </S.Topicos>
         <S.StyledInput
-        fullWidth
+          fullWidth
           placeholder={translation("dialog_criar_link.insira_titulo")}
           name="titulo"
           variant="outlined"
@@ -79,7 +87,7 @@ export function ButtonAdicionarLink() {
           variant="outlined"
           defaultValue={dadosLink.url}
           onChange={(event) => setDadosLink({ titulo: dadosLink.titulo, url: event?.target.value })} />
-        <div style={{ height: `${mediaQuery === "true" ?  "32px" : "36px"}` }} />
+        <div style={{ height: `${mediaQuery === "true" ? "32px" : "36px"}` }} />
       </GlobalDialog>
     </>
   )

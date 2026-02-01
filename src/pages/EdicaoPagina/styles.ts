@@ -30,11 +30,13 @@ export const Content = styled.div`
 `
 
 export const DivVoltar = styled.div`
-  padding: 28px 24px 20px 24px;
+  padding: 14px 24px 14px 24px;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   border-bottom: 1px solid #C6D9E3;
+  gap: 8px;
+  justify-content: space-between;
   width: 100%;
 `
 

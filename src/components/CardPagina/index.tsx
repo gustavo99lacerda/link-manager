@@ -11,9 +11,9 @@ import { useRedux } from '../../hooks/useRedux'
 import { setLinks, setPaginaCompleta } from '../../redux/modules/paginaCompleta'
 import { useRouter } from '../../hooks/useRouter'
 import { customSnackbar } from '../CustomSnackbar/customSnackbar'
-import { apiGetPagina } from '../../../api/user/getPagina'
-import { updateCarregandoPrevia } from '../../redux/modules/identificadores'
-import { apiGetLinks } from '../../../api/user/getLinks'
+import { apiGetPagina } from '../../../api/getPagina'
+import { setPaginaSendoEditada, updateCarregandoPrevia } from '../../redux/modules/identificadores'
+import { apiGetLinks } from '../../../api/getLinks'
 
 interface Props {
   titulo: string
@@ -38,37 +38,38 @@ export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
   }
 
   const irParaEdicao = () => {
+    dispatch(setPaginaSendoEditada({ idPaginaSendoEditada: idPagina }))
     history.push(`/edicao-pagina`)
   }
 
-const selecionarPagina = () => {
-  dispatch(updateCarregandoPrevia(true))
-  const paginaEncontrada = paginas.find(pagina => pagina.idPagina === idPagina)!
+  const selecionarPagina = () => {
+    dispatch(updateCarregandoPrevia(true))
+    const paginaEncontrada = paginas.find(pagina => pagina.idPagina === idPagina)!
 
-  apiGetPagina(user.idConta, paginaEncontrada.idPagina)
-    .then((responsePagina: any) => {
-      dispatch(setPaginaCompleta(responsePagina.data))
+    apiGetPagina(user.idConta, paginaEncontrada.idPagina)
+      .then((responsePagina: any) => {
+        dispatch(setPaginaCompleta(responsePagina.data))
 
-      apiGetLinks(user.idConta, paginaEncontrada.idPagina)
-        .then((responseLinks: any) => {
-          dispatch(setLinks(responseLinks.data))
-        })
-        .catch((error) => {
-          if (error.response?.status === 404) {
-            dispatch(setLinks([]))
-          } else {
-            console.log(error)
-          }
-        })
-        .finally(() => {
-          dispatch(updateCarregandoPrevia(false))
-        })
-    })
-    .catch((error) => {
-      console.log(error)
-      dispatch(updateCarregandoPrevia(false))
-    })
-}
+        apiGetLinks(user.idConta, paginaEncontrada.idPagina)
+          .then((responseLinks: any) => {
+            dispatch(setLinks(responseLinks.data))
+          })
+          .catch((error) => {
+            if (error.response?.status === 404) {
+              dispatch(setLinks([]))
+            } else {
+              console.log(error)
+            }
+          })
+          .finally(() => {
+            dispatch(updateCarregandoPrevia(false))
+          })
+      })
+      .catch((error) => {
+        console.log(error)
+        dispatch(updateCarregandoPrevia(false))
+      })
+  }
 
   return (
     <S.CardContainer
