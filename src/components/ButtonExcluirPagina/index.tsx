@@ -8,6 +8,7 @@ import { GlobalDialog } from "../GlobalDialog"
 import * as S from './styles'
 import { resetPaginaCompleta } from "../../redux/modules/paginaCompleta"
 import { customSnackbar } from "../CustomSnackbar/customSnackbar"
+import { apiDeletePagina } from "../../../api/user/deletePagina"
 
 
 interface Props {
@@ -19,9 +20,10 @@ export function ButtonExcluirPagina({ idPagina, onClose }: Props) {
 
   const { mediaQuery, translation } = useHooks()
   const { dispatch, useAppSelect } = useRedux()
-  const { paginaCompleta } = useAppSelect
+  const { user } = useAppSelect
 
   const [openDialog, setOpenDialog] = useState(false)
+  const [carregando, setCarregando] = useState(false)
 
   const fechaDialog = () => {
     setOpenDialog(false)
@@ -29,11 +31,20 @@ export function ButtonExcluirPagina({ idPagina, onClose }: Props) {
   }
 
   const excluirPagina = () => {
-    if(paginaCompleta.idPagina === idPagina) {
-      dispatch(resetPaginaCompleta())
-    }
-    dispatch(removePagina({ idPagina }))
-    customSnackbar(translation("snackbar.sucesso_excluir_pagina"))
+    setCarregando(true)
+    apiDeletePagina(user.idConta, idPagina)
+      .then(() => {
+        dispatch(resetPaginaCompleta())
+        dispatch(removePagina({ idPagina }))
+        customSnackbar(translation("snackbar.sucesso_excluir_pagina"))
+        setCarregando(false)
+        fechaDialog
+      })
+      .catch((error) => {
+        console.log(error)
+        setCarregando(false)
+      })
+
   }
 
   return (
@@ -45,6 +56,7 @@ export function ButtonExcluirPagina({ idPagina, onClose }: Props) {
       <GlobalDialog
         open={openDialog}
         onClose={fechaDialog}
+        inLoading={carregando}
         funcaoConfirmar={excluirPagina}
         funcaoCancelar={fechaDialog}
         textoCancelar={translation("cancelar")}
