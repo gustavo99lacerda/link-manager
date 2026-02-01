@@ -3,7 +3,6 @@ import { useRedux } from '../../hooks/useRedux'
 import { ativarOuDesativarLink } from '../../redux/modules/paginaCompleta'
 import { ButtonExcluirLink } from '../ButtonExcluirLink'
 import * as S from './styles'
-import { updateLinksPagina } from '../../redux/modules/paginas'
 
 
 interface Props {
@@ -19,7 +18,7 @@ export function CardLinks({ url, ativo, titulo, idLink }: Props) {
   const { paginaCompleta } = useAppSelect
   
   useEffect(() => {
-    dispatch(updateLinksPagina({ idPagina: paginaCompleta.idPagina, links: paginaCompleta.links }))
+    //dispatch(updateLinksPagina({ idPagina: paginaCompleta.idPagina, links: paginaCompleta.links }))
   }, [paginaCompleta.links])
 
 

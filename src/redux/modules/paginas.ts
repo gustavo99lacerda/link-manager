@@ -2,24 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface IPaginas {
   idPagina: string
-  idConta: string
   titulo: string
-  ativo: boolean
-  aparencia: {
-    foto: string
-    cor: {
-      botao: string
-      texto: string
-      fundo: string
-    }
-  }
-  links: Array<{
-    idLink: string
-    ordem: number
-    descricao: string
-    url: string
-    ativo: boolean
-  }>
   url: string
 }
 
@@ -38,20 +21,6 @@ const paginasSlice = createSlice({
       state = state.filter(item => item.idPagina !== action.payload.idPagina)
       return state
     },
-    updatePaginaNasPaginas: (state, action: PayloadAction<IPaginas>) => {
-      const index = state.findIndex(pagina => pagina.idPagina === action.payload.idPagina)
-      if (index !== -1) {
-        state[index] = action.payload
-      }
-      return state
-    },
-    updateLinksPagina: (state, action: PayloadAction<{ idPagina: string, links: Array<{ idLink: string, ordem: number, descricao: string, url: string, ativo: boolean }> }>) => {
-      const index = state.findIndex(pagina => pagina.idPagina === action.payload.idPagina)
-      if (index !== -1) {
-        state[index].links = action.payload.links
-      }
-      return state
-    },
     resetPaginas: () => initialState
   }
 })
@@ -61,8 +30,6 @@ export const {
   addPagina,
   removePagina,
   resetPaginas,
-  updatePaginaNasPaginas,
-  updateLinksPagina
 } = paginasSlice.actions
 
 export default paginasSlice.reducer

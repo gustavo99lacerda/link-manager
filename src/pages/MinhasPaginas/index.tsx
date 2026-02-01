@@ -7,14 +7,27 @@ import { useHooks } from '../../hooks/useHooks'
 import { useRedux } from '../../hooks/useRedux'
 import * as S from './styles'
 import { Header } from '../../components/Header'
+import { useEffect } from 'react'
+import { apiGetPaginas } from '../../../api/user/getPaginas'
+import { setPaginas } from '../../redux/modules/paginas'
 
 export function MinhasPaginas() {
 
   const { mediaQuery, translation } = useHooks()
-  const { useAppSelect } = useRedux()
+  const { useAppSelect, dispatch } = useRedux()
 
-  const { paginas, paginaCompleta } = useAppSelect
+  const { paginas, paginaCompleta, user } = useAppSelect
 
+  useEffect(() => {
+    apiGetPaginas(user.idConta)
+      .then((response: any) => {
+        dispatch(setPaginas(response.data))
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }, [])
+  
   return (
     <S.Content mediaquery={mediaQuery} >
       {mediaQuery === "true" ? <MenuLateral /> : <Header />}

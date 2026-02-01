@@ -6,6 +6,7 @@ import * as S from './styles'
 import { useRedux } from "../../hooks/useRedux"
 import { addPagina } from "../../redux/modules/paginas"
 import { customSnackbar } from "../CustomSnackbar/customSnackbar"
+import { apiAdicionarPagina } from "../../../api/user/postPagina"
 
 interface DadosPagina {
   url: string;
@@ -17,40 +18,51 @@ export function ButtonAdicionarPagina() {
   const { mediaQuery, translation } = useHooks()
   const { useAppSelect, dispatch } = useRedux()
 
-  const { idConta } = useAppSelect.user
+  const { user, paginas } = useAppSelect
 
   const [openModal, setOpenModal] = useState(false)
+  const [criandoPagina, setCriandoPagina] = useState(false)
   const [dadosPagina, setDadosPagina] = React.useState<Partial<DadosPagina>>({ url: '', titulo: '' })
+  const [erro, setErro] = React.useState(false)
+
 
   const onOpen = () => {
     setDadosPagina({ titulo: "", url: "" })
     setOpenModal(true)
+    setErro(false)
+
   }
   const onClose = () => {
     setDadosPagina({ titulo: "", url: "" })
     setOpenModal(false)
+    setErro(false)
+
   }
 
   const criarNovaPagina = () => {
-    const url = dadosPagina.url!.replace(/ /g, "")
-    dispatch(addPagina({
-      idPagina: (Math.random() + 1).toString(36).substring(2),
-      idConta: idConta,
-      titulo: dadosPagina.titulo!,
-      ativo: true,
-      aparencia: {
-        foto: "",
-        cor: {
-          botao: "#FFFFFF",
-          texto: "#000000",
-          fundo: "#FFFFFF"
-        }
-      },
-      links: [],
-      url: url
-    }))
-    customSnackbar(translation("snackbar.sucesso_criar_pagina"))
-    onClose()
+
+    if (paginas.filter(pagina => pagina.url === dadosPagina.url).length > 0) {
+      setErro(true)
+    } else {
+      setCriandoPagina(true)
+      const url = dadosPagina.url!.replace(/ /g, "")
+      apiAdicionarPagina(dadosPagina.titulo!, user.idConta, url, user.foto)
+        .then((response: any) => {
+          dispatch(addPagina({
+            idPagina: response.data.idPagina,
+            url: url,
+            titulo: dadosPagina.titulo!,
+          }))
+          customSnackbar(translation("snackbar.sucesso_criar_pagina"))
+          setDadosPagina({ titulo: "", url: "" })
+          setCriandoPagina(false)
+          onClose()
+        })
+        .catch((error) => {
+          console.log(error)
+          setCriandoPagina(false)
+        })
+    }
   }
 
   return (
@@ -61,6 +73,7 @@ export function ButtonAdicionarPagina() {
       <GlobalDialog
         onClose={onClose}
         open={openModal}
+        inLoading={criandoPagina}
         funcaoConfirmar={criarNovaPagina}
         textoCancelar='Cancelar'
         textoConfirmar='Criar página'
@@ -71,22 +84,26 @@ export function ButtonAdicionarPagina() {
         <S.DialogInfo mediaquery={mediaQuery}>
           {translation("dialog_criar_pagina.informacao")}
         </S.DialogInfo>
-        <S.Topicos>{translation("dialog_criar_pagina.titulo")}</S.Topicos>
+        <S.Topicos color="#35424F">{translation("dialog_criar_pagina.titulo")}</S.Topicos>
         <S.StyledInput
+          bordercolor={erro ? "#BB0A30" : "#4D5C6C"}
           fullWidth
           name="titulo"
           variant="outlined"
           defaultValue={dadosPagina.titulo}
           placeholder={translation("dialog_criar_pagina.titulo")}
           onChange={(event) => setDadosPagina({ titulo: event?.target.value, url: dadosPagina.url })} />
-        <S.Topicos>{translation("url")}</S.Topicos>
+        <S.Topicos color={erro ? "#BB0A30" : "#35424F"}>{translation("url")}</S.Topicos>
         <S.StyledInput
+          bordercolor={erro ? "#BB0A30" : "#4D5C6C"}
           fullWidth
           name="url"
           variant="outlined"
           placeholder={translation("url")}
           defaultValue={dadosPagina.url}
           onChange={(event) => setDadosPagina({ url: event?.target.value, titulo: dadosPagina.titulo })} />
+        {erro ? <S.DivErro><S.IconeErro /><span>{translation("dialog_criar_pagina.erro")}</span></S.DivErro> : null}
+        <div style={{ height: `${mediaQuery ? "32px" : "36px"}` }} />
       </GlobalDialog>
     </>
   )

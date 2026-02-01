@@ -6,8 +6,6 @@ import { ButtonPicker } from './colorPicker'
 import Input from '../../components/UnformComponents/Input'
 import { ButtonAlterarFotoPagina } from '../../components/ButtonAlterarFotoPagina'
 import { Button } from '@material-ui/core'
-import { updatePaginaNasPaginas } from '../../redux/modules/paginas'
-import { customSnackbar } from '../../components/CustomSnackbar/customSnackbar'
 import { useRouter } from '../../hooks/useRouter'
 
 interface Props {
@@ -28,33 +26,33 @@ export function FormCustomizacao({ index, value }: Props) {
   })
 
   const salvarAparencia = async (dadosForm: { titulo: string, url: string, fundo: string, texto: string, botao: string }) => {
-    formRef.current?.setErrors({})
-    try {
-      await validacaoFormulario.validate(dadosForm, { abortEarly: false })
-      dispatch(updatePaginaNasPaginas({
-        ...paginaCompleta,
-        titulo: dadosForm.titulo,
-        url: dadosForm.url,
-        aparencia: {
-          ...paginaCompleta.aparencia,
-          cor: {
-            fundo: dadosForm.fundo,
-            texto: dadosForm.texto,
-            botao: dadosForm.botao
-          }
-        }
-      }))
-      customSnackbar(translation("snackbar.sucesso_alteracoes"))
-    } catch (error) {
+    // formRef.current?.setErrors({})
+    // try {
+    //   await validacaoFormulario.validate(dadosForm, { abortEarly: false })
+    //   dispatch(updatePaginaNasPaginas({
+    //     ...paginaCompleta,
+    //     titulo: dadosForm.titulo,
+    //     url: dadosForm.url,
+    //     aparencia: {
+    //       ...paginaCompleta.aparencia,
+    //       cor: {
+    //         fundo: dadosForm.fundo,
+    //         texto: dadosForm.texto,
+    //         botao: dadosForm.botao
+    //       }
+    //     }
+    //   }))
+    //   customSnackbar(translation("snackbar.sucesso_alteracoes"))
+    // } catch (error) {
 
-      if (error instanceof Yup.ValidationError) {
-        const message: Record<string, string> = {}
-        error.inner.forEach((err) => {
-          message[err.path!] = err.message
-        })
-        formRef.current!.setErrors(message)
-      }
-    }
+    //   if (error instanceof Yup.ValidationError) {
+    //     const message: Record<string, string> = {}
+    //     error.inner.forEach((err) => {
+    //       message[err.path!] = err.message
+    //     })
+    //     formRef.current!.setErrors(message)
+    //   }
+    // }
   }
 
 

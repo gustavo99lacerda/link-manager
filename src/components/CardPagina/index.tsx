@@ -8,9 +8,12 @@ import { ButtonExcluirPagina } from '../ButtonExcluirPagina'
 import iconeEditar from '../../assets/iconeEditar.svg'
 import { ButtonDownloadQrCode } from '../ButtonDownloadQrCode'
 import { useRedux } from '../../hooks/useRedux'
-import { setPaginaCompleta } from '../../redux/modules/paginaCompleta'
+import { setLinks, setPaginaCompleta } from '../../redux/modules/paginaCompleta'
 import { useRouter } from '../../hooks/useRouter'
 import { customSnackbar } from '../CustomSnackbar/customSnackbar'
+import { apiGetPagina } from '../../../api/user/getPagina'
+import { updateCarregandoPrevia } from '../../redux/modules/identificadores'
+import { apiGetLinks } from '../../../api/user/getLinks'
 
 interface Props {
   titulo: string
@@ -25,7 +28,7 @@ export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
   const { history } = useRouter()
   const { dispatch, useAppSelect } = useRedux()
 
-  const { paginas } = useAppSelect
+  const { paginas, user } = useAppSelect
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 
   const copiarLink = () => {
@@ -35,19 +38,38 @@ export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
   }
 
   const irParaEdicao = () => {
-    const paginaEncontrada = paginas.find(pagina => pagina.idPagina === idPagina)!
-    dispatch(setPaginaCompleta(paginaEncontrada))
     history.push(`/edicao-pagina`)
   }
 
   const selecionarPagina = () => {
+    dispatch(updateCarregandoPrevia(true))
     const paginaEncontrada = paginas.find(pagina => pagina.idPagina === idPagina)!
-    dispatch(setPaginaCompleta(paginaEncontrada))
-  }
 
+    apiGetPagina(user.idConta, paginaEncontrada.idPagina)
+      .then((responsePagina: any) => {
+        dispatch(setPaginaCompleta(responsePagina.data))
+
+        apiGetLinks(user.idConta, paginaEncontrada.idPagina)
+          .then((responseLinks: any) => {
+            dispatch(setLinks(responseLinks.data))
+
+          })
+          .finally(() => {
+            dispatch(updateCarregandoPrevia(false))
+          })
+          .catch((error) => {
+            console.log(error)
+            dispatch(updateCarregandoPrevia(false))
+          })
+      })
+      .catch((error) => {
+        console.log(error)
+        dispatch(updateCarregandoPrevia(false))
+      })
+  }
   return (
     <S.CardContainer
-      bordercolor={selecionado ? "#16825D" : "#FFFFFF"}>
+      bordercolor={selecionado ? "#16825D" : "#e5e7eb"}>
       <S.CardBody >
         <S.ClickArea onClick={() => selecionarPagina()}>
           <S.PrimeiraLinha >{titulo}</S.PrimeiraLinha>
@@ -64,11 +86,11 @@ export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
         id="basic-menu"
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
-        closeAfterTransition
         onClose={() => setAnchorEl(null)}
         getContentAnchorEl={null}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
         transformOrigin={{ vertical: "top", horizontal: "right" }}
+        container={() => document.body}
         MenuListProps={{ 'aria-labelledby': 'basic-button', }}>
         <div>
           <MenuItem

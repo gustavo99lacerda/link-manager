@@ -44,7 +44,12 @@ const paginaCompletaSlice = createSlice({
   name: "paginaCompleta",
   initialState,
   reducers: {
-    setPaginaCompleta: (_state, action: PayloadAction<IPaginaCompleta>) => action.payload,
+    setPaginaCompleta: (state, action: PayloadAction<Omit<IPaginaCompleta, 'links'>>) => {
+      return {
+        ...action.payload,
+        links: state.links || []
+      }
+    },
     adicionarLinks: (state, action: PayloadAction<{ idLink: string, ordem: number, descricao: string, url: string, ativo: boolean }>) => {
       state.links = state.links.concat(action.payload)
 
@@ -128,6 +133,16 @@ const paginaCompletaSlice = createSlice({
       state.aparencia.foto = action.payload.foto
       return state
     },
+    setLinks: (state, action: PayloadAction<Array<{
+      idLink: string
+      ordem: number
+      descricao: string
+      url: string
+      ativo: boolean
+    }>>) => {
+      state.links = action.payload
+      return state
+    },
     resetPaginaCompleta: () => initialState
   }
 })
@@ -145,7 +160,8 @@ export const {
   trocarCorDoTextoPagina,
   trocarCorDoBotaoPagina,
   atualizaAparenciaPagina,
-  atualizaDadosPagina
+  atualizaDadosPagina,
+  setLinks
 } = paginaCompletaSlice.actions
 
 export default paginaCompletaSlice.reducer

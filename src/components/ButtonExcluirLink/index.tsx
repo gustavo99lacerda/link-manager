@@ -5,7 +5,6 @@ import { GlobalDialog } from '../GlobalDialog';
 import { useHooks } from '../../hooks/useHooks';
 import { useRedux } from '../../hooks/useRedux';
 import { removerLink } from '../../redux/modules/paginaCompleta';
-import { updateLinksPagina } from '../../redux/modules/paginas';
 import { customSnackbar } from '../CustomSnackbar/customSnackbar';
 
 export function ButtonExcluirLink({ idLink }: { idLink: string }) {
@@ -18,7 +17,7 @@ export function ButtonExcluirLink({ idLink }: { idLink: string }) {
   const [openDialog, setOpenDialog] = useState(false)
 
   useEffect(() => {
-    dispatch(updateLinksPagina({ idPagina: paginaCompleta.idPagina, links: paginaCompleta.links }))
+    //dispatch(updateLinksPagina({ idPagina: paginaCompleta.idPagina, links: paginaCompleta.links }))
   }, [paginaCompleta.links])
 
   const excluirLink = () => {

@@ -4,7 +4,6 @@ import { GlobalDialog } from '../GlobalDialog'
 import { useHooks } from '../../hooks/useHooks'
 import { useRedux } from '../../hooks/useRedux'
 import { adicionarLinks } from '../../redux/modules/paginaCompleta'
-import { updateLinksPagina } from '../../redux/modules/paginas'
 import { customSnackbar } from '../CustomSnackbar/customSnackbar'
 
 export function ButtonAdicionarLink() {
@@ -18,7 +17,7 @@ export function ButtonAdicionarLink() {
   const [dadosLink, setDadosLink] = React.useState<{ titulo: string, url: string }>({ url: '', titulo: '' })
 
   useEffect(() => {
-    dispatch(updateLinksPagina({ idPagina: paginaCompleta.idPagina, links: paginaCompleta.links }))
+    //dispatch(updateLinksPagina({ idPagina: paginaCompleta.idPagina, links: paginaCompleta.links }))
   }, [paginaCompleta.links])
 
   const criarLink = () => {

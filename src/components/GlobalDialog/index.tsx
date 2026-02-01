@@ -1,6 +1,6 @@
 import React from 'react'
 import { HighlightOff } from '@material-ui/icons'
-import { IconButton, Button } from '@material-ui/core'
+import { IconButton, Button, CircularProgress } from '@material-ui/core'
 import * as S from './styles'
 
 interface IProps {
@@ -11,6 +11,7 @@ interface IProps {
   textoCancelar?: string
   textoConfirmar?: string
   children?: React.ReactNode
+  inLoading?: boolean
   disabled?: boolean
   disabledConfirmation?: boolean
   actions?: boolean
@@ -23,6 +24,7 @@ export function GlobalDialog({
   funcaoConfirmar,
   textoCancelar,
   textoConfirmar,
+  inLoading,
   children,
   disabled,
   disabledConfirmation,
@@ -41,16 +43,20 @@ export function GlobalDialog({
       </div>
       {actions === undefined || actions === true ? (
         <div className="space-actions-dialog">
-          {funcaoCancelar ? (
-            <Button color="primary" fullWidth variant="outlined" onClick={!disabled ? funcaoCancelar : undefined}>
-              {textoCancelar}
-            </Button>
-          ) : null}
-          {funcaoConfirmar ? (
-            <Button disabled={disabledConfirmation} fullWidth color="primary" variant="contained" onClick={!disabled ? funcaoConfirmar : undefined}>
-              {textoConfirmar}
-            </Button>
-          ) : null}
+          {inLoading ? <CircularProgress color="primary" className="margin-auto" /> : (
+            <>
+              {funcaoCancelar ? (
+                <Button color="primary" fullWidth variant="outlined" onClick={!disabled ? funcaoCancelar : undefined}>
+                  {textoCancelar}
+                </Button>
+              ) : null}
+              {funcaoConfirmar ? (
+                <Button disabled={disabledConfirmation} fullWidth color="primary" variant="contained" onClick={!disabled ? funcaoConfirmar : undefined}>
+                  {textoConfirmar}
+                </Button>
+              ) : null}
+            </>
+          )}
         </div>
       ) : null}
     </S.StyledDialog>

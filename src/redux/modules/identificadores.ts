@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 interface IIdentificadores {
   linkPaginaSelecionada: string,
   idPaginaSendoEditada: string,
+  carregandoPrevia: boolean,
   abaLinksOuCustomizacao: "link" | "customizar"
   linkAdicionadoOuRemovido: boolean
   comoFuncionaAtivo: boolean
@@ -11,6 +12,7 @@ interface IIdentificadores {
 const initialState: IIdentificadores = {
   linkPaginaSelecionada: '',
   idPaginaSendoEditada: '',
+  carregandoPrevia: false,
   abaLinksOuCustomizacao: 'link',
   linkAdicionadoOuRemovido: false,
   comoFuncionaAtivo: false
@@ -46,6 +48,11 @@ const identificadoresSlice = createSlice({
 
       return state
     },
+    updateCarregandoPrevia: (state, action: PayloadAction<boolean>) => {
+      state.carregandoPrevia = action.payload
+
+      return state
+    },
     resetIndentificadores: () => initialState
   }
 })
@@ -55,7 +62,8 @@ export const {
   setLinkAdicionadoOuRemovido,
   setLinkPaginaSelecionada,
   setPaginaSendoEditada,
-  resetIndentificadores
+  resetIndentificadores,
+  updateCarregandoPrevia
 } = identificadoresSlice.actions
 
 export default identificadoresSlice.reducer

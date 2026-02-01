@@ -1,0 +1,25 @@
+import { AxiosPromise, AxiosRequestConfig } from 'axios';
+import api from '../apiConfig';
+
+export const apiAdicionarPagina = (titulo: string, idConta: string, urlPagina: string, fotoPagina?: string): AxiosPromise<Object> => {
+  const url = `/users/${idConta}/paginas`;
+    const parametros: AxiosRequestConfig = {
+        method: 'POST',
+        url,
+        data: {
+            idConta,
+            titulo,
+            ativo: true,
+            aparencia: {
+                foto: fotoPagina,
+                cor: {
+                    botao: "#FFFFFF",
+                    texto: "#FFFFFF",
+                    fundo: "#16825d",
+                }
+            },
+            url: urlPagina,
+        }
+    }
+    return api(parametros)
+}

@@ -16,17 +16,17 @@ export const StyledForm = styled(Form) `
   width: 100%;
   height: 100%;
 `
-export const Topicos = styled.p`
+export const Topicos = styled.p<{color: string}>`
   color: #35424F;
   font-size: 16px;
   font-weight: 500;
   line-height: 120%;
   margin: 24px auto 4px 0;
 `
-export const StyledInput = styled(TextField) <{mediaquery?: string}>`
+export const StyledInput = styled(TextField) <{mediaquery?: string, bordercolor?: string}> `
   .MuiOutlinedInput-root {
     &:hover fieldset {
-      border-color: #4D5C6C;
+      border-color: ${props => props.bordercolor};
     }
     &:focus-within fieldset {
       border-color: #16825D;
