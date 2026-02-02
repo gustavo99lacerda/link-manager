@@ -31,12 +31,12 @@ export function ButtonAdicionarLink() {
         }))
         customSnackbar(translation("snackbar.sucesso_criar_link"))
         setAdicionandoLink(false)
+
         setOpenModal(false)
       })
       .catch(() => {
         setAdicionandoLink(false)
       })
-    onClose()
   }
 
   const onOpen = () => {

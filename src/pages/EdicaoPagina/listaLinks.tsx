@@ -16,7 +16,6 @@ export function ListaLinks({ value, index }: Props) {
 
   const { paginaCompleta } = useAppSelect
 
-
   return (
     <S.ContentLinkslist display={index === value ? "flex" : "none"} >
       <>

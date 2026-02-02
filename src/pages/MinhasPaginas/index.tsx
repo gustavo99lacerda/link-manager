@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react'
 import { apiGetPaginas } from '../../../api/getPaginas'
 import { setPaginas } from '../../redux/modules/paginas'
 import { CircularProgress } from '@material-ui/core'
+import { resetPaginaCompleta } from '../../redux/modules/paginaCompleta'
 
 export function MinhasPaginas() {
 
@@ -22,6 +23,7 @@ export function MinhasPaginas() {
   const [carregandoPaginas, setCarregandoPaginas] = useState<boolean>(false)
 
   useEffect(() => {
+    dispatch(resetPaginaCompleta())
     setCarregandoPaginas(true)
     apiGetPaginas(user.idConta)
       .then((response: any) => {
