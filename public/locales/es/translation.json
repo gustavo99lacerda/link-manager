@@ -1,147 +1,140 @@
 {
-    "cancelar": "Cancelar",
-    "minhas_paginas": "Mis páginas",
-    "excluir": "Eliminar",
-    "minha_conta": "Mi cuenta",
-    "cadastre_se": "Registrarse",
-    "como_funciona": "Cómo funciona",
-    "entrar": "Iniciar sesión",
-    "url": "URL",
-    "alterar_foto": "Cambiar foto",
-    "remover_foto": "Eliminar foto",
-    "sair": "Salir",
-    "detalhes_pagina": "Detalles de la página",
-    "tela_inicial": {
-      "todos_os_links": "¡Todos los enlaces que necesitas en un solo lugar!",
-      "crie_sua_pagina": "Crea tu página y comparte todo tu contenido con tus clientes y socios con solo un enlace.",
-      "acessar_conta": "Acceder a mi cuenta",
-      "seus_links": "Tus enlaces en una página de manera segura, fácil y rápida.",
-      "apos_efetuar_cadastro": "Después de registrarte, personaliza por completo tu página.",
-      "passo_1": "Paso 1",
-      "passo_2": "Paso 2",
-      "passo_3": "Paso 3",
-      "crie_sua_conta": "Crea tu cuenta",
-      "insira_seus_links": "Ingresa tus enlaces",
-      "crie_uma_lista": "Crea una lista con tus enlaces y adminístralos desde una única cuenta.",
-      "compartilhe_sua_pagina": "Comparte tu página",
-      "divulgue": "Difunde fácil y rápidamente con tus clientes y socios.",
-      "junte_todos": "Reúne todos tus enlaces en un solo lugar y personalízalo todo a tu manera."
-    },
-    "footer": {
-    },
-    "tela_login": {
-      "nao_possui_conta": "¿Aún no tienes una cuenta?",
-      "acesse_conta": "Accede a tu cuenta",
-      "entrar_google": "Iniciar sesión con Google"
-    },
-    "tela_conta": {
-      "salvar": "Guardar",
-      "nome": "Nombre",
-      "email": "Correo electrónico",
-      "botao_google": "Cambia tu correo electrónico con Google",
-      "nome_vazio": "El nombre no puede estar vacío",
-      "informacao": "Para cambiar tu correo electrónico de registro, haz clic en el botón de abajo para iniciar sesión con el nuevo correo deseado."
-    },
-    "tela_cadastro": {
-      "ja_tem_conta": "¿Ya tienes una cuenta?",
-      "iniciar_sessao": "Iniciar Sesión",
-      "entrar_google": "Registrarse con Google",
-      "crie_conta": "¡Crea una nueva cuenta!"
-    },
-    "tela_minhas_paginas": {
-      "adicionar": "+ Añadir página",
-      "nao_possui_pagina": "Todavía no tienes ninguna página. Haz clic en el botón de abajo para agregar",
-      "clique_para_adicionar": "Haz clic en el botón de abajo para agregar una página",
-      "copiar": "Copiar",
-      "customizar": "Personalizar"
-    },
-    "dialog_criar_link": {
-      "criar_link": "Crear nuevo enlace",
-      "insira_url": "Ingresa la URL aquí",
-      "insira_titulo": "Ingresa el título aquí",
-      "erro": "¡Ya existe un enlace con esta URL!",
-      "informacao": "¡Completa el formulario para agregar un nuevo enlace a tu página!",
-      "titulo": "Título"
-    },
-    "dialog_qr_code": {
-      "titulo": "Código QR",
-      "compartilhar": "Compartir",
-      "informacao": "¡Comparte este código QR para que las personas puedan ver tu página!"
-    },
-    "tela_editar": {
-      "links": "Enlaces",
-      "customizar": "Personalizar",
-      "adicionar_link": "+ Agregar enlace",
-      "insira_seus_links": "Ingresa tus enlaces haciendo clic en el botón de arriba y organízalos como prefieras."
-    },
-    "formulario_customizacao": {
-      "titulo": "Título de la página",
-      "cor_fundo": "Color de fondo",
-      "cor_texto": "Color de texto",
-      "cor_botao": "Color del botón",
-      "visualizar": "Visualizar",
-      "salvar": "Guardar",
-      "informe_url": "¡Ingresa una URL para continuar!",
-      "informe_titulo": "¡Ingresa un título para continuar!",
-      "estilo_botoes": "Estilo de los botones"
-    },
-    "dialog_excluir_pagina": {
-      "excluir_pagina": "Eliminar página",
-      "informacao": "¿Estás seguro de que quieres eliminar esta página? Si es así, se eliminará permanentemente."
-    },
-    "dialog_excluir_link": {
-      "excluir_link": "Eliminar enlace",
-      "informacao": "¿Estás seguro de que quieres eliminar este enlace? Si es así, se eliminará permanentemente."
-    },
-    "dialog_excluir_conta": {
-      "excluir_conta": "Eliminar cuenta",
-      "informacao": "¿Estás seguro de que quieres eliminar tu cuenta? Todos tus datos e información se eliminarán permanentemente."
-    },
-    "dialog_criar_pagina": {
-      "criar_pagina": "Crear una nueva página",
-      "informacao": "¡Reúne todos tus enlaces importantes en una sola página!",
-      "erro": "¡Ya existe una página con esta URL!",
-      "titulo": "Título"
-    },
-    "tela_erro": {
-      "titulo": "¡Vaya! Tengo problemas para mostrar este contenido...",
-      "informacao": "Ocurrió un error al cargar la página. Te sugerimos que hagas clic en el botón inicial para volver a la página de inicio.",
-      "voltar": "Ir a la página de inicio"
-    },
-    "dialog_foto_conta": {
-      "alterar_foto_perfil": "Cambiar foto de perfil",
-      "informacao": "Cambia tu foto de perfil aquí. Si eliges eliminarla, se usará una imagen predeterminada",
-      "remover_foto_perfil": "Eliminar foto actual",
-      "remover_aviso": "Si eliges eliminar la foto actual, se usará una imagen de perfil predeterminada"
-    },
-    "dialog_foto_pagina": {
-      "alterar_foto_pagina": "Cambiar foto de la página",
-      "informacion": "Cambia la foto de la página aquí. Si lo deseas, también puedes eliminar la foto actual",
-      "remover_foto_pagina": "Eliminar foto de la página",
-      "remover_aviso": "¿Estás seguro de que quieres eliminar la foto de la página? Esta acción no se puede deshacer."
-    },
-    "dialog_login": {
-      "titulo_dialog": "No se pudo iniciar sesión",
-      "info_1": "No existe ninguna cuenta con el correo electrónico",
-      "info_2": "Crea una cuenta para continuar.",
-      "criar_conta": "Crear cuenta"
-    },
-    "dialog_cadastro": {
-      "titulo_dialog": "No se pudo completar el registro",
-      "info_1": "Ya existe una cuenta con el correo electrónico",
-      "info_2": "Accede a tu cuenta para continuar.",
-      "acessar_conta": "Acceder a la cuenta"
-    },
-    "snackbar": {
-      "remover_foto_sucesso": "¡La foto se eliminó con éxito!",
-      "alteracao_foto_sucesso": "¡La foto se cambió con éxito!",
-      "sucesso_criar_pagina": "Página creada con éxito",
-      "sucesso_excluir_pagina": "Página eliminada con éxito",
-      "sucesso_alteracoes": "¡Cambios guardados con éxito!",
-      "sucesso_criar_link": "Enlace creado con éxito",
-      "sucesso_copiar": "¡El enlace se copió con éxito!",
-      "sucesso_excluir_link": "Enlace eliminado con éxito",
-      "sucesso_alterar_ordem": "¡Se cambió con éxito el orden del enlace!"
-    }
+  "cancelar": "Cancelar",
+  "minhas_paginas": "Mis páginas",
+  "excluir": "Eliminar",
+  "minha_conta": "Mi cuenta",
+  "cadastre_se": "Registrarse",
+  "como_funciona": "Cómo funciona",
+  "entrar": "Iniciar sesión",
+  "url": "URL",
+  "alterar_foto": "Cambiar foto",
+  "remover_foto": "Eliminar foto",
+  "sair": "Salir",
+  "detalhes_pagina": "Detalles de la página",
+  "tela_inicial": {
+    "todos_os_links": "¡Todos los enlaces que necesitas en un solo lugar!",
+    "crie_sua_pagina": "Crea tu página y comparte todo tu contenido con tus clientes y socios con solo un enlace.",
+    "acessar_conta": "Acceder a mi cuenta",
+    "seus_links": "Tus enlaces en una página de manera segura, fácil y rápida.",
+    "apos_efetuar_cadastro": "Después de registrarte, personaliza por completo tu página.",
+    "passo_1": "Paso 1",
+    "passo_2": "Paso 2",
+    "passo_3": "Paso 3",
+    "crie_sua_conta": "Crea tu cuenta",
+    "insira_seus_links": "Ingresa tus enlaces",
+    "crie_uma_lista": "Crea una lista con tus enlaces y adminístralos desde una única cuenta.",
+    "compartilhe_sua_pagina": "Comparte tu página",
+    "divulgue": "Difunde fácil y rápidamente con tus clientes y socios.",
+    "junte_todos": "Reúne todos tus enlaces en un solo lugar y personalízalo todo a tu manera."
+  },
+  "footer": {},
+  "tela_login": {
+    "nao_possui_conta": "¿Aún no tienes una cuenta?",
+    "acesse_conta": "Accede a tu cuenta",
+    "entrar_google": "Iniciar sesión con Google"
+  },
+  "tela_conta": {
+    "salvar": "Guardar",
+    "nome": "Nombre",
+    "email": "Correo electrónico",
+    "botao_google": "Cambia tu correo electrónico con Google",
+    "nome_vazio": "El nombre no puede estar vacío",
+    "informacao": "Para cambiar tu correo electrónico de registro, haz clic en el botón de abajo para iniciar sesión con el nuevo correo deseado."
+  },
+  "tela_minhas_paginas": {
+    "adicionar": "+ Añadir página",
+    "nao_possui_pagina": "Todavía no tienes ninguna página. Haz clic en el botón de abajo para agregar",
+    "clique_para_adicionar": "Haz clic en el botón de abajo para agregar una página",
+    "copiar": "Copiar",
+    "customizar": "Personalizar"
+  },
+  "dialog_criar_link": {
+    "criar_link": "Crear nuevo enlace",
+    "insira_url": "Ingresa la URL aquí",
+    "insira_titulo": "Ingresa el título aquí",
+    "erro": "¡Ya existe un enlace con esta URL!",
+    "informacao": "¡Completa el formulario para agregar un nuevo enlace a tu página!",
+    "titulo": "Título"
+  },
+  "dialog_qr_code": {
+    "titulo": "Código QR",
+    "compartilhar": "Compartir",
+    "informacao": "¡Comparte este código QR para que las personas puedan ver tu página!"
+  },
+  "tela_editar": {
+    "links": "Enlaces",
+    "customizar": "Personalizar",
+    "adicionar_link": "+ Agregar enlace",
+    "insira_seus_links": "Ingresa tus enlaces haciendo clic en el botón de arriba y organízalos como prefieras."
+  },
+  "formulario_customizacao": {
+    "titulo": "Título de la página",
+    "cor_fundo": "Color de fondo",
+    "cor_texto": "Color de texto",
+    "cor_botao": "Color del botón",
+    "visualizar": "Visualizar",
+    "salvar": "Guardar",
+    "informe_url": "¡Ingresa una URL para continuar!",
+    "informe_titulo": "¡Ingresa un título para continuar!",
+    "estilo_botoes": "Estilo de los botones"
+  },
+  "dialog_excluir_pagina": {
+    "excluir_pagina": "Eliminar página",
+    "informacao": "¿Estás seguro de que quieres eliminar esta página? Si es así, se eliminará permanentemente."
+  },
+  "dialog_excluir_link": {
+    "excluir_link": "Eliminar enlace",
+    "informacao": "¿Estás seguro de que quieres eliminar este enlace? Si es así, se eliminará permanentemente."
+  },
+  "dialog_excluir_conta": {
+    "excluir_conta": "Eliminar cuenta",
+    "informacao": "¿Estás seguro de que quieres eliminar tu cuenta? Todos tus datos e información se eliminarán permanentemente."
+  },
+  "dialog_criar_pagina": {
+    "criar_pagina": "Crear una nueva página",
+    "informacao": "¡Reúne todos tus enlaces importantes en una sola página!",
+    "erro": "¡Ya existe una página con esta URL!",
+    "titulo": "Título"
+  },
+  "tela_erro": {
+    "titulo": "¡Vaya! Tengo problemas para mostrar este contenido...",
+    "informacao": "Ocurrió un error al cargar la página. Te sugerimos que hagas clic en el botón inicial para volver a la página de inicio.",
+    "voltar": "Ir a la página de inicio"
+  },
+  "dialog_foto_conta": {
+    "alterar_foto_perfil": "Cambiar foto de perfil",
+    "informacao": "Cambia tu foto de perfil aquí. Si eliges eliminarla, se usará una imagen predeterminada",
+    "remover_foto_perfil": "Eliminar foto actual",
+    "remover_aviso": "Si eliges eliminar la foto actual, se usará una imagen de perfil predeterminada"
+  },
+  "dialog_foto_pagina": {
+    "alterar_foto_pagina": "Cambiar foto de la página",
+    "informacion": "Cambia la foto de la página aquí. Si lo deseas, también puedes eliminar la foto actual",
+    "remover_foto_pagina": "Eliminar foto de la página",
+    "remover_aviso": "¿Estás seguro de que quieres eliminar la foto de la página? Esta acción no se puede deshacer."
+  },
+  "dialog_login": {
+    "titulo_dialog": "No se pudo iniciar sesión",
+    "info_1": "No existe ninguna cuenta con el correo electrónico",
+    "info_2": "Crea una cuenta para continuar.",
+    "criar_conta": "Crear cuenta"
+  },
+  "dialog_cadastro": {
+    "titulo_dialog": "No se pudo completar el registro",
+    "info_1": "Ya existe una cuenta con el correo electrónico",
+    "info_2": "Accede a tu cuenta para continuar.",
+    "acessar_conta": "Acceder a la cuenta"
+  },
+  "snackbar": {
+    "remover_foto_sucesso": "¡La foto se eliminó con éxito!",
+    "alteracao_foto_sucesso": "¡La foto se cambió con éxito!",
+    "sucesso_criar_pagina": "Página creada con éxito",
+    "sucesso_excluir_pagina": "Página eliminada con éxito",
+    "sucesso_alteracoes": "¡Cambios guardados con éxito!",
+    "sucesso_ativardesativar_link": "Link alterado com sucesso",
+    "sucesso_criar_link": "Enlace creado con éxito",
+    "sucesso_copiar": "¡El enlace se copió con éxito!",
+    "sucesso_excluir_link": "Enlace eliminado con éxito",
+    "sucesso_alterar_ordem": "¡Se cambió con éxito el orden del enlace!"
   }
-  
+}

@@ -1,8 +1,12 @@
-import { useEffect } from 'react'
+import { useState } from 'react'
 import { useRedux } from '../../hooks/useRedux'
 import { ativarOuDesativarLink } from '../../redux/modules/paginaCompleta'
 import { ButtonExcluirLink } from '../ButtonExcluirLink'
 import * as S from './styles'
+import { CircularProgress } from '@material-ui/core'
+import { apiPutLink } from '../../../api/putLink'
+import { useHooks } from '../../hooks/useHooks'
+import { customSnackbar } from '../CustomSnackbar/customSnackbar'
 
 
 interface Props {
@@ -10,20 +14,29 @@ interface Props {
   url: string
   ativo: boolean
   idLink: string
+  ordem: number
 }
 
-export function CardLinks({ url, ativo, titulo, idLink }: Props) {
+export function CardLinks({ url, ativo, titulo, idLink, ordem }: Props) {
 
   const { dispatch, useAppSelect } = useRedux()
-  const { paginaCompleta } = useAppSelect
-  
-  useEffect(() => {
-    //dispatch(updateLinksPagina({ idPagina: paginaCompleta.idPagina, links: paginaCompleta.links }))
-  }, [paginaCompleta.links])
+  const { translation } = useHooks()
+  const { paginaCompleta, user } = useAppSelect
 
+  const [ativando, setAtivando] = useState(false)
 
   const ativaOuDesativaLink = () => {
-    dispatch(ativarOuDesativarLink({ idLink, ativo: !ativo }))
+    setAtivando(true)
+    apiPutLink(user.idConta, paginaCompleta.idPagina, idLink, titulo, ordem, url, !ativo)
+      .then(() => {
+        setAtivando(false)
+        customSnackbar(translation("snackbar.sucesso_ativardesativar_link"))
+        dispatch(ativarOuDesativarLink({ idLink, ativo: !ativo }))
+      })
+      .catch((error) => {
+        console.log(error)
+        setAtivando(false)
+      })
   }
 
   return (
@@ -33,10 +46,12 @@ export function CardLinks({ url, ativo, titulo, idLink }: Props) {
       <S.CardContent>
         <S.DivPrimeiraLinha>
           <S.TituloCard >{titulo}</S.TituloCard>
-          <S.IOSSwitch checked={ativo}  onChange={ativaOuDesativaLink} />
+          {ativando
+            ? <CircularProgress size={38} style={{ margin: "0 0 0 auto" }} />
+            : <S.IOSSwitch checked={ativo} onChange={ativaOuDesativaLink} />}
         </S.DivPrimeiraLinha>
         <S.UrlCard>{url}</S.UrlCard>
-      <ButtonExcluirLink idLink={idLink}/>
+        <ButtonExcluirLink idLink={idLink} />
       </S.CardContent>
     </S.CardContainer>
   )
