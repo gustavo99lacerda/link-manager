@@ -46,7 +46,7 @@ export function ButtonPicker({ backgroundcolor,  parte}: Props) {
         transformOrigin={{ vertical: "top", horizontal: "right" }}
         style={{ padding: "0px" }}
         MenuListProps={{ 'aria-labelledby': 'basic-button' }}>
-        <S.StyledPicker disableAlpha={true} onChangeComplete={(event) => trocaCor(event.hex, parte)} color={backgroundcolor} />
+        <S.StyledPicker disableAlpha onChangeComplete={(event) => trocaCor(event.hex, parte)} color={backgroundcolor} />
       </S.StyledMenu>
     </>
   )

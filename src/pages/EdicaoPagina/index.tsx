@@ -56,7 +56,7 @@ export function EdicaoPagina() {
 
 
   const mudaAba = (_event: React.ChangeEvent<{}>, newValue: number) => {
-    //setAba(newValue)
+    setAba(newValue)
   }
 
   return (

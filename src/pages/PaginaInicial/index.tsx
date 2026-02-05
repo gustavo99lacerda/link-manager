@@ -11,6 +11,7 @@ export function PaginaInicial() {
 
   useEffect(() => {
     localStorage.clear()
+    sessionStorage.clear()
   }, [])
 
   return (

@@ -5,8 +5,11 @@ import * as S from './styles'
 import { ButtonPicker } from './colorPicker'
 import Input from '../../components/UnformComponents/Input'
 import { ButtonAlterarFotoPagina } from '../../components/ButtonAlterarFotoPagina'
-import { Button } from '@material-ui/core'
+import { Button, CircularProgress } from '@material-ui/core'
 import { useRouter } from '../../hooks/useRouter'
+import { apiEditaPagina } from '../../../api/putPagina'
+import { customSnackbar } from '../../components/CustomSnackbar/customSnackbar'
+import { useState } from 'react'
 
 interface Props {
   index: number;
@@ -16,9 +19,11 @@ export function FormCustomizacao({ index, value }: Props) {
 
   const { formRef, translation } = useHooks()
   const { history } = useRouter()
-  const { useAppSelect, dispatch, } = useRedux()
+  const { useAppSelect} = useRedux()
 
-  const { paginaCompleta } = useAppSelect
+  const { paginaCompleta, user } = useAppSelect
+
+  const [carregando, setCarregando] = useState(false)
 
   const validacaoFormulario = Yup.object().shape({
     titulo: Yup.string().required(translation("formulario_customizacao.informe_titulo")),
@@ -26,33 +31,41 @@ export function FormCustomizacao({ index, value }: Props) {
   })
 
   const salvarAparencia = async (dadosForm: { titulo: string, url: string, fundo: string, texto: string, botao: string }) => {
-    // formRef.current?.setErrors({})
-    // try {
-    //   await validacaoFormulario.validate(dadosForm, { abortEarly: false })
-    //   dispatch(updatePaginaNasPaginas({
-    //     ...paginaCompleta,
-    //     titulo: dadosForm.titulo,
-    //     url: dadosForm.url,
-    //     aparencia: {
-    //       ...paginaCompleta.aparencia,
-    //       cor: {
-    //         fundo: dadosForm.fundo,
-    //         texto: dadosForm.texto,
-    //         botao: dadosForm.botao
-    //       }
-    //     }
-    //   }))
-    //   customSnackbar(translation("snackbar.sucesso_alteracoes"))
-    // } catch (error) {
+    formRef.current?.setErrors({})
+    setCarregando(true)
 
-    //   if (error instanceof Yup.ValidationError) {
-    //     const message: Record<string, string> = {}
-    //     error.inner.forEach((err) => {
-    //       message[err.path!] = err.message
-    //     })
-    //     formRef.current!.setErrors(message)
-    //   }
-    // }
+    try {
+      await validacaoFormulario.validate(dadosForm, { abortEarly: false })
+      apiEditaPagina(
+        user.idConta,
+        paginaCompleta.idPagina,
+        dadosForm.url,
+        paginaCompleta.aparencia.foto,
+        dadosForm.botao,
+        dadosForm.texto,
+        dadosForm.fundo,
+        dadosForm.titulo
+      ).then(() => {
+        setCarregando(false)
+
+        customSnackbar(translation("snackbar.sucesso_alteracoes"))
+
+      }).catch((error) => {
+        setCarregando(false)
+
+        console.log(error)
+      })
+    } catch (error) {
+      setCarregando(false)
+
+      if (error instanceof Yup.ValidationError) {
+        const message: Record<string, string> = {}
+        error.inner.forEach((err) => {
+          message[err.path!] = err.message
+        })
+        formRef.current!.setErrors(message)
+      }
+    }
   }
 
 
@@ -103,12 +116,14 @@ export function FormCustomizacao({ index, value }: Props) {
           </S.DivInputs>
         </S.ContentForm>
         <S.DivButtons>
-          <Button onClick={() => history.push("/visualizacao")} variant='outlined' color='primary' fullWidth >
-            {translation("formulario_customizacao.visualizar")}
-          </Button>
-          <Button type="submit" variant='contained' color='primary' fullWidth >
-            {translation("formulario_customizacao.salvar")}
-          </Button>
+          {carregando
+            ? <CircularProgress color="primary" style={{ margin: "auto" }} />
+            : <> <Button onClick={() => history.push("/visualizacao")} variant='outlined' color='primary' fullWidth >
+              {translation("formulario_customizacao.visualizar")}
+            </Button>
+              <Button type="submit" variant='contained' color='primary' fullWidth >
+                {translation("formulario_customizacao.salvar")}
+              </Button></>}
         </S.DivButtons>
       </S.StyledForm>
     </S.ContentForm>

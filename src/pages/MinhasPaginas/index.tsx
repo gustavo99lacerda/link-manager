@@ -13,7 +13,15 @@ import { setPaginas } from '../../redux/modules/paginas'
 import { CircularProgress } from '@material-ui/core'
 import { resetPaginaCompleta } from '../../redux/modules/paginaCompleta'
 
+interface IPaginas {
+  idPagina: string
+  titulo: string
+  url: string
+}
+
 export function MinhasPaginas() {
+
+
 
   const { mediaQuery, translation } = useHooks()
   const { useAppSelect, dispatch } = useRedux()
@@ -26,8 +34,13 @@ export function MinhasPaginas() {
     dispatch(resetPaginaCompleta())
     setCarregandoPaginas(true)
     apiGetPaginas(user.idConta)
-      .then((response: any) => {
-        dispatch(setPaginas(response.data))
+      .then((response) => {
+        const data = (response.data as Array<any>).map((item): IPaginas => ({
+          idPagina: item.idPagina,
+          titulo: item.titulo,
+          url: item.url
+        }))
+        dispatch(setPaginas(data))
         setCarregandoPaginas(false)
       })
       .catch((error) => {

@@ -32,7 +32,7 @@ export function ButtonAlterarFotoPagina() {
   return (
     <S.DivContent>
       {paginaCompleta.aparencia.foto
-        ? <S.ComFoto src={paginaCompleta.aparencia.foto} width='115px' height='115px' />
+        ? <S.ComFoto src={paginaCompleta.aparencia.foto} alt='foto pagina' width='115px' height='115px' />
         : <S.SemFoto width='115px' height='115px'>{paginaCompleta.titulo.slice(0, 1)}</S.SemFoto>}
       <Button variant='contained' color='primary'  onClick={() => setOpenDialog(true)}>
         {translation("alterar_foto")}
