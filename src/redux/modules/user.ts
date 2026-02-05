@@ -5,6 +5,7 @@ interface IUserInterface {
   email: string
   nome: string
   foto: string
+  token: string | number
 }
 
 const initialState: IUserInterface = {
@@ -12,6 +13,7 @@ const initialState: IUserInterface = {
   email: '',
   nome: '',
   foto: '',
+  token: ''
 }
 
 const userSlice = createSlice({

@@ -113,26 +113,6 @@ const paginaCompletaSlice = createSlice({
 
       return state
     },
-    atualizaDadosPagina: (state, action: PayloadAction<{ titulo: string, url: string }>) => {
-      state.titulo = action.payload.titulo
-      state.url = action.payload.url
-      return state
-    },
-    atualizaAparenciaPagina: (state, action: PayloadAction<{
-      foto: string
-      bordaBotao: string,
-      cor: {
-        botao: string
-        texto: string
-        fundo: string
-      }
-    }>) => {
-      state.aparencia.cor.botao = action.payload.cor.botao
-      state.aparencia.cor.fundo = action.payload.cor.fundo
-      state.aparencia.cor.texto = action.payload.cor.texto
-      state.aparencia.foto = action.payload.foto
-      return state
-    },
     setLinks: (state, action: PayloadAction<Array<{
       idLink: string
       ordem: number
@@ -159,8 +139,6 @@ export const {
   trocarCorDeFundoPagina,
   trocarCorDoTextoPagina,
   trocarCorDoBotaoPagina,
-  atualizaAparenciaPagina,
-  atualizaDadosPagina,
   setLinks
 } = paginaCompletaSlice.actions
 
