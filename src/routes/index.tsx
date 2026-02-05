@@ -10,6 +10,7 @@ import { Visualizacao } from '../pages/Visualizacao';
 import { Login } from '../pages/Login';
 import { RootState } from '../redux/store';
 import { useSelector } from 'react-redux';
+import { Pagina } from '../pages/Pagina';
 
 interface ProtectedRouteProps extends RouteProps {
   component: any
@@ -58,6 +59,7 @@ const Routes = () => {
       <ProtectedRoute exact path="/edicao-pagina" component={EdicaoPagina} />
       <ProtectedRoute exact path="/minha-conta" component={MinhaConta} />
       <ProtectedRoute exact path="/visualizacao" component={Visualizacao} />
+      <Route path="/:customUrl" component={Pagina} />
     </Switch>
   )
 };
