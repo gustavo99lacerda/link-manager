@@ -6,7 +6,7 @@ import { useHooks } from '../../hooks/useHooks';
 import { useRedux } from '../../hooks/useRedux';
 import { removerLink } from '../../redux/modules/paginaCompleta';
 import { customSnackbar } from '../CustomSnackbar/customSnackbar';
-import { apiDeleteLink } from '../../../api/deleteLink';
+import { apiDeleteLink } from '../../../api/link/deleteLink';
 
 export function ButtonExcluirLink({ idLink }: { idLink: string }) {
 

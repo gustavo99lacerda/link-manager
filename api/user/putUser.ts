@@ -1,5 +1,5 @@
 import { AxiosPromise, AxiosRequestConfig } from 'axios';
-import api from './apiConfig';
+import api from '../apiConfig';
 
 export const apiPutUser = (idConta: string, foto: string, nome: string): AxiosPromise<Object> => {
     const url = `/users/${idConta}`;

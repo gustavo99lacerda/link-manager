@@ -10,9 +10,9 @@ import { Header } from '../../components/Header'
 import { MenuLateral } from '../../components/MenuLateral'
 import { StyledBreadcrumbs } from '../../components/Breadcrumbs'
 import { PreviaCelular } from '../../components/PreviaCelular'
-import { apiGetPagina } from '../../../api/getPagina'
+import { apiGetPagina } from '../../../api/pagina/getPagina'
 import { setLinks, setPaginaCompleta } from '../../redux/modules/paginaCompleta'
-import { apiGetLinks } from '../../../api/getLinks'
+import { apiGetLinks } from '../../../api/link/getLinks'
 import { CircularProgress } from '@material-ui/core'
 
 

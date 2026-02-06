@@ -1,5 +1,5 @@
 import { AxiosPromise, AxiosRequestConfig } from 'axios';
-import api from './apiConfig';
+import api from '../apiConfig';
 
 export const apiGetLink = (idConta: string, paginaId: string, ordem: number, descricao: string, urlLink: string, ativo: boolean): AxiosPromise<Object> => {
   const url = `/users/${idConta}/paginas/${paginaId}/links`;

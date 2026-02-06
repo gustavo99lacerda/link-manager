@@ -11,7 +11,7 @@ import Input from '../../components/UnformComponents/Input'
 import { ButtonAlterarFotoPerfil } from '../../components/ButtonAlterarFotoPerfil'
 import { setUser } from '../../redux/modules/user'
 import { customSnackbar } from '../../components/CustomSnackbar/customSnackbar'
-import { apiPutUser } from '../../../api/putUser'
+import { apiPutUser } from '../../../api/user/putUser'
 
 export function MinhaConta() {
 

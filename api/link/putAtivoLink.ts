@@ -1,5 +1,5 @@
 import { AxiosPromise, AxiosRequestConfig } from 'axios';
-import api from './apiConfig';
+import api from '../apiConfig';
 
 export const apiPutAtivoLink = (idConta: string,
     idPagina: string,

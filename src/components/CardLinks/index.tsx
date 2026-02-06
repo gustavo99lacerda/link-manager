@@ -6,7 +6,7 @@ import * as S from './styles'
 import { CircularProgress } from '@material-ui/core'
 import { useHooks } from '../../hooks/useHooks'
 import { customSnackbar } from '../CustomSnackbar/customSnackbar'
-import { apiPutAtivoLink } from '../../../api/putAtivoLink'
+import { apiPutAtivoLink } from '../../../api/link/putAtivoLink'
 
 
 interface Props {

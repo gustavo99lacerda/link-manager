@@ -11,9 +11,9 @@ import { useRedux } from '../../hooks/useRedux'
 import { setLinks, setPaginaCompleta } from '../../redux/modules/paginaCompleta'
 import { useRouter } from '../../hooks/useRouter'
 import { customSnackbar } from '../CustomSnackbar/customSnackbar'
-import { apiGetPagina } from '../../../api/getPagina'
+import { apiGetPagina } from '../../../api/pagina/getPagina'
 import { setPaginaSendoEditada, updateCarregandoPrevia } from '../../redux/modules/identificadores'
-import { apiGetLinks } from '../../../api/getLinks'
+import { apiGetLinks } from '../../../api/link/getLinks'
 
 interface Props {
   titulo: string

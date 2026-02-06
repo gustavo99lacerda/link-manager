@@ -8,7 +8,7 @@ import { GlobalDialog } from "../GlobalDialog"
 import * as S from './styles'
 import { resetPaginaCompleta } from "../../redux/modules/paginaCompleta"
 import { customSnackbar } from "../CustomSnackbar/customSnackbar"
-import { apiDeletePagina } from "../../../api/deletePagina"
+import { apiDeletePagina } from "../../../api/pagina/deletePagina"
 
 
 interface Props {

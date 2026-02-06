@@ -5,7 +5,7 @@ import { useHooks } from '../../hooks/useHooks'
 import { useRedux } from '../../hooks/useRedux'
 import { adicionarLinks } from '../../redux/modules/paginaCompleta'
 import { customSnackbar } from '../CustomSnackbar/customSnackbar'
-import { apiGetLink } from '../../../api/postLink'
+import { apiGetLink } from '../../../api/link/postLink'
 
 export function ButtonAdicionarLink() {
 
