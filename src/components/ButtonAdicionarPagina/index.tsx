@@ -6,7 +6,7 @@ import * as S from './styles'
 import { useRedux } from "../../hooks/useRedux"
 import { addPagina } from "../../redux/modules/paginas"
 import { customSnackbar } from "../CustomSnackbar/customSnackbar"
-import { apiAdicionarPagina } from "../../../api/postPagina"
+import { apiPostPagina } from "../../../api/postPagina"
 
 interface DadosPagina {
   url: string;
@@ -46,7 +46,7 @@ export function ButtonAdicionarPagina() {
     } else {
       setCriandoPagina(true)
       const url = dadosPagina.url!.replace(/ /g, "")
-      apiAdicionarPagina(dadosPagina.titulo!, user.idConta, url, user.foto)
+      apiPostPagina(dadosPagina.titulo!, user.idConta, url, user.foto)
         .then((response: any) => {
           dispatch(addPagina({
             idPagina: response.data.idPagina,

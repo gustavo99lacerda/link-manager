@@ -4,13 +4,14 @@ import * as Yup from 'yup'
 import imagemMinhaConta from '../../assets/minhaConta.svg'
 import * as S from './styles'
 import { useRedux } from '../../hooks/useRedux'
-import { Button } from '@material-ui/core';
+import { Button, CircularProgress } from '@material-ui/core';
 import { MenuLateral } from '../../components/MenuLateral'
 import { Header } from '../../components/Header'
 import Input from '../../components/UnformComponents/Input'
 import { ButtonAlterarFotoPerfil } from '../../components/ButtonAlterarFotoPerfil'
 import { setUser } from '../../redux/modules/user'
 import { customSnackbar } from '../../components/CustomSnackbar/customSnackbar'
+import { apiPutUser } from '../../../api/putUser'
 
 export function MinhaConta() {
 
@@ -19,6 +20,7 @@ export function MinhaConta() {
   const { user } = useAppSelect
 
   const [dadosConta, setDadosConta] = useState<typeof user>({ ...user })
+  const [carregando, setCarregando] = useState(false)
 
   useEffect(() => {
     setDadosConta({ ...user })
@@ -29,11 +31,22 @@ export function MinhaConta() {
   })
 
   const salvarFormulario = async (dadosForm: { nome: string }) => {
+
     formRef.current?.setErrors({})
     try {
       await validaFormulario.validate(dadosForm, { abortEarly: false })
-      dispatch(setUser({ ...dadosConta, nome: dadosForm.nome, foto: dadosConta.foto }))
-      customSnackbar(translation("snackbar.sucesso_alteracoes"))
+      setCarregando(true)
+      apiPutUser(user.idConta, dadosConta.foto, dadosForm.nome)
+        .then(() => {
+          dispatch(setUser({ ...dadosConta, nome: dadosForm.nome, foto: dadosConta.foto }))
+          setCarregando(false)
+          customSnackbar(translation("snackbar.sucesso_alteracoes"))
+        })
+        .catch((error) => {
+          setCarregando(false)
+          console.log(error)
+        })
+
 
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
@@ -81,9 +94,11 @@ export function MinhaConta() {
               margin='0px 0px 48px 0px' />
           </S.DivForm>
           <S.DivButtons>
-            <Button color='primary' variant='contained' type='submit' fullWidth>
-              {translation("tela_conta.salvar")}
-            </Button>
+            {carregando
+              ? <CircularProgress color="primary" style={{ margin: "auto" }} />
+              : <Button color='primary' variant='contained' type='submit' fullWidth>
+                {translation("tela_conta.salvar")}
+              </Button>}
           </S.DivButtons>
         </S.Form>
       </S.DivForm>

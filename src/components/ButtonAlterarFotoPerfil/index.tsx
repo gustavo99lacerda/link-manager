@@ -4,6 +4,9 @@ import { GlobalDialog } from '../GlobalDialog'
 import { Button } from '@material-ui/core'
 import { useHooks } from '../../hooks/useHooks'
 import { ButtonRemoverFotoPerfil } from '../ButtonRemoverFotoPerfil'
+import { useRedux } from '../../hooks/useRedux'
+import { adicionaFotoUsuario } from '../../redux/modules/user'
+import imageCompression from 'browser-image-compression';
 
 interface Props {
   onFotoChange: (newFoto: string) => void;
@@ -11,20 +14,38 @@ interface Props {
   nome: string
 }
 
-export function ButtonAlterarFotoPerfil({foto, onFotoChange, nome} : Props) {
+export function ButtonAlterarFotoPerfil({ foto, onFotoChange, nome }: Props) {
 
   const { mediaQuery, translation } = useHooks()
+  const { dispatch } = useRedux()
 
   const [openDialog, setOpenDialog] = useState(false)
 
+  const uploadFoto = async (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
 
-  const uploadFoto = (event: ChangeEvent<HTMLInputElement>) => {
-    const reader = new FileReader()
-    reader.readAsDataURL(event.target.files![0])
-    reader.onload = () => {
-      onFotoChange(reader.result!.toString())
+    if (!file) return;
+
+    const options = {
+      maxSizeMB: 0.065,
+      maxWidthOrHeight: 1920,
+      useWebWorker: true,
     }
-    setOpenDialog(false)
+
+    try {
+      const compressedFile = await imageCompression(file, options);
+
+      const reader = new FileReader();
+      reader.readAsDataURL(compressedFile);
+      reader.onload = () => {
+        dispatch(adicionaFotoUsuario(reader.result!.toString()));
+        onFotoChange(reader.result!.toString());
+      }
+    } catch (error) {
+      console.error('Error compressing image:', error);
+    }
+    setOpenDialog(false);
+
   }
 
   return (
@@ -49,7 +70,7 @@ export function ButtonAlterarFotoPerfil({foto, onFotoChange, nome} : Props) {
           ? <S.ComFoto src={foto} width='162px' height='162px' margin='0px 0px 32px 0px' />
           : <S.SemFoto width='162px' height='162px' margin='0px 0px 32px 0px'>{nome.slice(0, 1)}</S.SemFoto>}
         <S.DivBotoes>
-          <ButtonRemoverFotoPerfil/>
+          <ButtonRemoverFotoPerfil />
           <> <input
             style={{ display: "none" }}
             accept="image/png, image/jpeg"

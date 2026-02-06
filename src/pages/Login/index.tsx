@@ -27,6 +27,8 @@ export function Login() {
 
     if (useLogin.email) {
       setLoading(true)
+      const time = new Date();
+      const outraData = new Date().setDate(time.getDate() + 1);
       getUsers()
         .then((response) => {
           const users = response.data;
@@ -36,7 +38,8 @@ export function Login() {
               email: useLogin.email!,
               idConta: userFound[0].id!,
               nome: useLogin.nome!,
-              foto: useLogin.picture!
+              foto: useLogin.picture!,
+              token: new Date(outraData).getTime(),
             }))
             history.push('/minhas-paginas')
           } else {
@@ -46,7 +49,9 @@ export function Login() {
                   email: response.data.email,
                   idConta: response.data.id!,
                   nome: response.data.nome,
-                  foto: response.data.picture
+                  foto: response.data.picture,
+                  token: new Date(outraData).getTime(),
+
                 }))
                 history.push('/minhas-paginas')
               })

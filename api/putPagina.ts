@@ -1,7 +1,7 @@
 import { AxiosPromise, AxiosRequestConfig } from 'axios';
 import api from './apiConfig';
 
-export const apiEditaPagina = (
+export const apiPutPagina = (
     idConta: string,
     idPagina: string,
     urlPagina?: string,

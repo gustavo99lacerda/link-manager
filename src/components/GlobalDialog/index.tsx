@@ -33,6 +33,7 @@ export function GlobalDialog({
 
   return (
     <S.StyledDialog
+      closeAfterTransition={false}
       open={open}
       onClose={!disabled ? onClose : undefined}>
       <IconButton color="primary" onClick={!disabled ? onClose : undefined}>

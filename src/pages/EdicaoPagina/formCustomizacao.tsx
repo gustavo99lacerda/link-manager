@@ -7,7 +7,7 @@ import Input from '../../components/UnformComponents/Input'
 import { ButtonAlterarFotoPagina } from '../../components/ButtonAlterarFotoPagina'
 import { Button, CircularProgress } from '@material-ui/core'
 import { useRouter } from '../../hooks/useRouter'
-import { apiEditaPagina } from '../../../api/putPagina'
+import { apiPutPagina } from '../../../api/putPagina'
 import { customSnackbar } from '../../components/CustomSnackbar/customSnackbar'
 import { useState } from 'react'
 
@@ -36,7 +36,7 @@ export function FormCustomizacao({ index, value }: Props) {
 
     try {
       await validacaoFormulario.validate(dadosForm, { abortEarly: false })
-      apiEditaPagina(
+      apiPutPagina(
         user.idConta,
         paginaCompleta.idPagina,
         dadosForm.url,

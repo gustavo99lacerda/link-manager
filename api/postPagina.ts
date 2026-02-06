@@ -1,7 +1,7 @@
 import { AxiosPromise, AxiosRequestConfig } from 'axios';
 import api from './apiConfig';
 
-export const apiAdicionarPagina = (titulo: string, idConta: string, urlPagina: string, fotoPagina?: string): AxiosPromise<Object> => {
+export const apiPostPagina = (titulo: string, idConta: string, urlPagina: string, fotoPagina?: string): AxiosPromise<Object> => {
   const url = `/users/${idConta}/paginas`;
     const parametros: AxiosRequestConfig = {
         method: 'POST',

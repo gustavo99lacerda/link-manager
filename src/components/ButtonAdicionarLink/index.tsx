@@ -5,7 +5,7 @@ import { useHooks } from '../../hooks/useHooks'
 import { useRedux } from '../../hooks/useRedux'
 import { adicionarLinks } from '../../redux/modules/paginaCompleta'
 import { customSnackbar } from '../CustomSnackbar/customSnackbar'
-import { apiAdicionarLink } from '../../../api/postLink'
+import { apiGetLink } from '../../../api/postLink'
 
 export function ButtonAdicionarLink() {
 
@@ -20,7 +20,7 @@ export function ButtonAdicionarLink() {
 
   const criarLink = () => {
     setAdicionandoLink(true)
-    apiAdicionarLink(user.idConta, identificadores.idPaginaSendoEditada, paginaCompleta.links.length, dadosLink.titulo, dadosLink.url, true)
+    apiGetLink(user.idConta, identificadores.idPaginaSendoEditada, paginaCompleta.links.length, dadosLink.titulo, dadosLink.url, true)
       .then((response: any) => {
         dispatch(adicionarLinks({
           idLink: response.data.idLink,

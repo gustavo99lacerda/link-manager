@@ -4,9 +4,9 @@ import { ativarOuDesativarLink } from '../../redux/modules/paginaCompleta'
 import { ButtonExcluirLink } from '../ButtonExcluirLink'
 import * as S from './styles'
 import { CircularProgress } from '@material-ui/core'
-import { apiPutLink } from '../../../api/putLink'
 import { useHooks } from '../../hooks/useHooks'
 import { customSnackbar } from '../CustomSnackbar/customSnackbar'
+import { apiPutAtivoLink } from '../../../api/putAtivoLink'
 
 
 interface Props {
@@ -14,10 +14,9 @@ interface Props {
   url: string
   ativo: boolean
   idLink: string
-  ordem: number
 }
 
-export function CardLinks({ url, ativo, titulo, idLink, ordem }: Props) {
+export function CardLinks({ url, ativo, titulo, idLink }: Props) {
 
   const { dispatch, useAppSelect } = useRedux()
   const { translation } = useHooks()
@@ -27,7 +26,7 @@ export function CardLinks({ url, ativo, titulo, idLink, ordem }: Props) {
 
   const ativaOuDesativaLink = () => {
     setAtivando(true)
-    apiPutLink(user.idConta, paginaCompleta.idPagina, idLink, titulo, ordem, url, !ativo)
+    apiPutAtivoLink(user.idConta, paginaCompleta.idPagina, idLink, !ativo)
       .then(() => {
         setAtivando(false)
         customSnackbar(translation("snackbar.sucesso_ativardesativar_link"))
