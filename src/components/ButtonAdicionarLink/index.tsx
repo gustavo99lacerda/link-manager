@@ -20,7 +20,7 @@ export function ButtonAdicionarLink() {
 
   const criarLink = () => {
     setAdicionandoLink(true)
-    apiPostLink(identificadores.idPaginaSendoEditada, paginaCompleta.links.length, dadosLink.titulo, dadosLink.url, true)
+    apiPostLink(identificadores.idPaginaSendoEditada, paginaCompleta.links.length, dadosLink.titulo, dadosLink.url)
       .then((response: any) => {
         dispatch(adicionarLinks({
           idLink: response.data.idLink,

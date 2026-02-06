@@ -42,7 +42,7 @@ export function ButtonAlterarFotoPerfil({ foto, onFotoChange, nome }: Props) {
         onFotoChange(reader.result!.toString());
       }
     } catch (error) {
-      console.error('Error compressing image:', error);
+      console.error(error);
     }
     setOpenDialog(false);
 

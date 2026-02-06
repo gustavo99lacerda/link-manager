@@ -1,2 +1,0 @@
-Checar por api se a pagina já existe considerando o link do github pages
-No login, buscar usuarios por filtro e não todos
