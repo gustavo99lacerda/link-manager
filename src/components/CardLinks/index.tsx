@@ -20,13 +20,13 @@ export function CardLinks({ url, ativo, titulo, idLink }: Props) {
 
   const { dispatch, useAppSelect } = useRedux()
   const { translation } = useHooks()
-  const { paginaCompleta, user } = useAppSelect
+  const { paginaCompleta } = useAppSelect
 
   const [ativando, setAtivando] = useState(false)
 
   const ativaOuDesativaLink = () => {
     setAtivando(true)
-    apiPutAtivoLink(user.idConta, paginaCompleta.idPagina, idLink, !ativo)
+    apiPutAtivoLink(paginaCompleta.idPagina, idLink, !ativo)
       .then(() => {
         setAtivando(false)
         customSnackbar(translation("snackbar.sucesso_ativardesativar_link"))

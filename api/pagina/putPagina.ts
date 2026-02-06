@@ -2,7 +2,6 @@ import { AxiosPromise, AxiosRequestConfig } from 'axios';
 import api from '../apiConfig';
 
 export const apiPutPagina = (
-    idConta: string,
     idPagina: string,
     urlPagina?: string,
     foto?: string,
@@ -11,7 +10,7 @@ export const apiPutPagina = (
     fundo?: string,
     titulo?: string,
 ): AxiosPromise<Object> => {
-    const url = `/users/${idConta}/paginas/${idPagina}`;
+    const url = `/paginas/${idPagina}`;
     const parametros: AxiosRequestConfig = {
         method: 'PUT',
         url,
@@ -26,7 +25,6 @@ export const apiPutPagina = (
                 }
             },
             url: urlPagina,
-
         }
     }
     return api(parametros)

@@ -28,7 +28,7 @@ export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
   const { history } = useRouter()
   const { dispatch, useAppSelect } = useRedux()
 
-  const { paginas, user, paginaCompleta } = useAppSelect
+  const { paginas, paginaCompleta } = useAppSelect
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 
   const copiarLink = () => {
@@ -46,11 +46,11 @@ export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
     const paginaEncontrada = paginas.find(pagina => pagina.idPagina === idPagina)!
     if (paginaEncontrada.idPagina !== paginaCompleta.idPagina) {
       dispatch(updateCarregandoPrevia(true))
-      apiGetPagina(user.idConta, paginaEncontrada.idPagina)
+      apiGetPagina(paginaEncontrada.idPagina)
         .then((responsePagina: any) => {
           dispatch(setPaginaCompleta(responsePagina.data))
 
-          apiGetLinks(user.idConta, paginaEncontrada.idPagina)
+          apiGetLinks(paginaEncontrada.idPagina)
             .then((responseLinks: any) => {
               dispatch(setLinks(responseLinks.data))
             })

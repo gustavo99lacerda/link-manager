@@ -5,14 +5,14 @@ import { useHooks } from '../../hooks/useHooks'
 import { useRedux } from '../../hooks/useRedux'
 import { adicionarLinks } from '../../redux/modules/paginaCompleta'
 import { customSnackbar } from '../CustomSnackbar/customSnackbar'
-import { apiGetLink } from '../../../api/link/postLink'
+import { apiPostLink } from '../../../api/link/postLink'
 
 export function ButtonAdicionarLink() {
 
   const { mediaQuery, translation } = useHooks()
   const { useAppSelect, dispatch } = useRedux()
 
-  const { paginaCompleta, user, identificadores } = useAppSelect
+  const { paginaCompleta, identificadores } = useAppSelect
 
   const [openModal, setOpenModal] = useState(false)
   const [dadosLink, setDadosLink] = React.useState<{ titulo: string, url: string }>({ url: '', titulo: '' })
@@ -20,7 +20,7 @@ export function ButtonAdicionarLink() {
 
   const criarLink = () => {
     setAdicionandoLink(true)
-    apiGetLink(user.idConta, identificadores.idPaginaSendoEditada, paginaCompleta.links.length, dadosLink.titulo, dadosLink.url, true)
+    apiPostLink(identificadores.idPaginaSendoEditada, paginaCompleta.links.length, dadosLink.titulo, dadosLink.url, true)
       .then((response: any) => {
         dispatch(adicionarLinks({
           idLink: response.data.idLink,

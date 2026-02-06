@@ -1,8 +1,8 @@
 import { AxiosPromise, AxiosRequestConfig } from 'axios';
 import api from '../apiConfig';
 
-export const apiGetLinks = (idConta: string, idPagina: string): AxiosPromise<Object> => {
-  const url = `/users/${idConta}/paginas/${idPagina}/links`;
+export const apiGetLinks = (idPagina: string): AxiosPromise<Object> => {
+  const url = `/paginas/${idPagina}/links`;
   const parametros: AxiosRequestConfig = {
     method: 'GET',
     url,

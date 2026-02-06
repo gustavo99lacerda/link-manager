@@ -21,7 +21,7 @@ export function FormCustomizacao({ index, value }: Props) {
   const { history } = useRouter()
   const { useAppSelect} = useRedux()
 
-  const { paginaCompleta, user } = useAppSelect
+  const { paginaCompleta } = useAppSelect
 
   const [carregando, setCarregando] = useState(false)
 
@@ -37,7 +37,6 @@ export function FormCustomizacao({ index, value }: Props) {
     try {
       await validacaoFormulario.validate(dadosForm, { abortEarly: false })
       apiPutPagina(
-        user.idConta,
         paginaCompleta.idPagina,
         dadosForm.url,
         paginaCompleta.aparencia.foto,

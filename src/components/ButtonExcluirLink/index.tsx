@@ -13,14 +13,14 @@ export function ButtonExcluirLink({ idLink }: { idLink: string }) {
   const { mediaQuery, translation } = useHooks()
   const { dispatch, useAppSelect } = useRedux()
 
-  const { user, identificadores } = useAppSelect
+  const { identificadores } = useAppSelect
 
   const [openDialog, setOpenDialog] = useState(false)
   const [deletandoLink, setDeletandoLink] = useState(false)
 
   const excluirLink = () => {
     setDeletandoLink(true)
-    apiDeleteLink(user.idConta, identificadores.idPaginaSendoEditada, idLink)
+    apiDeleteLink(identificadores.idPaginaSendoEditada, idLink)
       .then(() => {
         dispatch(removerLink({ idLink }))
         customSnackbar(translation("snackbar.sucesso_excluir_link"))

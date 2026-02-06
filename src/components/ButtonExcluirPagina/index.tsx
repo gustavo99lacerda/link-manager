@@ -19,8 +19,7 @@ interface Props {
 export function ButtonExcluirPagina({ idPagina, onClose }: Props) {
 
   const { mediaQuery, translation } = useHooks()
-  const { dispatch, useAppSelect } = useRedux()
-  const { user } = useAppSelect
+  const { dispatch } = useRedux()
 
   const [openDialog, setOpenDialog] = useState(false)
   const [carregando, setCarregando] = useState(false)
@@ -32,7 +31,7 @@ export function ButtonExcluirPagina({ idPagina, onClose }: Props) {
 
   const excluirPagina = () => {
     setCarregando(true)
-    apiDeletePagina(user.idConta, idPagina)
+    apiDeletePagina(idPagina)
       .then(() => {
         dispatch(resetPaginaCompleta())
         dispatch(removePagina({ idPagina }))

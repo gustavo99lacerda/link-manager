@@ -22,16 +22,16 @@ export function EdicaoPagina() {
   const { useAppSelect, dispatch } = useRedux()
   const { history } = useRouter()
 
-  const { paginaCompleta, user, identificadores } = useAppSelect
+  const { paginaCompleta, identificadores } = useAppSelect
   const [aba, setAba] = useState(0)
   const [carregando, setCarregando] = useState(true)
 
   useEffect(() => {
-    apiGetPagina(user.idConta, identificadores.idPaginaSendoEditada)
+    apiGetPagina(identificadores.idPaginaSendoEditada)
       .then((responsePagina: any) => {
         dispatch(setPaginaCompleta(responsePagina.data))
 
-        apiGetLinks(user.idConta, identificadores.idPaginaSendoEditada)
+        apiGetLinks(identificadores.idPaginaSendoEditada)
           .then((responseLinks: any) => {
             dispatch(setLinks(responseLinks.data))
             setCarregando(false)
