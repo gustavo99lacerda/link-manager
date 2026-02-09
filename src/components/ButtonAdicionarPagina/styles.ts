@@ -23,6 +23,15 @@ export const Topicos = styled.p<{color: string}>`
   line-height: 120%;
   margin: 24px auto 4px 0;
 `
+
+export const PreUrl = styled.p`
+  color: #35424F;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 120%;
+  margin: 12px auto 4px 0;
+  justify-content: space-between;
+`
 export const StyledInput = styled(TextField) <{mediaquery?: string, bordercolor?: string}> `
   .MuiOutlinedInput-root {
     &:hover fieldset {

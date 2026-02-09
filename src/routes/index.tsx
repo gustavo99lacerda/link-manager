@@ -6,7 +6,6 @@ import PaginaInicial from '../pages/PaginaInicial';
 import { MinhasPaginas } from '../pages/MinhasPaginas';
 import { EdicaoPagina } from '../pages/EdicaoPagina';
 import { MinhaConta } from '../pages/MinhaConta';
-import { Visualizacao } from '../pages/Visualizacao';
 import { Login } from '../pages/Login';
 import { RootState } from '../redux/store';
 import { useSelector } from 'react-redux';
@@ -58,7 +57,6 @@ const Routes = () => {
       <ProtectedRoute exact path="/minhas-paginas" component={MinhasPaginas} />
       <ProtectedRoute exact path="/edicao-pagina" component={EdicaoPagina} />
       <ProtectedRoute exact path="/minha-conta" component={MinhaConta} />
-      <ProtectedRoute exact path="/visualizacao" component={Visualizacao} />
       <Route path="/:customUrl" component={Pagina} />
     </Switch>
   )

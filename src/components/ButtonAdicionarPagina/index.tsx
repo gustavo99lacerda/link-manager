@@ -7,6 +7,7 @@ import { useRedux } from "../../hooks/useRedux"
 import { addPagina } from "../../redux/modules/paginas"
 import { customSnackbar } from "../CustomSnackbar/customSnackbar"
 import { apiPostPagina } from "../../../api/pagina/postPagina"
+import { apiGetPaginaUrl } from "../../../api/pagina/getPaginaUrl"
 
 interface DadosPagina {
   url: string;
@@ -43,26 +44,51 @@ export function ButtonAdicionarPagina() {
 
     if (paginas.filter(pagina => pagina.url === dadosPagina.url).length > 0) {
       setErro(true)
+
     } else {
       setCriandoPagina(true)
       const url = dadosPagina.url!.replace(/ /g, "")
-      apiPostPagina(dadosPagina.titulo!, user.idConta, url, user.foto)
-        .then((response: any) => {
-          dispatch(addPagina({
-            idPagina: response.data.idPagina,
-            url: url,
-            titulo: dadosPagina.titulo!,
-          }))
-          customSnackbar(translation("snackbar.sucesso_criar_pagina"))
-          setDadosPagina({ titulo: "", url: "" })
-          setCriandoPagina(false)
-          onClose()
+
+      apiGetPaginaUrl(url)
+        .then((responsePagina: any) => {
+          const dataPagina = responsePagina.data[0]
+          if (dataPagina) {
+            setErro(true)
+            setCriandoPagina(false)
+            return
+          } else {
+            requisicaoApiPostPagina(url)
+          }
+
         })
         .catch((error) => {
-          console.log(error)
-          setCriandoPagina(false)
+          if (error.response?.status === 404) {
+            requisicaoApiPostPagina(url)
+          } else {
+            console.log(error)
+            setCriandoPagina(false)
+          }
         })
     }
+  }
+
+  const requisicaoApiPostPagina = (url: string) => {
+    apiPostPagina(dadosPagina.titulo!, user.idConta, url, user.foto)
+      .then((response: any) => {
+        dispatch(addPagina({
+          idPagina: response.data.idPagina,
+          url: url,
+          titulo: dadosPagina.titulo!,
+        }))
+        customSnackbar(translation("snackbar.sucesso_criar_pagina"))
+        setDadosPagina({ titulo: "", url: "" })
+        setCriandoPagina(false)
+        onClose()
+      })
+      .catch((error) => {
+        console.log(error)
+        setCriandoPagina(false)
+      })
   }
 
   return (
@@ -93,7 +119,10 @@ export function ButtonAdicionarPagina() {
           defaultValue={dadosPagina.titulo}
           placeholder={translation("dialog_criar_pagina.titulo")}
           onChange={(event) => setDadosPagina({ titulo: event?.target.value, url: dadosPagina.url })} />
-        <S.Topicos color={erro ? "#BB0A30" : "#35424F"}>{translation("url")}</S.Topicos>
+        <S.Topicos color={erro ? "#BB0A30" : "#35424F"}>{translation("url")} </S.Topicos>
+        <S.PreUrl>
+          {import.meta.env.VITE_BASE_URL!}
+        </S.PreUrl>
         <S.StyledInput
           bordercolor={erro ? "#BB0A30" : "#4D5C6C"}
           fullWidth

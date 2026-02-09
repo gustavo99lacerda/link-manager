@@ -21,8 +21,6 @@ interface IPaginas {
 
 export function MinhasPaginas() {
 
-
-
   const { mediaQuery, translation } = useHooks()
   const { useAppSelect, dispatch } = useRedux()
 
@@ -46,6 +44,7 @@ export function MinhasPaginas() {
       .catch((error) => {
         if (error.response?.status === 404) {
           dispatch(setPaginas([]))
+          setCarregandoPaginas(false)
         } else {
           setCarregandoPaginas(false)
           console.log(error)
