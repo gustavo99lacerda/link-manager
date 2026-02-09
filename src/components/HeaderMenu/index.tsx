@@ -5,27 +5,26 @@ import * as S from './styles'
 import { useHooks } from '../../hooks/useHooks';
 import { useRouter } from '../../hooks/useRouter';
 import { IconeLogout, IconeMinhaConta, IconeMinhasPaginas } from '../../assets/imgComponents';
+import br from '../../assets/flags/br.svg';
+import en from '../../assets/flags/en.svg';
+import es from '../../assets/flags/es.svg';
+import { useTranslation } from 'react-i18next';
 
 export function HeaderMenu() {
 
-  const { translation, } = useHooks()
+  const { translation } = useHooks()
   const { history, path } = useRouter()
+  const { i18n } = useTranslation()
 
   const [abrirMenu, setAbrirMenu] = useState(false)
 
-  const comoFunciona = () => {
-    const element = document.getElementById('como-funciona')
-    element?.scrollIntoView()
-    if (path.pathname !== "/") {
-      localStorage.setItem("como-funciona", "true")
-      history.push("/")
-    }
-    setAbrirMenu(false)
-  }
+    const listLanguages = [
+    { img: br, language: "pt" },
+    { img: en, language: "en" },
+    { img: es, language: "es" },
+  ]
 
   const rotasPublicas = [
-    { onClick: () => comoFunciona(), texto: translation("como_funciona"), },
-    { onClick: () => history.push("/cadastro"), texto: translation("cadastre_se"), },
     { onClick: () => history.push("/login"), texto: translation("entrar"), }
   ]
 
@@ -46,6 +45,11 @@ export function HeaderMenu() {
       texto: translation("sair")
     }
   ]
+
+    const mudarLinguagem = (language: string) => {
+    i18n.changeLanguage(language)
+  }
+
   return (
     <>
       <S.StyledButton onClick={() => setAbrirMenu(true)}>
@@ -75,6 +79,12 @@ export function HeaderMenu() {
             ))}
           </>
         }
+        <S.LanguageText>{translation("selecionar_idioma")}</S.LanguageText>
+        <S.DivFlags>
+          {listLanguages.map((language) => (
+            <S.ImgFlags key={language.language} src={language.img} onClick={() => mudarLinguagem(language.language)} />
+          ))}
+        </S.DivFlags>
       </S.DrawerStyled>
     </>
   )

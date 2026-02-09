@@ -5,6 +5,7 @@ import { useHooks } from '../../hooks/useHooks';
 import { useRedux } from '../../hooks/useRedux';
 import { Button } from '@material-ui/core';
 import { removeFotoUsuario } from '../../redux/modules/user';
+import { customSnackbar } from '../CustomSnackbar/customSnackbar';
 
 export function ButtonRemoverFotoPerfil() {
 
@@ -15,6 +16,7 @@ export function ButtonRemoverFotoPerfil() {
 
   const removerFoto = () => {
     dispatch(removeFotoUsuario())
+    customSnackbar(translation("snackbar.remover_foto_sucesso"))
     setOpenDialog(false)
   }
 

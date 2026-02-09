@@ -56,3 +56,19 @@ export const Botao = styled(Button)`
     }
   }
 `
+export const LanguageText = styled.span`
+    margin: auto 0 12px 0;
+    width: 100%;
+    padding: 0px 16px;
+    text-align: left;
+`
+export const DivFlags = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+`
+export const ImgFlags = styled.img`
+    width: 100px;
+    height: 70px;
+    cursor: pointer;
+`

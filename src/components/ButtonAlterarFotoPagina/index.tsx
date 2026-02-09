@@ -7,6 +7,7 @@ import { useHooks } from '../../hooks/useHooks'
 import { adicionarFotoPagina } from '../../redux/modules/paginaCompleta'
 import { ButtonRemoverFotoPagina } from '../ButtonRemoverFotoPagina'
 import imageCompression from 'browser-image-compression';
+import { customSnackbar } from '../CustomSnackbar/customSnackbar'
 
 export function ButtonAlterarFotoPagina() {
 
@@ -35,6 +36,8 @@ export function ButtonAlterarFotoPagina() {
       reader.readAsDataURL(compressedFile);
       reader.onload = () => {
         dispatch(adicionarFotoPagina({ foto: reader.result!.toString() }))
+        customSnackbar(translation("snackbar.alteracao_foto_sucesso"))
+
       }
     } catch (error) {
       console.error(error);

@@ -6,7 +6,6 @@ import { ButtonPicker } from './colorPicker'
 import Input from '../../components/UnformComponents/Input'
 import { ButtonAlterarFotoPagina } from '../../components/ButtonAlterarFotoPagina'
 import { Button, CircularProgress } from '@material-ui/core'
-import { useRouter } from '../../hooks/useRouter'
 import { apiPutPagina } from '../../../api/pagina/putPagina'
 import { customSnackbar } from '../../components/CustomSnackbar/customSnackbar'
 import { useState } from 'react'
@@ -18,8 +17,7 @@ interface Props {
 export function FormCustomizacao({ index, value }: Props) {
 
   const { formRef, translation } = useHooks()
-  const { history } = useRouter()
-  const { useAppSelect} = useRedux()
+  const { useAppSelect } = useRedux()
 
   const { paginaCompleta } = useAppSelect
 
@@ -117,8 +115,8 @@ export function FormCustomizacao({ index, value }: Props) {
         <S.DivButtons>
           {carregando
             ? <CircularProgress color="primary" style={{ margin: "auto" }} />
-            : <> <Button onClick={() => history.push("/visualizacao")} variant='outlined' color='primary' fullWidth >
-              {translation("formulario_customizacao.visualizar")}
+            : <> <Button onClick={() => window.open(`${import.meta.env.VITE_BASE_URL}${paginaCompleta.url}`, '_blank')} variant='outlined' color='primary' fullWidth >
+              {translation("formulario_customizacao.acessar")}
             </Button>
               <Button type="submit" variant='contained' color='primary' fullWidth >
                 {translation("formulario_customizacao.salvar")}

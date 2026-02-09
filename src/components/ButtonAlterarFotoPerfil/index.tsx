@@ -7,6 +7,7 @@ import { ButtonRemoverFotoPerfil } from '../ButtonRemoverFotoPerfil'
 import { useRedux } from '../../hooks/useRedux'
 import { adicionaFotoUsuario } from '../../redux/modules/user'
 import imageCompression from 'browser-image-compression';
+import { customSnackbar } from '../CustomSnackbar/customSnackbar'
 
 interface Props {
   onFotoChange: (newFoto: string) => void;
@@ -40,6 +41,8 @@ export function ButtonAlterarFotoPerfil({ foto, onFotoChange, nome }: Props) {
       reader.onload = () => {
         dispatch(adicionaFotoUsuario(reader.result!.toString()));
         onFotoChange(reader.result!.toString());
+        customSnackbar(translation("snackbar.alteracao_foto_sucesso"))
+
       }
     } catch (error) {
       console.error(error);
