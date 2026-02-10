@@ -2,16 +2,14 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main] # Deploy on push to main
-  workflow_dispatch: # Allow manual trigger
+    branches: [main]
+  workflow_dispatch:
 
-# Sets permissions for GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -28,20 +26,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: 'yarn'
       
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --frozen-lockfile
       
       - name: Build
         env:
-          # Map GitHub Secrets/Variables to Vite env vars
           VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
           VITE_CHAVE_GOOGLE_AUTH: ${{ secrets.VITE_CHAVE_GOOGLE_AUTH }}
           VITE_MOCK_API_BASE_URL: ${{ secrets.VITE_MOCK_API_BASE_URL }}
           VITE_MOCK_API_KEY: ${{ secrets.VITE_MOCK_API_KEY }}
-          VITE_ENABLE_DEBUG: false
-        run: npm run build
+        run: yarn build
       
       - name: Setup Pages
         uses: actions/configure-pages@v4

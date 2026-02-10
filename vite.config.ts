@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? '/project-links-manager/' : '/',
+  base: mode === 'production' ? '/project-link-manager/' : '/',
   plugins: [react()],
 }))
