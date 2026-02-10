@@ -12,6 +12,9 @@ i18n
     fallbackLng: 'pt',
     supportedLngs: ['en', 'es', 'pt'],
     debug: false,
+    backend: {
+      loadPath: `${import.meta.env.BASE_URL}locales/{{lng}}/translation.json`,
+    },
     // Detecta e guarda um cookie em cache da linguagem fornecida
     detection: {
       order: ['queryString', 'cookie'],

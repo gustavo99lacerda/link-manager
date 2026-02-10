@@ -38,7 +38,7 @@ function App() {
           <MuiPickersUtilsProvider utils={DateFnsUtils} locale={returnLocale()}>
             <Provider store={store}>
               <PersistGate loading={null} persistor={persistor}>
-                <BrowserRouter>
+                <BrowserRouter basename={import.meta.env.BASE_URL}>
                   <CustomSnackbar />
                   <Routes />
                 </BrowserRouter>
