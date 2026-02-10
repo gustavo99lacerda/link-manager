@@ -1,0 +1,115 @@
+{
+  "cancelar": "Cancel",
+  "minhas_paginas": "My pages",
+  "excluir": "Delete",
+  "minha_conta": "My account",
+  "cadastre_se": "Sign up",
+  "como_funciona": "How it works",
+  "entrar": "Login",
+  "url": "URL",
+  "alterar_foto": "Change photo",
+  "remover_foto": "Remove photo",
+  "sair": "Logout",
+  "detalhes_pagina": "Page details",
+  "selecionar_idioma": "Select language",
+  "tela_inicial": {
+    "todos_os_links": "All the links you need in one place!",
+    "crie_sua_pagina": "Create your page and share all your content with your clients and partners with just one link.",
+    "seus_links": "Your links on one page in a secure, easy and fast way.",
+    "apos_efetuar_cadastro": "After signing up, make your page look like you with full customization.",
+    "passo_1": "Step 1",
+    "passo_2": "Step 2",
+    "passo_3": "Step 3",
+    "crie_sua_conta": "Create your account",
+    "insira_seus_links": "Insert your links",
+    "crie_uma_lista": "Create a list with your links and manage everything from one account.",
+    "compartilhe_sua_pagina": "Share your page",
+    "divulgue": "Share it with anyone in an easy and fast way.",
+    "junte_todos": "Gather all your links in one place and make it your own!"
+  },
+  "footer": {},
+  "tela_login": {
+    "nao_possui_conta": "Don't have an account yet? Click the button above to create one!",
+    "acesse_conta": "Access your account",
+    "entrar_google": "Sign in with Google"
+  },
+  "tela_conta": {
+    "salvar": "Save",
+    "nome": "Name",
+    "email": "Email",
+    "nome_vazio": "Name cannot be empty"
+  },
+  "tela_minhas_paginas": {
+    "adicionar": "+ Add page",
+    "nao_possui_pagina": "You don't have any pages yet. Click the button below to add one",
+    "clique_para_adicionar": "Click the button below to add a page",
+    "copiar": "Copy",
+    "customizar": "Customize"
+  },
+  "dialog_criar_link": {
+    "criar_link": "Create new link",
+    "insira_url": "Insert URL here",
+    "insira_titulo": "Insert title here",
+    "informacao": "Fill out the form to add a new link to your page!",
+    "titulo": "Title"
+  },
+  "dialog_qr_code": {
+    "titulo": "QR Code",
+    "compartilhar": "Share",
+    "informacao": "Share this QR Code so people can view your page!"
+  },
+  "tela_editar": {
+    "links": "Links",
+    "customizar": "Customize",
+    "adicionar_link": "+ Add link",
+    "insira_seus_links": "Insert your links by clicking the button above and organize them as you prefer."
+  },
+  "formulario_customizacao": {
+    "titulo": "Page title",
+    "cor_fundo": "Background color",
+    "cor_texto": "Text color",
+    "cor_botao": "Button color",
+    "acessar": "Access",
+    "salvar": "Save",
+    "informe_url": "Enter a URL to continue!",
+    "informe_titulo": "Enter a title to continue!"
+  },
+  "dialog_excluir_pagina": {
+    "excluir_pagina": "Delete page",
+    "informacao": "Are you sure you want to delete this page? If yes, it will be permanently deleted."
+  },
+  "dialog_excluir_link": {
+    "excluir_link": "Delete link",
+    "informacao": "Are you sure you want to delete this link? If yes, it will be permanently deleted."
+  },
+  "dialog_criar_pagina": {
+    "criar_pagina": "Create a new page",
+    "informacao": "Gather all your important links on one page!",
+    "erro": "A page with this URL already exists!",
+    "titulo": "Title"
+  },
+  "dialog_foto_conta": {
+    "alterar_foto_perfil": "Change profile photo",
+    "informacao": "Change your profile photo here. If you choose to remove it, a default image will be used",
+    "remover_foto_perfil": "Remove current photo",
+    "remover_aviso": "If you choose to remove the current photo, a default profile image will be used"
+  },
+  "dialog_foto_pagina": {
+    "alterar_foto_pagina": "Change page photo",
+    "informacao": "Change the page photo here. If you wish, you can also remove the current photo",
+    "remover_foto_pagina": "Remove page photo",
+    "remover_aviso": "Are you sure you want to remove the page photo? This action cannot be undone."
+  },
+  "snackbar": {
+    "remover_foto_sucesso": "Photo removed successfully",
+    "alteracao_foto_sucesso": "Photo changed successfully",
+    "sucesso_criar_pagina": "Page created successfully",
+    "sucesso_excluir_pagina": "Page deleted successfully",
+    "sucesso_alteracoes": "Changes saved successfully",
+    "sucesso_criar_link": "Link created successfully",
+    "sucesso_copiar": "Link copied successfully",
+    "sucesso_excluir_link": "Link deleted successfully",
+    "sucesso_alterar_ordem": "Link order changed successfully",
+    "sucesso_ativardesativar_link": "Link updated successfully"
+  }
+}

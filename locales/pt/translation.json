@@ -1,0 +1,115 @@
+{
+  "cancelar": "Cancelar",
+  "minhas_paginas": "Minhas páginas",
+  "excluir": "Excluir",
+  "minha_conta": "Minha conta",
+  "cadastre_se": "Cadastre-se",
+  "como_funciona": "Como funciona",
+  "entrar": "Entrar",
+  "url": "URL",
+  "alterar_foto": "Alterar foto",
+  "remover_foto": "Remover foto",
+  "sair": "Sair",
+  "detalhes_pagina": "Detalhes da página",
+  "selecionar_idioma": "Selecionar idioma",
+  "tela_inicial": {
+    "todos_os_links": "Todos os links que você precisa em um só local!",
+    "crie_sua_pagina": "Crie sua página e compartilhe todos os seus conteúdos com seus clientes e parceiros com apenas um link.",
+    "seus_links": "Seus links em uma página de modo seguro, fácil e rápido.",
+    "apos_efetuar_cadastro": "Após efetuar o cadastro, deixe sua página com a sua cara totalmente customizável.",
+    "passo_1": "Passo 1",
+    "passo_2": "Passo 2",
+    "passo_3": "Passo 3",
+    "crie_sua_conta": "Crie sua conta",
+    "insira_seus_links": "Insira seus links",
+    "crie_uma_lista": "Crie uma lista com seus links e gerencie tudo de uma só conta.",
+    "compartilhe_sua_pagina": "Compartilhe sua página",
+    "divulgue": "Divulgue com quem quiser de modo fácil e rápido.",
+    "junte_todos": "Junte todos os seus links em um só lugar e deixe tudo do seu jeito!"
+  },
+  "footer": {},
+  "tela_login": {
+    "nao_possui_conta": "Ainda não possui uma conta? Clique no botão acima para criar uma!",
+    "acesse_conta": "Acesse sua conta",
+    "entrar_google": "Entrar com o Google"
+  },
+  "tela_conta": {
+    "salvar": "Salvar",
+    "nome": "Nome",
+    "email": "Email",
+    "nome_vazio": "O nome não pode estar vázio"
+  },
+  "tela_minhas_paginas": {
+    "adicionar": "+ Adicionar página",
+    "nao_possui_pagina": "Você ainda não possui nenhuma página. Clique no botão abaixo para adicionar",
+    "clique_para_adicionar": "Clique no botão abaixo para adicionar uma página",
+    "copiar": "Copiar",
+    "customizar": "Customizar"
+  },
+  "dialog_criar_link": {
+    "criar_link": "Criar novo link",
+    "insira_url": "Insira a URL aqui",
+    "insira_titulo": "Insira o título aqui",
+    "informacao": "Preencha o formulário para adicionar um novo link à sua página!",
+    "titulo": "Titulo"
+  },
+  "dialog_qr_code": {
+    "titulo": "QR Code",
+    "compartilhar": "Compartilhar",
+    "informacao": "Compartilhe este QR Code para que as pessoas possam visualizar sua página!"
+  },
+  "tela_editar": {
+    "links": "Links",
+    "customizar": "Customizar",
+    "adicionar_link": "+ Adicionar link",
+    "insira_seus_links": "Insira seus links clicando no botão acima e organize-os como preferir."
+  },
+  "formulario_customizacao": {
+    "titulo": "Título da página",
+    "cor_fundo": "Cor do fundo",
+    "cor_texto": "Cor do texto",
+    "cor_botao": "Cor do botão",
+    "acessar": "Acessar",
+    "salvar": "Salvar",
+    "informe_url": "Informe uma url para continuar!",
+    "informe_titulo": "Informe um titulo para continuar!"
+  },
+  "dialog_excluir_pagina": {
+    "excluir_pagina": "Excluir página",
+    "informacao": "Tem certeza que deseja excluir essa página? Em caso positivo, ela será excluída permanentemente."
+  },
+  "dialog_excluir_link": {
+    "excluir_link": "Excluir link",
+    "informacao": "Tem certeza que deseja excluir esse link? Em caso positivo, ele será excluído permanentemente."
+  },
+  "dialog_criar_pagina": {
+    "criar_pagina": "Criar uma nova página",
+    "informacao": "Junte todos os seus links importantes em uma página só!",
+    "erro": "Já existe uma página com esta URL!",
+    "titulo": "Título"
+  },
+  "dialog_foto_conta": {
+    "alterar_foto_perfil": "Alterar foto do perfil",
+    "informacao": "Altere sua foto do perfil aqui. Caso escolha remover, a imagem usada será uma predefinida",
+    "remover_foto_perfil": "Remover foto atual",
+    "remover_aviso": "Caso escolha remover a foto atual, a imagem de perfil usada será uma predefinida"
+  },
+  "dialog_foto_pagina": {
+    "alterar_foto_pagina": "Alterar foto da página",
+    "informacao": "Altere a foto da página aqui. Caso deseje, poderá também remover a foto atual",
+    "remover_foto_pagina": "Remover foto da página",
+    "remover_aviso": "Tem certeza que deseja remover a foto da página? Esta ação não poderá ser revertida."
+  },
+  "snackbar": {
+    "remover_foto_sucesso": "A foto foi removida com sucesso",
+    "alteracao_foto_sucesso": "A foto foi alterada com sucesso",
+    "sucesso_criar_pagina": "A página foi criada com sucesso",
+    "sucesso_excluir_pagina": "Página excluída com sucesso",
+    "sucesso_alteracoes": "Alterações salvas com sucesso",
+    "sucesso_criar_link": "O link foi criado com sucesso",
+    "sucesso_copiar": "Link copiado com sucesso",
+    "sucesso_excluir_link": "Link excluido com sucesso",
+    "sucesso_alterar_ordem": "A ordem do link foi alterada com sucesso",
+    "sucesso_ativardesativar_link": "Link alterado com sucesso"
+  }
+}
