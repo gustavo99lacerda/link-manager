@@ -62,10 +62,12 @@ export const LanguageText = styled.span`
     padding: 0px 16px;
     text-align: left;
 `
-export const DivFlags = styled.div`
+export const DivFlags = styled.div<{ mediaquery: string }>`
     display: flex;
     width: 100%;
-    justify-content: space-evenly;
+    gap: 16px;
+    padding: 0px 16px;
+    justify-content: flex-start;
 `
 export const ImgFlags = styled.img`
     width: 100px;

@@ -13,12 +13,15 @@ export const Menu = styled.aside`
   padding: 26px 24px;
   z-index: 1;
 `
-export const StyledButton = styled(Button)`
-  &.MuiButton-root {
-    background: transparent;
-    align-self: center;
-    margin-bottom: 82px;
-  }
+
+
+export const LogoText = styled.span `
+  color: #16825D;
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 82px;
+  width: 100%;
+  text-align: center;
 `
 export const ButtonsMenu = styled(Button)<{ colortext: string }>`
   &.MuiButton-root{
@@ -46,4 +49,20 @@ export const ButtonsMenu = styled(Button)<{ colortext: string }>`
       }
     }
   }
+`
+export const LanguageText = styled.span`
+    margin: auto 0 12px 0;
+    width: 100%;
+    text-align: left;
+    color: #000000;
+`
+export const DivFlags = styled.div<{mediaquery: string}>`
+    display: flex;
+    width: 100%;
+    justify-content:space-evenly;
+`
+export const ImgFlags = styled.img`
+    width: 70px;
+    height: 45px;
+    cursor: pointer;
 `

@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 
 export function HeaderMenu() {
 
-  const { translation } = useHooks()
+  const { translation, mediaQuery } = useHooks()
   const { history, path } = useRouter()
   const { i18n } = useTranslation()
 
@@ -80,7 +80,7 @@ export function HeaderMenu() {
           </>
         }
         <S.LanguageText>{translation("selecionar_idioma")}</S.LanguageText>
-        <S.DivFlags>
+        <S.DivFlags mediaquery={mediaQuery}>
           {listLanguages.map((language) => (
             <S.ImgFlags key={language.language} src={language.img} onClick={() => mudarLinguagem(language.language)} />
           ))}

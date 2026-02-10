@@ -21,8 +21,8 @@ export function Header() {
       <S.BackButton onClick={() => history.push(url)}>
         <ArrowBackIos fontSize="small" />
         {texto}
-      </S.BackButton> 
-      {pathname === "/edicao-pagina" && mediaQuery === "true" ?  <StyledBreadcrumbs /> : null}
+      </S.BackButton>
+      {pathname === "/edicao-pagina" && mediaQuery === "true" ? <StyledBreadcrumbs /> : null}
     </S.DivBotaoVoltar >
   }
 
@@ -35,12 +35,15 @@ export function Header() {
   }
 
   const renderizaComponenteCentral: Record<string, any> = {
-    "/": mediaQuery === "true" ? null : <S.LogoText>Links Manager</S.LogoText>,
-    "/login": mediaQuery === "true" ? null : <S.LogoText>Links Manager</S.LogoText>
+    "/": <S.LogoText>LINKS MANAGER</S.LogoText>,
+    "/login": mediaQuery === "true" ? null : <S.LogoText>LINKS MANAGER</S.LogoText>
   }
   const renderizaComponenteDireito: Record<string, any> = {
     "/login": <HeaderMenu />,
     "/minhas-paginas": <HeaderMenu />,
+    "/edicao-pagina": <HeaderMenu />,
+    "/minha-conta": <HeaderMenu />,
+
   }
 
   return (

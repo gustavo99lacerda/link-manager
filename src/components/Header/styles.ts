@@ -20,7 +20,8 @@ export const StyledButton = styled(Button)`
   }
 `
 export const LogoText = styled.span `
-  color: black;
+  color: #16825D;
+  font-weight: 500;
   font-size: 24px;
 
 `
