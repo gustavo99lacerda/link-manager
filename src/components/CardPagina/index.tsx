@@ -78,7 +78,7 @@ export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
       <S.CardBody >
         <S.ClickArea onClick={() => selecionarPagina()}>
           <S.PrimeiraLinha >{titulo}</S.PrimeiraLinha>
-          <S.SegundaLinha>{url}</S.SegundaLinha>
+          <S.SegundaLinha>{import.meta.env.VITE_BASE_URL + url}</S.SegundaLinha>
         </S.ClickArea>
         <S.StyledIconButton
           aria-controls={'basic-menu'}

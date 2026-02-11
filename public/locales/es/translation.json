@@ -68,6 +68,7 @@
     "titulo": "Título de la página",
     "cor_fundo": "Color de fondo",
     "cor_texto": "Color del texto",
+    "cor_texto_botao": "Color del texto del botón",
     "cor_botao": "Color del botón",
     "acessar": "Acceder",
     "salvar": "Guardar",
@@ -102,6 +103,7 @@
   },
   "snackbar": {
     "remover_foto_sucesso": "Foto eliminada con éxito",
+    "pagina_existente": "¡Ya existe una página con esta URL!",
     "alteracao_foto_sucesso": "Foto cambiada con éxito",
     "sucesso_criar_pagina": "Página creada con éxito",
     "sucesso_excluir_pagina": "Página eliminada con éxito",

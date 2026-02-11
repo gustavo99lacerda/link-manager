@@ -34,10 +34,10 @@ export const ContentMolde = styled.div<{ backgroundprevia?: string }>`
   }
 `
 
-export const Links = styled.div<{ backgroundcolor: string, color: string }>`
+export const Links = styled.div<{ backgroundcolor: string, color: string, textoBotao: string }>`
   justify-content: center;
   align-items: center;
-  color: ${(props) => props.color};
+  color: ${(props) => props.textoBotao};
   background-color: ${(props) => props.backgroundcolor};
   display: flex;
   width: 209px;

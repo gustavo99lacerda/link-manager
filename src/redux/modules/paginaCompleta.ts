@@ -10,6 +10,7 @@ interface IPaginaCompleta {
     cor: {
       botao: string
       texto: string
+      textoBotao: string
       fundo: string
     }
   }
@@ -32,6 +33,7 @@ const initialState: IPaginaCompleta = {
     foto: "",
     cor: {
       botao: "",
+      textoBotao: "",
       texto: "",
       fundo: ""
     }
@@ -96,6 +98,11 @@ const paginaCompletaSlice = createSlice({
       state.aparencia.cor.botao = action.payload
 
       return state
+    },    
+    trocarCorDoTextoBotaoPagina: (state, action: PayloadAction<string>) => {
+      state.aparencia.cor.textoBotao = action.payload
+
+      return state
     },
     alteraOrdemDosLinks: (state, action: PayloadAction<{ idLinkOrigem: string, idLinkDestino: string, direcao: string }>) => {
       const idLinkOrigem = state.links.filter(link => link.idLink === action.payload.idLinkOrigem)
@@ -139,6 +146,7 @@ export const {
   trocarCorDeFundoPagina,
   trocarCorDoTextoPagina,
   trocarCorDoBotaoPagina,
+  trocarCorDoTextoBotaoPagina,
   setLinks
 } = paginaCompletaSlice.actions
 

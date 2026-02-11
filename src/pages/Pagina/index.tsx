@@ -12,6 +12,7 @@ interface PaginaCompleta {
   aparencia: {
     cor: {
       botao: string
+      textoBotao: string
       texto: string
       fundo: string
     }
@@ -33,6 +34,7 @@ const estadoInicial: PaginaCompleta = {
   aparencia: {
     cor: {
       botao: '',
+      textoBotao: '',
       fundo: '',
       texto: ''
     },
@@ -104,7 +106,7 @@ export const Pagina = () => {
               <S.ButtonsLinks
                 key={item.idLink}
                 mediaquery={mediaQuery}
-                textcolor={paginaCompleta.aparencia.cor.texto}
+                textcolor={paginaCompleta.aparencia.cor.textoBotao}
                 background={paginaCompleta.aparencia.cor.botao}
                 onClick={() => window.open(`https://${item.url}`, '_blank')} >
                 <span style={{ marginLeft: "auto", marginRight: "auto" }}> {item.descricao}</span>

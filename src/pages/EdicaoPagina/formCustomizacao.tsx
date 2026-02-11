@@ -9,6 +9,8 @@ import { Button, CircularProgress } from '@material-ui/core'
 import { apiPutPagina } from '../../../api/pagina/putPagina'
 import { customSnackbar } from '../../components/CustomSnackbar/customSnackbar'
 import { useState } from 'react'
+import { setPaginaCompleta } from '../../redux/modules/paginaCompleta'
+import { apiGetPaginaUrl } from '../../../api/pagina/getPaginaUrl'
 
 interface Props {
   index: number;
@@ -17,7 +19,7 @@ interface Props {
 export function FormCustomizacao({ index, value }: Props) {
 
   const { formRef, translation } = useHooks()
-  const { useAppSelect } = useRedux()
+  const { useAppSelect, dispatch } = useRedux()
 
   const { paginaCompleta } = useAppSelect
 
@@ -28,30 +30,34 @@ export function FormCustomizacao({ index, value }: Props) {
     url: Yup.string().required(translation("formulario_customizacao.informe_url")),
   })
 
-  const salvarAparencia = async (dadosForm: { titulo: string, url: string, fundo: string, texto: string, botao: string }) => {
+  const salvarAparencia = async (dadosForm: { titulo: string, url: string, fundo: string, texto: string, botao: string, textoBotao: string }) => {
     formRef.current?.setErrors({})
     setCarregando(true)
 
     try {
       await validacaoFormulario.validate(dadosForm, { abortEarly: false })
-      apiPutPagina(
-        paginaCompleta.idPagina,
-        dadosForm.url,
-        paginaCompleta.aparencia.foto,
-        dadosForm.botao,
-        dadosForm.texto,
-        dadosForm.fundo,
-        dadosForm.titulo
-      ).then(() => {
-        setCarregando(false)
 
-        customSnackbar(translation("snackbar.sucesso_alteracoes"))
+      apiGetPaginaUrl(dadosForm.url)
+        .then((responsePagina: any) => {
+          const dataPagina = responsePagina.data[0]
+          if (dataPagina && dataPagina.idPagina !== paginaCompleta.idPagina) {
+            customSnackbar(translation("snackbar.pagina_existente"))
+            setCarregando(false)
+            return
+          } else {
+            requisicaoApiPostPagina(dadosForm)
+          }
 
-      }).catch((error) => {
-        setCarregando(false)
+        })
+        .catch((error) => {
+          if (error.response?.status === 404) {
+            requisicaoApiPostPagina(dadosForm)
+          } else {
+            console.log(error)
+            setCarregando(false)
+          }
+        })
 
-        console.log(error)
-      })
     } catch (error) {
       setCarregando(false)
 
@@ -65,6 +71,40 @@ export function FormCustomizacao({ index, value }: Props) {
     }
   }
 
+  const requisicaoApiPostPagina = (dadosForm: { titulo: string, url: string, fundo: string, texto: string, botao: string, textoBotao: string }) => {
+    apiPutPagina(
+      paginaCompleta.idPagina,
+      dadosForm.url,
+      paginaCompleta.aparencia.foto,
+      dadosForm.botao,
+      dadosForm.texto,
+      dadosForm.fundo,
+      dadosForm.textoBotao,
+      dadosForm.titulo
+    ).then(() => {
+      setCarregando(false)
+      dispatch(setPaginaCompleta({
+        ...paginaCompleta,
+        titulo: dadosForm.titulo,
+        url: dadosForm.url,
+        aparencia: {
+          ...paginaCompleta.aparencia,
+          cor: {
+            ...paginaCompleta.aparencia.cor,
+            fundo: dadosForm.fundo,
+            texto: dadosForm.texto,
+            botao: dadosForm.botao,
+            textoBotao: dadosForm.textoBotao
+          }
+        }
+      }))
+      customSnackbar(translation("snackbar.sucesso_alteracoes"))
+      setCarregando(false)
+    }).catch((error) => {
+      setCarregando(false)
+      console.log(error)
+    })
+  }
 
   return (
     <S.ContentForm >
@@ -93,6 +133,7 @@ export function FormCustomizacao({ index, value }: Props) {
               variant="outlined" />
             <ButtonPicker parte='cor-fundo' backgroundcolor={paginaCompleta.aparencia.cor.fundo} />
           </S.DivInputs>
+
           <S.Topicos margin="24px auto 8px 0">{translation("formulario_customizacao.cor_texto")}</S.Topicos>
           <S.DivInputs>
             <Input
@@ -102,6 +143,17 @@ export function FormCustomizacao({ index, value }: Props) {
               variant="outlined" />
             <ButtonPicker parte='cor-texto' backgroundcolor={paginaCompleta.aparencia.cor.texto} />
           </S.DivInputs>
+
+          <S.Topicos margin="24px auto 8px 0">{translation("formulario_customizacao.cor_texto_botao")}</S.Topicos>
+          <S.DivInputs>
+            <Input
+              value={paginaCompleta.aparencia.cor.textoBotao}
+              width="100%"
+              name="textoBotao"
+              variant="outlined" />
+            <ButtonPicker parte='cor-texto-botao' backgroundcolor={paginaCompleta.aparencia.cor.textoBotao} />
+          </S.DivInputs>
+
           <S.Topicos margin="24px auto 8px 0">{translation("formulario_customizacao.cor_botao")}</S.Topicos>
           <S.DivInputs>
             <Input

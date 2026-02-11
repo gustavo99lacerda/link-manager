@@ -1,14 +1,14 @@
 import React from 'react'
 import * as S from './styles'
 import { useRedux } from '../../hooks/useRedux'
-import { trocarCorDeFundoPagina, trocarCorDoBotaoPagina, trocarCorDoTextoPagina } from '../../redux/modules/paginaCompleta'
+import { trocarCorDeFundoPagina, trocarCorDoBotaoPagina, trocarCorDoTextoPagina, trocarCorDoTextoBotaoPagina } from '../../redux/modules/paginaCompleta'
 
 interface Props {
   parte: string
   backgroundcolor: string
 }
 
-export function ButtonPicker({ backgroundcolor,  parte}: Props) {
+export function ButtonPicker({ backgroundcolor, parte }: Props) {
 
   const { dispatch } = useRedux()
 
@@ -24,6 +24,9 @@ export function ButtonPicker({ backgroundcolor,  parte}: Props) {
         break;
       case "cor-botao":
         dispatch(trocarCorDoBotaoPagina(cor))
+        break;
+      case "cor-texto-botao":
+        dispatch(trocarCorDoTextoBotaoPagina(cor))
         break;
     }
   }
