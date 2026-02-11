@@ -67,13 +67,13 @@ export const ListaLinks = styled.div`
 export const ButtonsLinks = styled(Button) <{ textcolor: string, background: string, mediaquery: string }>`
   &.MuiButtonBase-root {
     border: 3px solid #000;
-    background: #FFFFFF;
+    background: ${props => props.background};
     color: #000;
     padding: 12px;
     box-shadow: 4px 4px 0 #000;
     transition: all 0.2s ease;
     width:  ${props => props.mediaquery === "true" ? "50%" : "80%"};
-    height: 65px;
+    height: 75px;
     margin-top: 25px;
     border-radius: 20px;
     color: ${props => props.textcolor};
@@ -81,7 +81,7 @@ export const ButtonsLinks = styled(Button) <{ textcolor: string, background: str
   }
   &.MuiButtonBase-root:hover{
     box-shadow: 2px 2px 0 #000;
-    transform: translate(5px, 5px);
-    background: #FFFFFF;
+    transform: translate(0px, -10px);
+    background: ${props => props.background};
   }
 `

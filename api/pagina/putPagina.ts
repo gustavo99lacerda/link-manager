@@ -8,6 +8,7 @@ export const apiPutPagina = (
     botao?: string,
     texto?: string,
     fundo?: string,
+    textoBotao?: string,
     titulo?: string,
 ): AxiosPromise<Object> => {
     const url = `/paginas/${idPagina}`;
@@ -21,6 +22,7 @@ export const apiPutPagina = (
                 cor: {
                     botao,
                     texto,
+                    textoBotao,
                     fundo
                 }
             },
