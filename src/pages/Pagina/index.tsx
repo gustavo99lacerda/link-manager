@@ -83,7 +83,7 @@ export const Pagina = () => {
         setCarregando(false)
       })
 
-  }, [])
+  }, [customUrl])
 
   return (
     <>
