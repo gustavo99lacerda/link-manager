@@ -68,6 +68,7 @@
     "titulo": "Page title",
     "cor_fundo": "Background color",
     "cor_texto": "Text color",
+    "cor_texto_botao": "Button text color",
     "cor_botao": "Button color",
     "acessar": "Access",
     "salvar": "Save",
@@ -102,6 +103,7 @@
   },
   "snackbar": {
     "remover_foto_sucesso": "Photo removed successfully",
+    "pagina_existente": "A page with this URL already exists",
     "alteracao_foto_sucesso": "Photo changed successfully",
     "sucesso_criar_pagina": "Page created successfully",
     "sucesso_excluir_pagina": "Page deleted successfully",
