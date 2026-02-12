@@ -27,7 +27,9 @@
     "divulgue": "Divulgue com quem quiser de modo fácil e rápido.",
     "junte_todos": "Junte todos os seus links em um só lugar e deixe tudo do seu jeito!"
   },
-  "footer": {},
+  "footer": {
+    "disclaimer": "Este projeto foi desenvolvido exclusivamente para fins educacionais e de demonstração de habilidades técnicas, sem qualquer finalidade comercial ou lucrativa."
+  },
   "tela_login": {
     "nao_possui_conta": "Ainda não possui uma conta? Clique no botão acima para criar uma!",
     "acesse_conta": "Acesse sua conta",
