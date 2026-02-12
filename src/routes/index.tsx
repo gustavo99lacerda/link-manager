@@ -10,7 +10,6 @@ import { Login } from '../pages/Login';
 import { RootState } from '../redux/store';
 import { useSelector } from 'react-redux';
 import { Pagina } from '../pages/Pagina';
-import { HashRouter } from 'react-router-dom';
 
 interface ProtectedRouteProps extends RouteProps {
   component: any
@@ -58,9 +57,7 @@ const Routes = () => {
       <ProtectedRoute exact path="/minhas-paginas" component={MinhasPaginas} />
       <ProtectedRoute exact path="/edicao-pagina" component={EdicaoPagina} />
       <ProtectedRoute exact path="/minha-conta" component={MinhaConta} />
-      <HashRouter>
-        <Route path="/:customUrl" component={Pagina} />
-      </HashRouter>
+      <Route path="/:customUrl" component={Pagina} />
     </Switch>
   )
 };
