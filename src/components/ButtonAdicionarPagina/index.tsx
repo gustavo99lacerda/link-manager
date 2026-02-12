@@ -121,7 +121,7 @@ export function ButtonAdicionarPagina() {
           onChange={(event) => setDadosPagina({ titulo: event?.target.value, url: dadosPagina.url })} />
         <S.Topicos color={erro ? "#BB0A30" : "#35424F"}>{translation("url")} </S.Topicos>
         <S.PreUrl>
-          {import.meta.env.VITE_BASE_URL!}
+          {import.meta.env.VITE_BASE_URL! + "#/"}
         </S.PreUrl>
         <S.StyledInput
           bordercolor={erro ? "#BB0A30" : "#4D5C6C"}

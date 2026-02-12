@@ -167,7 +167,7 @@ export function FormCustomizacao({ index, value }: Props) {
         <S.DivButtons>
           {carregando
             ? <CircularProgress color="primary" style={{ margin: "auto" }} />
-            : <> <Button onClick={() => window.open(`${import.meta.env.VITE_BASE_URL}${paginaCompleta.url}`, '_blank')} variant='outlined' color='primary' fullWidth >
+            : <> <Button onClick={() => window.open(`${import.meta.env.VITE_BASE_URL}#/${paginaCompleta.url}`, '_blank')} variant='outlined' color='primary' fullWidth >
               {translation("formulario_customizacao.acessar")}
             </Button>
               <Button type="submit" variant='contained' color='primary' fullWidth >
