@@ -32,7 +32,7 @@ export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 
   const copiarLink = () => {
-    navigator.clipboard.writeText(url)
+    navigator.clipboard.writeText(import.meta.env.VITE_BASE_URL + "#/" + url)
     customSnackbar(translation("snackbar.sucesso_copiar"))
     setAnchorEl(null)
   }
@@ -78,7 +78,7 @@ export function CardPagina({ titulo, url, idPagina, selecionado }: Props) {
       <S.CardBody >
         <S.ClickArea onClick={() => selecionarPagina()}>
           <S.PrimeiraLinha >{titulo}</S.PrimeiraLinha>
-          <S.SegundaLinha>{import.meta.env.VITE_BASE_URL + url}</S.SegundaLinha>
+          <S.SegundaLinha>{import.meta.env.VITE_BASE_URL + "#/" + url}</S.SegundaLinha>
         </S.ClickArea>
         <S.StyledIconButton
           aria-controls={'basic-menu'}
