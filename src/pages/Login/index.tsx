@@ -38,7 +38,7 @@ export function Login() {
               email: useLogin.email!,
               idConta: userFound[0].id!,
               nome: useLogin.nome!,
-              foto: useLogin.picture!,
+              foto: "",
               token: new Date(outraData).getTime(),
             }))
             history.push('/minhas-paginas')
@@ -49,7 +49,7 @@ export function Login() {
                   email: response.data.email,
                   idConta: response.data.id!,
                   nome: response.data.nome,
-                  foto: response.data.picture,
+                  foto: "",
                   token: new Date(outraData).getTime(),
 
                 }))

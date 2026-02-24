@@ -8,19 +8,7 @@ export const DivContent = styled.div`
   justify-content: flex-start;
   margin: 0 auto 0 0;
 `
-export const SemFoto = styled.div<{ width: string, height: string, margin?: string }>`
-  width: ${props => props.width};
-  height: ${props => props.height};
-  margin: ${props => props.margin};
-  border-radius: 50%;
-  background-color: gray;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  color: white;
-  font-size: 40px;
-  text-transform: uppercase;
-`
+
 export const ComFoto = styled.img<{ width: string, height: string, margin?: string }>`
   width: ${props => props.width};
   height: ${props => props.height};

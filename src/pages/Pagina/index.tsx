@@ -5,6 +5,8 @@ import { apiGetPaginaUrl } from '../../../api/pagina/getPaginaUrl';
 import { CircularProgress } from '@material-ui/core';
 import * as S from './styles'
 import { useHooks } from '../../hooks/useHooks';
+import defaultUser from '../../assets/defaultUser.jpg'
+
 
 interface PaginaCompleta {
   idPagina: string
@@ -91,13 +93,7 @@ export const Pagina = () => {
         ? <CircularProgress color="primary" style={{ margin: "100%" }} />
         : <S.Content mediaquery={mediaQuery} backgroundcolor={paginaCompleta.aparencia.cor.fundo}>
           <S.DivImage mediaquery={mediaQuery}>
-            {paginaCompleta.aparencia.foto === ""
-              ? <S.SemFoto
-                textcolor={paginaCompleta.aparencia.cor.texto}
-                background={paginaCompleta.aparencia.cor.botao}   >
-                <span>{paginaCompleta.titulo.substring(0, 1).toUpperCase()}</span>
-              </S.SemFoto>
-              : <img src={paginaCompleta.aparencia.foto} alt="imagem da página" />}
+            <img src={paginaCompleta.aparencia.foto ? paginaCompleta.aparencia.foto : defaultUser} alt="imagem da página" />
             <div className="espaco-branco"></div>
           </S.DivImage>
           <S.NomePagina textcolor={paginaCompleta.aparencia.cor.texto}>{paginaCompleta.titulo}</S.NomePagina>
