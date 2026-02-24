@@ -27,31 +27,37 @@ export function EdicaoPagina() {
   const [carregando, setCarregando] = useState(true)
 
   useEffect(() => {
-    apiGetPagina(identificadores.idPaginaSendoEditada)
-      .then((responsePagina: any) => {
-        dispatch(setPaginaCompleta(responsePagina.data))
 
-        apiGetLinks(identificadores.idPaginaSendoEditada)
-          .then((responseLinks: any) => {
-            dispatch(setLinks(responseLinks.data))
-            setCarregando(false)
+    if (identificadores.idPaginaSendoEditada === "") {
+      history.push("/minhas-paginas")
+      return
+    } else {
 
-          })
-          .catch((error) => {
-            if (error.response?.status === 404) {
-              dispatch(setLinks([]))
+      apiGetPagina(identificadores.idPaginaSendoEditada)
+        .then((responsePagina: any) => {
+          dispatch(setPaginaCompleta(responsePagina.data))
+
+          apiGetLinks(identificadores.idPaginaSendoEditada)
+            .then((responseLinks: any) => {
+              dispatch(setLinks(responseLinks.data))
               setCarregando(false)
-            } else {
-              console.log(error)
-              setCarregando(false)
-            }
-          })
-      })
-      .catch((error) => {
-        console.log(error)
-        setCarregando(false)
-      })
 
+            })
+            .catch((error) => {
+              if (error.response?.status === 404) {
+                dispatch(setLinks([]))
+                setCarregando(false)
+              } else {
+                console.log(error)
+                setCarregando(false)
+              }
+            })
+        })
+        .catch((error) => {
+          console.log(error)
+          setCarregando(false)
+        })
+    }
   }, [])
 
 
