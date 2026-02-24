@@ -27,7 +27,7 @@ const reducers = combineReducers({
 const persistConfig = {
   key: 'project-link-manager',
   storage,
-  blacklist: []
+  blacklist: [ 'paginaCompleta', 'paginas' ]
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers)
