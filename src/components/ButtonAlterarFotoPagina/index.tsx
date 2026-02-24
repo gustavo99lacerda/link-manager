@@ -8,6 +8,7 @@ import { adicionarFotoPagina } from '../../redux/modules/paginaCompleta'
 import { ButtonRemoverFotoPagina } from '../ButtonRemoverFotoPagina'
 import imageCompression from 'browser-image-compression';
 import { customSnackbar } from '../CustomSnackbar/customSnackbar'
+import defaultUser from '../../assets/defaultUser.jpg'
 
 export function ButtonAlterarFotoPagina() {
 
@@ -48,9 +49,7 @@ export function ButtonAlterarFotoPagina() {
 
   return (
     <S.DivContent>
-      {paginaCompleta.aparencia.foto
-        ? <S.ComFoto src={paginaCompleta.aparencia.foto} alt='foto pagina' width='115px' height='115px' />
-        : <S.SemFoto width='115px' height='115px'>{paginaCompleta.titulo.slice(0, 1)}</S.SemFoto>}
+      <S.ComFoto src={paginaCompleta.aparencia.foto ? paginaCompleta.aparencia.foto : defaultUser} alt='foto pagina' width='115px' height='115px' />
       <Button variant='contained' color='primary' onClick={() => setOpenDialog(true)}>
         {translation("alterar_foto")}
       </Button>
@@ -64,9 +63,7 @@ export function ButtonAlterarFotoPagina() {
         <S.DialogInfo mediaquery={mediaQuery}>
           {translation("dialog_foto_pagina.informacao")}
         </S.DialogInfo>
-        {paginaCompleta.aparencia.foto
-          ? <S.ComFoto src={paginaCompleta.aparencia.foto} width='162px' height='162px' margin='0px 0px 32px 0px' />
-          : <S.SemFoto width='162px' height='162px' margin='0px 0px 32px 0px'>{paginaCompleta.titulo.slice(0, 1)}</S.SemFoto>}
+        <S.ComFoto src={paginaCompleta.aparencia.foto ? paginaCompleta.aparencia.foto : defaultUser} width='162px' height='162px' margin='0px 0px 32px 0px' />
         <S.DivBotoes>
           <ButtonRemoverFotoPagina />
           <input

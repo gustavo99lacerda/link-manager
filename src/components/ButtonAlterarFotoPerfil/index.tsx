@@ -8,14 +8,14 @@ import { useRedux } from '../../hooks/useRedux'
 import { adicionaFotoUsuario } from '../../redux/modules/user'
 import imageCompression from 'browser-image-compression';
 import { customSnackbar } from '../CustomSnackbar/customSnackbar'
+import defaultUser from '../../assets/defaultUser.jpg'
 
 interface Props {
   onFotoChange: (newFoto: string) => void;
   foto: string
-  nome: string
 }
 
-export function ButtonAlterarFotoPerfil({ foto, onFotoChange, nome }: Props) {
+export function ButtonAlterarFotoPerfil({ foto, onFotoChange }: Props) {
 
   const { mediaQuery, translation } = useHooks()
   const { dispatch } = useRedux()
@@ -53,9 +53,7 @@ export function ButtonAlterarFotoPerfil({ foto, onFotoChange, nome }: Props) {
 
   return (
     <S.DivContent>
-      {foto
-        ? <S.ComFoto src={foto} width='115px' height='115px' />
-        : <S.SemFoto width='115px' height='115px'>{nome.slice(0, 1)}</S.SemFoto>}
+      <S.ComFoto src={foto ? foto : defaultUser} width='115px' height='115px' />
       <Button color='primary' variant='contained' onClick={() => setOpenDialog(true)}>
         {translation("alterar_foto")}
       </Button>
@@ -69,9 +67,7 @@ export function ButtonAlterarFotoPerfil({ foto, onFotoChange, nome }: Props) {
         <S.DialogInfo mediaquery={mediaQuery}>
           {translation("dialog_foto_conta.informacao")}
         </S.DialogInfo>
-        {foto
-          ? <S.ComFoto src={foto} width='162px' height='162px' margin='0px 0px 32px 0px' />
-          : <S.SemFoto width='162px' height='162px' margin='0px 0px 32px 0px'>{nome.slice(0, 1)}</S.SemFoto>}
+        <S.ComFoto src={foto ? foto : defaultUser} width='162px' height='162px' margin='0px 0px 32px 0px' />
         <S.DivBotoes>
           <ButtonRemoverFotoPerfil />
           <> <input

@@ -24,20 +24,6 @@ export const DivImage = styled.div<{ mediaquery: string }>`
     border-radius: 50%;
   }
 `
-export const SemFoto = styled.div<{ textcolor: string, background: string }>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 155px;
-  height: 155px;
-  border-radius: 50%;
-  color: ${props => props.textcolor};
-
-  span {
-    font-size: 120px;
-    font-weight: 500;
-  }
-`
 export const BotaoVoltar = styled(IconButton)`
   &.MuiIconButton-root {
     padding: 0;

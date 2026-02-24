@@ -69,7 +69,7 @@ export function MinhaConta() {
         <S.Form ref={formRef} onSubmit={salvarFormulario} mediaquery={mediaQuery}>
           <S.DivForm>
             <S.Title mediaquery={mediaQuery}>{translation("minha_conta")}</S.Title>
-            <ButtonAlterarFotoPerfil foto={dadosConta.foto} nome={dadosConta.nome} onFotoChange={trocaFoto} />
+            <ButtonAlterarFotoPerfil foto={dadosConta.foto} onFotoChange={trocaFoto} />
             <S.Topicos
               margin={mediaQuery === "true" ? "50px auto 8px 0" : "16px auto 8px 0"}>
               {translation("tela_conta.nome")}

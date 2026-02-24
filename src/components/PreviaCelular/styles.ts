@@ -53,16 +53,3 @@ export const Titulo = styled.p<{ color: string }>`
   font-weight: 400;
   color: ${props => props.color};
 `
-export const SemFoto = styled.div<{ width: string, height: string, margin: string }>`
-  width: ${props => props.width};
-  height: ${props => props.height};
-  margin: ${props => props.margin};
-  border-radius: 50%;
-  background-color: gray;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  color: white;
-  font-size: 40px;
-  text-transform: uppercase;
-`
