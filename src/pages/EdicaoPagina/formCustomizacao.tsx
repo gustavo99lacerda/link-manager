@@ -11,6 +11,7 @@ import { customSnackbar } from '../../components/CustomSnackbar/customSnackbar'
 import { useState } from 'react'
 import { setPaginaCompleta } from '../../redux/modules/paginaCompleta'
 import { apiGetPaginaUrl } from '../../../api/pagina/getPaginaUrl'
+import { ButtonAlterarFotoBackground } from '../../components/ButtonAlterarBackground'
 
 interface Props {
   index: number;
@@ -163,6 +164,8 @@ export function FormCustomizacao({ index, value }: Props) {
               variant="outlined" />
             <ButtonPicker parte='cor-botao' backgroundcolor={paginaCompleta.aparencia.cor.botao} />
           </S.DivInputs>
+                    <S.Topicos margin="16px auto 8px 0" >Background Image</S.Topicos>
+        <ButtonAlterarFotoBackground />
         </S.ContentForm>
         <S.DivButtons>
           {carregando

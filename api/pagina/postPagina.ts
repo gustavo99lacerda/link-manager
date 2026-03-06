@@ -12,6 +12,7 @@ export const apiPostPagina = (titulo: string, idConta: string, urlPagina: string
             ativo: true,
             aparencia: {
                 foto: fotoPagina,
+                background: "",
                 cor: {
                     botao: "#FFFFFF",
                     texto: "#FFFFFF",

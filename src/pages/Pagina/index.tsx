@@ -8,7 +8,7 @@ import { useHooks } from '../../hooks/useHooks';
 import defaultUser from '../../assets/defaultUser.jpg'
 
 
-interface PaginaCompleta {
+interface DadosPagina {
   idPagina: string
   titulo: string
   aparencia: {
@@ -18,6 +18,7 @@ interface PaginaCompleta {
       texto: string
       fundo: string
     }
+    background: string
     foto: string
   }
   links: Array<{
@@ -30,7 +31,7 @@ interface PaginaCompleta {
   url: string
 }
 
-const estadoInicial: PaginaCompleta = {
+const estadoInicial: DadosPagina = {
   idPagina: '',
   titulo: '',
   aparencia: {
@@ -40,6 +41,7 @@ const estadoInicial: PaginaCompleta = {
       fundo: '',
       texto: ''
     },
+    background: '',
     foto: ''
   },
   links: [],
@@ -51,7 +53,7 @@ export const Pagina = () => {
   const { customUrl } = useParams<{ customUrl: string }>();
   const { mediaQuery } = useHooks()
 
-  const [paginaCompleta, setPaginaCompleta] = useState<PaginaCompleta>(estadoInicial)
+  const [dadosPagina, setDadosPagina] = useState<DadosPagina>(estadoInicial)
   const [carregando, setCarregando] = useState(true)
 
   useEffect(() => {
@@ -59,7 +61,7 @@ export const Pagina = () => {
       .then((responsePagina: any) => {
         const dataPagina = responsePagina.data[0]
 
-        setPaginaCompleta(prev => ({
+        setDadosPagina(prev => ({
           ...prev,
           idPagina: dataPagina.idPagina,
           titulo: dataPagina.titulo,
@@ -69,7 +71,7 @@ export const Pagina = () => {
 
         apiGetLinks(dataPagina.idPagina)
           .then((responseLinks: any) => {
-            setPaginaCompleta(prev => ({
+            setDadosPagina(prev => ({
               ...prev,
               links: responseLinks.data
             }))
@@ -91,19 +93,22 @@ export const Pagina = () => {
     <>
       {carregando
         ? <CircularProgress color="primary" style={{ margin: "100%" }} />
-        : <S.Content mediaquery={mediaQuery} backgroundcolor={paginaCompleta.aparencia.cor.fundo}>
+        : <S.Content
+          mediaquery={mediaQuery}
+          backgroundcolor={dadosPagina.aparencia.cor.fundo}
+          background={dadosPagina.aparencia.background}>
           <S.DivImage mediaquery={mediaQuery}>
-            <img src={paginaCompleta.aparencia.foto ? paginaCompleta.aparencia.foto : defaultUser} alt="imagem da página" />
+            <img src={dadosPagina.aparencia.foto ? dadosPagina.aparencia.foto : defaultUser} alt="imagem da página" />
             <div className="espaco-branco"></div>
           </S.DivImage>
-          <S.NomePagina textcolor={paginaCompleta.aparencia.cor.texto}>{paginaCompleta.titulo}</S.NomePagina>
+          <S.NomePagina textcolor={dadosPagina.aparencia.cor.texto}>{dadosPagina.titulo}</S.NomePagina>
           <S.ListaLinks>
-            {paginaCompleta.links.filter(items => items.ativo === true).map((item) => (
+            {dadosPagina.links.filter(items => items.ativo === true).map((item) => (
               <S.ButtonsLinks
                 key={item.idLink}
                 mediaquery={mediaQuery}
-                textcolor={paginaCompleta.aparencia.cor.textoBotao}
-                background={paginaCompleta.aparencia.cor.botao}
+                textcolor={dadosPagina.aparencia.cor.textoBotao}
+                background={dadosPagina.aparencia.cor.botao}
                 onClick={() => window.open(`https://${item.url}`, '_blank')} >
                 <span style={{ marginLeft: "auto", marginRight: "auto" }}> {item.descricao}</span>
               </S.ButtonsLinks>

@@ -7,6 +7,7 @@ interface IPaginaCompleta {
   ativo: boolean
   aparencia: {
     foto: string
+    background: string
     cor: {
       botao: string
       texto: string
@@ -31,6 +32,7 @@ const initialState: IPaginaCompleta = {
   ativo: false,
   aparencia: {
     foto: "",
+    background: "",
     cor: {
       botao: "",
       textoBotao: "",
@@ -79,6 +81,11 @@ const paginaCompletaSlice = createSlice({
 
       return state
     },
+    removerBackgroundPagina: (state) => {
+      state.aparencia.background = ""
+
+      return state
+    },
     adicionarFotoPagina: (state, action: PayloadAction<{ foto: string }>) => {
       state.aparencia.foto = action.payload.foto
 
@@ -98,9 +105,14 @@ const paginaCompletaSlice = createSlice({
       state.aparencia.cor.botao = action.payload
 
       return state
-    },    
+    },
     trocarCorDoTextoBotaoPagina: (state, action: PayloadAction<string>) => {
       state.aparencia.cor.textoBotao = action.payload
+
+      return state
+    },
+    trocarBackgroundPagina: (state, action: PayloadAction<string>) => {
+      state.aparencia.background = action.payload
 
       return state
     },
@@ -147,6 +159,8 @@ export const {
   trocarCorDoTextoPagina,
   trocarCorDoBotaoPagina,
   trocarCorDoTextoBotaoPagina,
+  trocarBackgroundPagina,
+  removerBackgroundPagina,
   setLinks
 } = paginaCompletaSlice.actions
 

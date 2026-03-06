@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const ContentMolde = styled.div<{ backgroundprevia?: string }>`
+export const ContentMolde = styled.div<{ backgroundprevia?: string, background: string }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,6 +8,7 @@ export const ContentMolde = styled.div<{ backgroundprevia?: string }>`
   min-width: 464px;
   border-left: 1px solid #C4C4C4;
   background-color: #FFFFFF;
+
   
   .cell {
     display: flex;
@@ -20,12 +21,27 @@ export const ContentMolde = styled.div<{ backgroundprevia?: string }>`
     border-radius: 40px;
     margin: auto;
     background: ${props => props.backgroundprevia};
+    position: relative;  
+    overflow: hidden; 
+
+    &::before {
+      content: '';        
+      position: absolute; 
+      background-image: url(${props => props.background});
+      filter: blur(2px);
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+   }
 
     .previa-celular-svg {
       position: absolute;
     }
 
     img {
+      position: relative; 
+      z-index: 1;          
       border-radius: 50%;
       width: 111px;
       height: 111px;
@@ -35,6 +51,7 @@ export const ContentMolde = styled.div<{ backgroundprevia?: string }>`
 `
 
 export const Links = styled.div<{ backgroundcolor: string, color: string, textoBotao: string }>`
+  z-index: 1;   
   justify-content: center;
   align-items: center;
   color: ${(props) => props.textoBotao};
@@ -48,6 +65,8 @@ export const Links = styled.div<{ backgroundcolor: string, color: string, textoB
   border: 1px solid #000000;
 `
 export const Titulo = styled.p<{ color: string }>`
+  position: relative;  
+  z-index: 1;        
   margin: 10px 0px 40px 0px;
   font-size: 16px;
   font-weight: 400;

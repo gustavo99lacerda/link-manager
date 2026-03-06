@@ -1,15 +1,28 @@
-import { Button, IconButton } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 import styled from 'styled-components'
 
-export const Content = styled.div<{ mediaquery: string, backgroundcolor: string }>`
+export const Content = styled.div<{ mediaquery: string, backgroundcolor: string, background: string }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: ${props => props.backgroundcolor};
+  background-color: black;
   padding: ${props => props.mediaquery === "true" ? "28px 0px" : "24px 0px"};
   overflow: auto;
+
+  &::before {
+    content: '';        
+    position: absolute; 
+    background-image: url(${props => props.background});
+    filter: blur(3px);
+    inset: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+    z-index: 0;
+   }
+
 `
 
 export const DivImage = styled.div<{ mediaquery: string }>`
@@ -17,31 +30,25 @@ export const DivImage = styled.div<{ mediaquery: string }>`
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  position: relative; 
+  z-index: 1;  
 
   img {
-    width: ${props => props.mediaquery === "true" ? "255px" : "185px"};
-    height: ${props => props.mediaquery === "true" ? "255px" : "185px"};
+    width: ${props => props.mediaquery === "true" ? "275px" : "205px"};
+    height: ${props => props.mediaquery === "true" ? "275px" : "205px"};
     border-radius: 50%;
   }
 `
-export const BotaoVoltar = styled(IconButton)`
-  &.MuiIconButton-root {
-    padding: 0;
-    background-color: #D9D9D9;
-    height: 40px;
-    width: 40px;
-  }
-  .MuiSvgIcon-root {
-    color: #043D94;
-  }
-`
+
 export const NomePagina = styled.h1<{ textcolor: string }>`
   font-style: normal;
   font-weight: 500;
-  font-size: 30px;
+  font-size: 36px;
   line-height: 100%;
   color: ${props => props.textcolor};
   margin: 70px 0 80px 0;
+  position: relative; 
+  z-index: 1;  
 `
 export const ListaLinks = styled.div`
   display: flex;
@@ -49,6 +56,8 @@ export const ListaLinks = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  position: relative; 
+  z-index: 1;  
 `
 export const ButtonsLinks = styled(Button) <{ textcolor: string, background: string, mediaquery: string }>`
   &.MuiButtonBase-root {

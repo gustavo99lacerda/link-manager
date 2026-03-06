@@ -10,6 +10,7 @@ interface IDadosPreviaCelular {
   titulo: string
   aparencia: {
     foto: string
+    background: string
     cor: {
       botao: string
       texto: string
@@ -37,6 +38,7 @@ const estadoInicial: IDadosPreviaCelular = {
       fundo: '',
       texto: ''
     },
+    background: '',
     foto: ''
   }
 }
@@ -54,33 +56,29 @@ export function PreviaCelular() {
   }, [paginas.length, paginaCompleta])
 
   return (
-    <S.ContentMolde backgroundprevia={dadosPrevia.aparencia.cor.fundo}>
+    <S.ContentMolde backgroundprevia={dadosPrevia.aparencia.cor.fundo} background={dadosPrevia.aparencia.background}>
       {identificadores.carregandoPrevia
         ? <CircularProgress color="primary" style={{ margin: "100%" }} className="margin-auto" />
         : paginas.length > 0 && paginaCompleta.idPagina !== ''
           ? <>
             <div className="cell">
               <PreviaCelularSvg />
-              {dadosPrevia.titulo !== ''
-                ? <>
-                  <img src={dadosPrevia.aparencia.foto ? dadosPrevia.aparencia.foto : defaultUser} alt="foto da pagina" className="imagem-previa" />
-                  <S.Titulo color={dadosPrevia.aparencia.cor.texto}>
-                    {dadosPrevia.titulo}
-                  </S.Titulo>
-                  {dadosPrevia.links.length > 0 ?
-                    dadosPrevia.links.filter(itens => itens.ativo === true).map(item => (
-                      <S.Links
-                        textoBotao={dadosPrevia.aparencia.cor.textoBotao}
-                        backgroundcolor={dadosPrevia.aparencia.cor.botao === null ? "#000000" : dadosPrevia.aparencia.cor.botao}
-                        key={item.idLink}
-                        color={dadosPrevia.aparencia.cor.texto} >
-                        {item.descricao}
-                      </S.Links>
-                    ))
-                    : null
-                  }
-                </>
-                : null}
+              <img src={dadosPrevia.aparencia.foto ? dadosPrevia.aparencia.foto : defaultUser} alt="foto da pagina" className="imagem-previa" />
+              <S.Titulo color={dadosPrevia.aparencia.cor.texto}>
+                {dadosPrevia.titulo}
+              </S.Titulo>
+              {dadosPrevia.links.length > 0 ?
+                dadosPrevia.links.filter(itens => itens.ativo === true).map(item => (
+                  <S.Links
+                    textoBotao={dadosPrevia.aparencia.cor.textoBotao}
+                    backgroundcolor={dadosPrevia.aparencia.cor.botao === null ? "#000000" : dadosPrevia.aparencia.cor.botao}
+                    key={item.idLink}
+                    color={dadosPrevia.aparencia.cor.texto} >
+                    {item.descricao}
+                  </S.Links>
+                ))
+                : null
+              }
             </div>
           </>
           : null}
