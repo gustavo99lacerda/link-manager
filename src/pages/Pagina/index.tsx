@@ -104,7 +104,7 @@ export const Pagina = () => {
                 mediaquery={mediaQuery}
                 textcolor={paginaCompleta.aparencia.cor.textoBotao}
                 background={paginaCompleta.aparencia.cor.botao}
-                onClick={() => window.open(`https://${item.url}`, '_blank')} >
+                onClick={() => window.open(`${item.url}`, '_blank')} >
                 <span style={{ marginLeft: "auto", marginRight: "auto" }}> {item.descricao}</span>
               </S.ButtonsLinks>
             ))}

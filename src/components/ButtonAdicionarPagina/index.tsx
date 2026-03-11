@@ -77,7 +77,7 @@ export function ButtonAdicionarPagina() {
       .then((response: any) => {
         dispatch(addPagina({
           idPagina: response.data.idPagina,
-          url: url,
+          url: url.toLowerCase(),
           titulo: dadosPagina.titulo!,
         }))
         customSnackbar(translation("snackbar.sucesso_criar_pagina"))
