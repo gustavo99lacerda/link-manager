@@ -5,6 +5,7 @@ import { ConteudoDois } from './conteudoDois';
 import { ConteudoTres } from './conteudoTres';
 import { ConteudoQuatro } from './conteudoQuatro';
 import { Header } from '../../components/Header';
+import { FooterComponent } from '../../components/Footer';
 
 export function PaginaInicial() {
 
@@ -21,6 +22,7 @@ export function PaginaInicial() {
       <ConteudoDois />
       <ConteudoTres />
       <ConteudoQuatro />
+      <FooterComponent />
     </S.Body>
   )
 }

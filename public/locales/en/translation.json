@@ -27,7 +27,9 @@
     "divulgue": "Share it with anyone in an easy and fast way.",
     "junte_todos": "Gather all your links in one place and make it your own!"
   },
-  "footer": {},
+  "footer": {
+    "disclaimer": "This project was developed exclusively for educational purposes and to demonstrate technical skills, without any commercial or lucrative purpose."
+  },
   "tela_login": {
     "nao_possui_conta": "Don't have an account yet? Click the button above to create one!",
     "acesse_conta": "Access your account",
