@@ -97,9 +97,15 @@
   },
   "dialog_foto_pagina": {
     "alterar_foto_pagina": "Alterar foto da página",
-    "informacao": "Altere a foto da página aqui. Caso deseje, poderá também remover a foto atual",
+    "informacao": "Altere a foto da página aqui. Caso deseje, poderá também remover a foto atual. As alterações serão automaticamente salvas no banco de dados",
     "remover_foto_pagina": "Remover foto da página",
     "remover_aviso": "Tem certeza que deseja remover a foto da página? Esta ação não poderá ser revertida."
+  },
+  "dialog_background": {
+    "alterar_background_pagina": "Alterar background da página",
+    "informacao": "Altere o background da página aqui. Caso deseje, poderá também remover o background atual. As alterações serão automaticamente salvas no banco de dados",
+    "remover_background_pagina": "Remover background da página",
+    "remover_aviso": "Tem certeza que deseja remover o background da página? Esta ação não poderá ser revertida."
   },
   "snackbar": {
     "remover_foto_sucesso": "A foto foi removida com sucesso",

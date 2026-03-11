@@ -1,7 +1,7 @@
 import { Button } from '@material-ui/core'
 import styled from 'styled-components'
 
-export const Content = styled.div<{ mediaquery: string, backgroundcolor: string, background: string }>`
+export const Content = styled.div<{ mediaquery: string, backgroundcolor: string, background: string, orientacao?: string }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +19,7 @@ export const Content = styled.div<{ mediaquery: string, backgroundcolor: string,
     inset: 0;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: auto;
+    background-size: ${props => props.orientacao === 'retrato' ? 'cover' : 'contain'};
     z-index: 0;
    }
 
@@ -34,8 +34,8 @@ export const DivImage = styled.div<{ mediaquery: string }>`
   z-index: 1;  
 
   img {
-    width: ${props => props.mediaquery === "true" ? "275px" : "205px"};
-    height: ${props => props.mediaquery === "true" ? "275px" : "205px"};
+    width: ${props => props.mediaquery === "true" ? "205px" : "205px"};
+    height: ${props => props.mediaquery === "true" ? "205px" : "205px"};
     border-radius: 50%;
   }
 `

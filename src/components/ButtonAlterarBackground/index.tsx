@@ -8,6 +8,7 @@ import { trocarBackgroundPagina } from '../../redux/modules/paginaCompleta'
 import imageCompression from 'browser-image-compression';
 import { customSnackbar } from '../CustomSnackbar/customSnackbar'
 import { ButtonRemoverBackground } from '../ButtonRemoverBackground'
+import { apiPutBackgroundPagina } from '../../../api/pagina/putBackgroundPagina'
 
 export function ButtonAlterarFotoBackground() {
 
@@ -35,9 +36,20 @@ export function ButtonAlterarFotoBackground() {
       const reader = new FileReader();
       reader.readAsDataURL(compressedFile);
       reader.onload = () => {
-        dispatch(trocarBackgroundPagina(reader.result!.toString() ))
-        customSnackbar(translation("snackbar.alteracao_foto_sucesso"))
-
+        apiPutBackgroundPagina(
+          paginaCompleta.idPagina,
+          reader.result!.toString(),
+          paginaCompleta.aparencia.foto,
+          paginaCompleta.aparencia.cor.botao,
+          paginaCompleta.aparencia.cor.texto,
+          paginaCompleta.aparencia.cor.fundo,
+          paginaCompleta.aparencia.cor.textoBotao
+        ).then(() => {
+          dispatch(trocarBackgroundPagina(reader.result!.toString()))
+          customSnackbar(translation("snackbar.alteracao_foto_sucesso"))
+        }).catch((error) => {
+          console.log(error)
+        })
       }
     } catch (error) {
       console.error(error);
@@ -56,12 +68,14 @@ export function ButtonAlterarFotoBackground() {
         actions={false}
         onClose={() => setOpenDialog(false)}>
         <S.DialogTitle mediaquery={mediaQuery} >
-          {translation("dialog_foto_pagina.alterar_foto_pagina")}
+          {translation("dialog_background.alterar_background_pagina")}
         </S.DialogTitle>
         <S.DialogInfo mediaquery={mediaQuery}>
-          {translation("dialog_foto_pagina.informacao")}
+          {translation("dialog_background.informacao")}
         </S.DialogInfo>
-        <S.ComFoto src={paginaCompleta.aparencia.background ? paginaCompleta.aparencia.background : ""} width='162px' height='162px' margin='0px 0px 32px 0px' />
+        {paginaCompleta.aparencia.background && (
+          <S.ComFoto src={paginaCompleta.aparencia.background} alt='foto-background' width='162px' height='162px' margin='0px 0px 32px 0px' />
+        )}
         <S.DivBotoes>
           <ButtonRemoverBackground />
           <input
@@ -79,7 +93,7 @@ export function ButtonAlterarFotoBackground() {
               component="span" >
               {translation("alterar_foto")}
             </Button>
-          </label>  
+          </label>
         </S.DivBotoes>
       </GlobalDialog>
     </S.DivContent>

@@ -9,6 +9,7 @@ import { ButtonRemoverFotoPagina } from '../ButtonRemoverFotoPagina'
 import imageCompression from 'browser-image-compression';
 import { customSnackbar } from '../CustomSnackbar/customSnackbar'
 import defaultUser from '../../assets/defaultUser.jpg'
+import { apiPutFotoPagina } from '../../../api/pagina/putFotoPagina'
 
 export function ButtonAlterarFotoPagina() {
 
@@ -36,9 +37,20 @@ export function ButtonAlterarFotoPagina() {
       const reader = new FileReader();
       reader.readAsDataURL(compressedFile);
       reader.onload = () => {
-        dispatch(adicionarFotoPagina({ foto: reader.result!.toString() }))
-        customSnackbar(translation("snackbar.alteracao_foto_sucesso"))
-
+        apiPutFotoPagina(
+          paginaCompleta.idPagina,
+          paginaCompleta.aparencia.background,
+          reader.result!.toString(),
+          paginaCompleta.aparencia.cor.botao,
+          paginaCompleta.aparencia.cor.texto,
+          paginaCompleta.aparencia.cor.fundo,
+          paginaCompleta.aparencia.cor.textoBotao
+        ).then(() => {
+          dispatch(adicionarFotoPagina({ foto: reader.result!.toString() }))
+          customSnackbar(translation("snackbar.alteracao_foto_sucesso"))
+        }).catch((error) => {
+          console.log(error)
+        })
       }
     } catch (error) {
       console.error(error);

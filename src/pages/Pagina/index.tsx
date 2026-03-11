@@ -55,6 +55,7 @@ export const Pagina = () => {
 
   const [dadosPagina, setDadosPagina] = useState<DadosPagina>(estadoInicial)
   const [carregando, setCarregando] = useState(true)
+  const [orientacao, setOrientacao] = useState<string>("");
 
   useEffect(() => {
     apiGetPaginaUrl(customUrl)
@@ -68,6 +69,8 @@ export const Pagina = () => {
           aparencia: dataPagina.aparencia,
           url: dataPagina.url
         }))
+
+        checklandscape(dataPagina.aparencia.background)
 
         apiGetLinks(dataPagina.idPagina)
           .then((responseLinks: any) => {
@@ -89,6 +92,14 @@ export const Pagina = () => {
 
   }, [customUrl])
 
+  const checklandscape = (background: string) => {
+    const img = new Image();
+    img.onload = () => {
+      setOrientacao(img.naturalHeight > img.naturalWidth ? 'retrato' : 'paisagem');
+    }
+    img.src = background;
+  }
+
   return (
     <>
       {carregando
@@ -96,7 +107,8 @@ export const Pagina = () => {
         : <S.Content
           mediaquery={mediaQuery}
           backgroundcolor={dadosPagina.aparencia.cor.fundo}
-          background={dadosPagina.aparencia.background}>
+          background={dadosPagina.aparencia.background}
+          orientacao={orientacao}>
           <S.DivImage mediaquery={mediaQuery}>
             <img src={dadosPagina.aparencia.foto ? dadosPagina.aparencia.foto : defaultUser} alt="imagem da página" />
             <div className="espaco-branco"></div>
